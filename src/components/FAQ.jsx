@@ -39,8 +39,8 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="p-36 mx-auto bg-gradient-to-b  from-yellow-300 to-pink">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-2">
+    <div className="overflow-hidden p-12 mx-auto bg-gradient-to-b  from-yellow-300 to-pink">
+      <h2 className="py-12 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-2">
         Preguntas Frecuentes
       </h2>
       <ul className="flex flex-wrap items-start gap-8">

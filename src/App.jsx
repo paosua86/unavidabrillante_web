@@ -3,15 +3,16 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import Header from './components/Header';
+import Nosotros from './components/Nosotros';
 import PropuestaDeValor from './components/PropuestaDeValor';
 import CaracteristicasPrincipales from './components/CaracteristicasPrincipales';
+import Howitworks from './components/Howitworks';
 import Testimonios from './components/Testimonios';
 import PlanesYPrecios from './components/PlanesYPrecios';
 import LlamadasAccion from './components/LlamadasAccion';
-import Nosotros from './components/Nosotros';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import Howitworks from './components/Howitworks';
+
 
 function App() {
   useEffect(() => {

@@ -29,13 +29,13 @@ const Testimonios = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b  from-strong-pink to-light-blue py-10">
+    <section className="py-10 overflow-x-hidden bg-gradient-to-b  from-strong-pink to-light-blue ">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-2" data-aos="fade-up">
+        <h2 className="py-24 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-2" data-aos="fade-up">
           Testimonios
         </h2>
 
-        <div className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-aos="zoom-in-up">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8 flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 group hover:shadow-2xl">
               <p className="text-gray-600 justify-center  align-middle dark:text-white">

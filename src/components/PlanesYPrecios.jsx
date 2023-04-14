@@ -4,30 +4,25 @@ import React from 'react';
 
 const PlanesYPrecios = () => {
   return (
-    <section className="bg-gradient-to-b  from-pink to-strong-pink py-10">
-      <div class=" dark:bg-gray-900">
-        <div class="container px-6 py-8 mx-auto">
+    <section className="overflow-hidden bg-gradient-to-b  from-yellow-300 to-strong-pink py-10">
+      <div class=" dark:bg-gray-900 ">
+        <div class=" container sm:px-6 py-8 mx-auto">
           <div class="xl:items-center xl:-mx-8 xl:flex">
             <div class="flex flex-col items-center xl:items-start xl:mx-8">
-              <h2 class="text-3xl max-w sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-2">Nuestros planes</h2>
+              <h2 class="text-3xl max-w-xs sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-2">Nuestros planes</h2>
               <div class="mt-4">
                 <span class="inline-block w-40 h-1 bg-strong-pink rounded-full"></span>
                 <span class="inline-block w-3 h-1 mx-1 bg-strong-pink rounded-full"></span>
                 <span class="inline-block w-1 h-1 bg-strong-pink rounded-full"></span>
               </div>
 
-              <p class="mt-4 font-medium text-gray-500 dark:text-gray-300">
+              <h3 class="mt-4 text-xl max-w-xs sm:text-2xl md:text-3xl textfont-medium text-white dark:text-gray-300">
                 Diferentes necesidades, diferente precio
-              </p>
-
-              <a href="#" class="flex items-center mt-4 -mx-1 text-sm text-gray-700 capitalize dark:text-strong-pink hover:underline hover:text-pink dark:hover:text-strong-pink">
-                <span class="mx-1">Pregúntanos</span>
-                <svg class="w-4 h-4 mx-1 rtl:-scale-x-100" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-              </a>
+              </h3>
             </div>
 
-            <div class="flex-1 xl:mx-8">
-              <div class="mt-8 space-y-8 md:-mx-4 md:flex md:items-center md:justify-center md:space-y-0 xl:mt-0">
+            <div class=" px-0 flex-1 xl:mx-8" data-aos="fade-up-left">
+              <div class=" mt-8 space-y-8 md:-mx-4 md:flex md:items-center md:justify-center md:space-y-0 xl:mt-0">
                 <div class="max-w-sm mx-auto border rounded-lg md:mx-4 dark:border-gray-700 bg-white">
                   <div class="p-6">
                     <h1 class="text-xl font-medium text-gray-700 capitalize lg:text-2xl dark:text-white">Mensual</h1>

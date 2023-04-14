@@ -3,10 +3,10 @@ import logocompleto from '../assets/logocompleto.svg';
 
 const Nosotros = () => {
     return (
-        <section className="flex justify-center items-center h-screen bg-gradient-to-b  from-yellow-300 to-light-blue">
-        <div className="flex max-w-xl overflow-hidden bg-white rounded-lg shadow-lg">
+        <section  className="overflow-x-hidden flex justify-center items-center h-screen bg-gradient-to-b  from-yellow-300 to-light-blue">
+        <div data-aos="flip-down" className="flex max-w-xl overflow-hidden  bg-white rounded-lg shadow-lg">
           <div className="w-1/3">
-            <img src={logocompleto} alt="Logo completo" className="h-48 max-w-xl lg mx-auto" />
+            <img src={logocompleto} alt="Logo completo" className="h-28 sm:h-36 xl:h-48 max-w-xl lg mx-auto" />
           </div>
           <div className="w-2/3 p-4 flex flex-col justify-center">
             <h2 className="p-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-2">
