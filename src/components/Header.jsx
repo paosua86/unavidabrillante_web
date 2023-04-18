@@ -2,7 +2,7 @@ import React from 'react';
 import cara from '../assets/cara.svg';
 import 'aos/dist/aos.css';
 
-const Home = () => {
+const Header = () => {
   return (
     <section className="bg-gradient-to-b overflow-x-hidden from-strong-pink to-yellow-300">
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 flex flex-col md:flex-row">
@@ -42,4 +42,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Header;
