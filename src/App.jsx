@@ -42,7 +42,6 @@ function App() {
                 <Testimonios />
                 <LlamadasAccion />
                 <FAQ />
-                <Footer />
               </div>
             }
           />
@@ -77,11 +76,12 @@ function App() {
                 <Testimonios />
                 <LlamadasAccion />
                 <FAQ />
-                <Footer />
+
               </div>
             }
           />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
