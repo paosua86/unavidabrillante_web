@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Nosotros from './components/Nosotros';
 import PropuestaDeValor from './components/PropuestaDeValor';
@@ -25,65 +25,39 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <div>
-                <Header />
-                <Nosotros />
-                <PropuestaDeValor />
-                <CaracteristicasPrincipales />
-                <Howitworks />
-                <PlanesYPrecios />
-                <Testimonios />
-                <LlamadasAccion />
-                <FAQ />
-              </div>
-            }
-          />
-          <Route
-            exact
-            path="/politicadeprivacidad"
-            element={
-              <div>
-                <PoliticaDePrivacidad />
-              </div>
-            }
-          />
-          <Route
-            exact
-            path="/condicionesceservicio"
-            element={
-              <div>
-                <CondicionesDeServicio />
-              </div>
-            }
-          />
-          <Route
-            path="/*"
-            element={
-              <div>
-                <Header />
-                <Nosotros />
-                <PropuestaDeValor />
-                <CaracteristicasPrincipales />
-                <Howitworks />
-                <PlanesYPrecios />
-                <Testimonios />
-                <LlamadasAccion />
-                <FAQ />
-
-              </div>
-            }
-          />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <div className="App">
+      <Routes>
+        <Route exact
+          path="/"
+          element={
+            <div>
+              <Header />
+              <Nosotros />
+              <PropuestaDeValor />
+              <CaracteristicasPrincipales />
+              <Howitworks />
+              <PlanesYPrecios />
+              <Testimonios />
+              <LlamadasAccion />
+              <FAQ />
+            </div>
+          }
+        />
+        <Route exact path="/politicadeprivacidad" element={
+          <div>
+            <PoliticaDePrivacidad />
+          </div>
+        }
+        />
+        <Route exact path="/condicionesceservicio" element={
+          <div>
+            <CondicionesDeServicio />
+          </div>
+        }
+        />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 
