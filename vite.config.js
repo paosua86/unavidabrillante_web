@@ -6,7 +6,7 @@ import autoprefixer from 'autoprefixer';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/unavidabrillante_web/', //quitar esto para pagina real
+  base: '/',
   css: {
     postcss: {
       plugins: [

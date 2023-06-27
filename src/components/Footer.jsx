@@ -6,7 +6,7 @@ import { SiTiktok, SiInstagram } from 'react-icons/si';
 function Footer() {
     return (
 
-        <footer class="overflow-x-hidden px-3 py-8 text-gray-500 transition-colors duration-200 bg-light-blue dark:bg-gray-800 text-2 dark:text-gray-200">
+        <footer class="overflow-x-hidden px-3 py-8 text-light-blue transition-colors duration-200 bg-light-blue dark:bg-gray-800 text-2 dark:text-gray-200">
             <div class="flex flex-col">
                 <div class="h-px mx-auto rounded-full md:hidden mt-7 w-11">
                 </div>
