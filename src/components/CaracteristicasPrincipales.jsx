@@ -104,7 +104,7 @@ const CaracteristicasPrincipales = () => {
               </ul>
             </div>
             <div class="relative mt-10 -mx-4 md:-mx-12 lg:mt-0 lg:col-start-1">
-              <img src={mujeres} alt="mujeres" data-aos="fade-up" class="relative w-auto mx-auto" />
+              <img src={mujeres} alt="mujeres"  class="relative w-auto mx-auto" />
             </div>
           </div>
         </div>

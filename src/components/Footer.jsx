@@ -12,16 +12,16 @@ function Footer() {
                 </div>
                 <div class="flex flex-col mt-4 md:mt-0 md:flex-row">
                     <nav class="flex flex-col items-center justify-center flex-1 border-gray-100 md:items-end md:border-r md:pr-5">
-                        <a aria-current="page" href="/" class="hover:text-gray-700 dark:hover:text-white">
+                        <a aria-current="page" href="#/ttlink" class="hover:text-gray-700 dark:hover:text-white">
                             Home
                         </a>
                         <a aria-current="page" href="mailto:paolasuarezb86@gmail.com?subject=informacion&body=Hola quiero hablar con alguien sobre .." class="hover:text-gray-700 dark:hover:text-white">
                             Contacto
                         </a>
-                        <a aria-current="page" href="/politicadeprivacidad" class="hover:text-gray-700 dark:hover:text-white">
+                        <a aria-current="page" href="#/politicadeprivacidad" class="hover:text-gray-700 dark:hover:text-white">
                             Politica de Privacidad
                         </a>
-                        <a aria-current="page" href="/condicionesceservicio" class="hover:text-gray-700 dark:hover:text-white">
+                        <a aria-current="page" href="#/condicionesdeservicio" class="hover:text-gray-700 dark:hover:text-white">
                             Condiciones de Servicio
                         </a>
 

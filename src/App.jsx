@@ -14,6 +14,10 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import PoliticaDePrivacidad from './components/PoliticaDePrivacidad';
 import CondicionesDeServicio from './components/CondicionesDeServicio';
+import Registrateprincipalttlink from './components/Registratelink';
+import Registratecurso from './components/Registratecurso';
+
+
 
 
 function App() {
@@ -27,11 +31,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact
+      <Route exact
           path="/"
           element={
             <div>
               <Header />
+              <Registrateprincipalttlink />
               <Nosotros />
               <PropuestaDeValor />
               <CaracteristicasPrincipales />
@@ -39,6 +44,42 @@ function App() {
               <PlanesYPrecios />
               <Testimonios />
               <LlamadasAccion />
+              <Registratecurso />
+            </div>
+          }
+        />
+        <Route exact
+          path="/ttlink"
+          element={
+            <div>
+              <Header />
+              <Registrateprincipalttlink />
+              <Nosotros />
+              <PropuestaDeValor />
+              <CaracteristicasPrincipales />
+              <Howitworks />
+              <PlanesYPrecios />
+              <Testimonios />
+              <LlamadasAccion />
+              <Registratecurso />
+              <FAQ />
+            </div>
+          }
+        />
+        <Route exact
+          path="/landingapp"
+          element={
+            <div>
+              <Header />
+              <Registrateprincipalttlink />
+              <Nosotros />
+              <PropuestaDeValor />
+              <CaracteristicasPrincipales />
+              <Howitworks />
+              <PlanesYPrecios />
+              <Testimonios />
+              <LlamadasAccion />
+              <Registratecurso />
               <FAQ />
             </div>
           }
@@ -49,7 +90,7 @@ function App() {
           </div>
         }
         />
-        <Route exact path="/condicionesceservicio" element={
+        <Route exact path="/condicionesdeservicio" element={
           <div>
             <CondicionesDeServicio />
           </div>
