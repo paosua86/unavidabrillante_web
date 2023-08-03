@@ -6,8 +6,8 @@ import { FcMultipleSmartphones, FcMakeDecision, FcRating, FcGlobe, FcOnlineSuppo
 const CaracteristicasPrincipales = () => {
   return (
     <section className="bg-gradient-to-b  from-strong-pink to-dark-blue py-8 overflow-x-hidden">
-      <div className="container mx-auto px-4">
-        <h2 className="container mx-auto py-16 sm:px-6 lg:py-24 lg:px-8 flex flex-col items-center px-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white" >
+      <div className="lg:container lg:mx-auto px-10 lg:px-4">
+        <h2 className="lg:container mx-auto py-16 sm:px-6 lg:py-24 lg:px-8 flex flex-col items-center px-8 text-5xl md:text-6xl lg:text-6xl font-bold text-white dark:text-white" >
           Características principales
         </h2>
 
@@ -17,86 +17,103 @@ const CaracteristicasPrincipales = () => {
 
               <ul class="mt-10">
                 <li>
-                  <div class="flex">
+                  <div class="flex my-10">
                     <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 text-white bg-white rounded-md">
                         <FcMakeDecision className="text-4xl" />
                       </div>
                     </div>
                     <div class="ml-4">
-                      <h3 class="text-lg font-bold leading-6 text-white dark:text-white">
-                        Experiencia de usuario intuitiva
+                      <h3 class="text-3xl lg:text-lg font-bold leading-9 lg:leading-6 text-white dark:text-white">
+                      Cambio transformacional
                       </h3>
-                      <p class="mt-2 text-base leading-6 text-white dark:text-gray-300">
-                        Regístrate, completa tus datos iniciales y accede a tu dashboard personalizado, donde encontrarás lecciones y tareas diarias para avanzar hacia tus metas
+                      <p class="mt-2 text-2xl lg:text-base leading-7 lg:leading-6 text-white dark:text-gray-300">
+                      Esta aplicación está diseñada para elevar la autoestima de sus usuarias, cambiando su mentalidad de forma positiva y constructiva con solo 10 minutos de compromiso diario
                       </p>
                     </div>
                   </div>
                 </li>
-                <li class="mt-10">
-                  <div class="flex">
+                <li>
+                  <div class="flex my-10">
                     <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 text-white bg-white rounded-md">
-                        <FcRating className="text-4xl" />
+                        <FcMakeDecision className="text-4xl" />
                       </div>
                     </div>
                     <div class="ml-4">
-                      <h3 class="text-lg font-bold leading-6 text-white dark:text-white">
-                        Gamificación
+                      <h3 class="text-3xl lg:text-lg font-bold leading-9 lg:leading-6 text-white dark:text-white">
+                      Contenido personalizado y secuencial
                       </h3>
-                      <p class="mt-2 text-base leading-6 text-white dark:text-gray-300">
-                        Gana puntos y alcanza metas para mantenerte motivada en tu proceso de mejora personal
+                      <p class="mt-2 text-2xl lg:text-base leading-7 lg:leading-6 text-white dark:text-gray-300">
+                      Cada día, sus usuarias reciben contenido personalizado elaborado por psicólogos profesionales. Este contenido es secuencial para garantizar que no se pierdan ni salten ningún material esencial para su desarrollo personal.
                       </p>
                     </div>
                   </div>
                 </li>
-                <li class="mt-10">
-                  <div class="flex">
+                <li>
+                  <div class="flex my-10">
                     <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 text-white bg-white rounded-md">
-                        <FcGlobe className="text-4xl" />
+                        <FcMakeDecision className="text-4xl" />
                       </div>
                     </div>
                     <div class="ml-4">
-                      <h3 class="text-lg font-bold leading-6 text-white dark:text-white">
-                        Comunidad y recursos
+                      <h3 class="text-3xl lg:text-lg font-bold leading-9 lg:leading-6 text-white dark:text-white">
+                      Cumplimiento de sueños y anhelos
                       </h3>
-                      <p class="mt-2 text-base leading-6 text-white dark:text-gray-300">
-                        Conéctate con personas que también buscan mejorar sus vidas y accede a material extra para reforzar tu crecimiento
+                      <p class="mt-2 text-2xl lg:text-base leading-7 lg:leading-6 text-white dark:text-gray-300">
+                      Nuestra aplicación también ayuda a sus usuarias a desbloquear su potencial para cumplir sus sueños y anhelos que podrían haberse visto limitados debido a una baja autoestima.
                       </p>
                     </div>
                   </div>
                 </li>
-                <li class="mt-10">
-                  <div class="flex">
+                <li>
+                  <div class="flex my-10">
                     <div class="flex-shrink-0">
-                      <div class="flex items-center justify-center w-12 h-12 text-white bg-white rounded-md">
-                        <FcMultipleSmartphones className="text-4xl" />
+                    <div class="flex items-center justify-center w-12 h-12 text-white bg-white rounded-md">
+                        <FcMakeDecision className="text-4xl" />
                       </div>
                     </div>
                     <div class="ml-4">
-                      <h3 class="text-lg font-bold leading-6 text-white dark:text-white">
-                       Multidispositivo
+                      <h3 class="text-3xl lg:text-lg font-bold leading-9 lg:leading-6 text-white dark:text-white">
+                      Diversidad de métodos de aprendizaje
                       </h3>
-                      <p class="mt-2 text-base leading-6 text-white dark:text-gray-300">
-                        Accede desde varios dispositivos móviles para que tengas una mejor experiencia
+                      <p class="mt-2 text-2xl lg:text-base leading-7 lg:leading-6 text-white dark:text-gray-300">
+                      La aplicación ofrece varios modos de aprendizaje, como lectura para cambiar la mentalidad, escucha para reforzar el aprendizaje y mindfulness para ayudar a los usuarios a meditar y absorber el contenido.
                       </p>
                     </div>
                   </div>
                 </li>
-                <li class="mt-10">
-                  <div class="flex">
+                <li>
+                  <div class="flex my-10">
                     <div class="flex-shrink-0">
-                      <div class="flex items-center justify-center w-12 h-12 text-white bg-white rounded-md">
-                        <FcOnlineSupport className="text-4xl" />
+                    <div class="flex items-center justify-center w-12 h-12 text-white bg-white rounded-md">
+                        <FcMakeDecision className="text-4xl" />
                       </div>
                     </div>
                     <div class="ml-4">
-                      <h3 class="text-lg font-bold leading-6 text-white dark:text-white">
-                        Terapias personalizadas
+                      <h3 class="text-3xl lg:text-lg font-bold leading-9 lg:leading-6 text-white dark:text-white">
+                      Experiencia de usuario única
                       </h3>
-                      <p class="mt-2 text-base leading-6 text-white dark:text-gray-300">
-                        Contáctanos cuando lo necesites y nuestro equipo de tutores altamente capacitados te brindará el apoyo y la guía necesaria para ayudarte a avanzar por un precio extra mínimo.
+                      <p class="mt-2 text-2xl lg:text-base leading-7 lg:leading-6 text-white dark:text-gray-300">
+                      Cada día es una nueva experiencia en nuestra aplicación, diseñada para desafiar y cambiar lo que los usuarios han pensado sobre sí mismas, mejorando sus ideas fundamentales, paradigmas y quitando limitaciones.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="flex my-10">
+                    <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center w-12 h-12 text-white bg-white rounded-md">
+                        <FcMakeDecision className="text-4xl" />
+                      </div>
+                    </div>
+                    <div class="ml-4">
+                      <h3 class="text-3xl lg:text-lg font-bold leading-9 lg:leading-6 text-white dark:text-white">
+                      Progresión cuidadosa
+                      </h3>
+                      <p class="mt-2 text-2xl lg:text-base leading-7 lg:leading-6 text-white dark:text-gray-300">
+                      La aplicación sigue una secuencia cuidadosa para asegurarse de que sus usuarias no se pierdan ningún contenido vital. Si una usuaria no puede entrar en la aplicación un día, se retomará donde lo dejó la última vez.
                       </p>
                     </div>
                   </div>

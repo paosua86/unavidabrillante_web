@@ -16,6 +16,7 @@ import PoliticaDePrivacidad from './components/PoliticaDePrivacidad';
 import CondicionesDeServicio from './components/CondicionesDeServicio';
 import Registrateprincipalttlink from './components/Registratelink';
 import Registratecurso from './components/Registratecurso';
+import Eliminarcuenta from './components/Eliminarcuenta';
 
 
 
@@ -93,6 +94,12 @@ function App() {
         <Route exact path="/condicionesdeservicio" element={
           <div>
             <CondicionesDeServicio />
+          </div>
+        }
+        />
+        <Route exact path="/eliminarcuenta" element={
+          <div>
+            <Eliminarcuenta />
           </div>
         }
         />

@@ -9,16 +9,16 @@ html {
     width: 100%;
   }
 
-  section {
+section {
     width: 100%;
   }
 
 h1 {
-  font-family: 'Shadows Into Light', cursive;
+  font-family: 'Yeseva One', cursive;
 }
 
 h2, a {
-  font-family: 'Yeseva One', cursive;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 h3, p {
@@ -27,7 +27,7 @@ h3, p {
 }
 
 p {
-  font-weight: 580;
+  font-weight: 300;
 }
 
 h3 {

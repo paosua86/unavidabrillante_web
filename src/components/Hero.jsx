@@ -3,7 +3,7 @@ import 'aos/dist/aos.css';
 
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-b overflow-x-hidden from-strong-pink to-yellow-300">
+    <section className="p-40 bg-gradient-to-b overflow-x-hidden from-strong-pink to-yellow-300">
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 flex flex-col md:flex-row items-center justify-center text-center">
         <div data-aos="fade-up">
           <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">

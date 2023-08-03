@@ -9,7 +9,7 @@ const FAQ = () => {
     {
       question: '¿Cómo descargo la aplicación Una Vida Brillante?',
       answer:
-        'Puedes descargar la aplicación Una Vida Brillante desde la tienda oficial de aplicaciones en tu dispositivo móvil (App Store para iOS y Google Play para Android).',
+        'Puedes descargar la aplicación Una Vida Brillante desde la tienda oficial de aplicaciones en tu dispositivo móvil (App Store para iOS y Google Play para Android) o usarla desde tu navegador favorito al hacer clic en la descarga para la Web',
     },
     {
       question: '¿Cómo puedo pagar la mensualidad de la aplicación?',
@@ -24,17 +24,17 @@ const FAQ = () => {
     {
       question: '¿Cómo puedo cancelar mi suscripción a la aplicación?',
       answer:
-        'Puedes cancelar tu suscripción en cualquier momento desde la opción de configuración dentro de la aplicación. Ten en cuenta que la cancelación de la suscripción se hará efectiva al final del ciclo de facturación actual, dependiendo si seleccionaste mensual o anual.',
+        'Puedes cancelar tu suscripción en cualquier momento desde la opción de configuración dentro de la aplicación. Ten en cuenta que la cancelación de la suscripción se hará efectiva al final del ciclo de facturación actual.',
     },
-    {
-      question: '¿Existe alguna oferta especial para nuevos usuarios?',
-      answer:
-        'Actualmente, ofrecemos un descuento del 30% en el pago anual de la mensualidad y los 7 primeros días gratuitos. Además, también ofrecemos diferentes promociones a través de nuestras redes sociales y correo electrónico.',
-    },
+    // {
+    //   question: '¿Existe alguna oferta especial para nuevos usuarios?',
+    //   answer:
+    //     'Actualmente, ofrecemos un descuento del 30% en el pago anual de la mensualidad y los 7 primeros días gratuitos. Además, también ofrecemos diferentes promociones a través de nuestras redes sociales y correo electrónico.',
+    // },
     {
       question: '¿Qué pasa si tengo algún problema con el pago o la descarga de la aplicación?',
       answer:
-        'Si tienes algún problema con el pago o la descarga de la aplicación, puedes contactarnos a través del chat dentro de la aplicación o mediante nuestro correo electrónico de soporte (hola@unavidabrillante.com), y nuestro equipo de soporte técnico estará disponible para ayudarte.',
+        'Si tienes algún problema con el pago o la descarga de la aplicación, puedes contactarnos a hola@unavidabrillante.com, nuestro equipo de soporte técnico estará disponible para ayudarte.',
     },
   ];
 

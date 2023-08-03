@@ -1,11 +1,8 @@
 import React from 'react';
 
 function Registrateprincipalttlink() {
-    const url = "https://omniform1.com/forms/v1/landingPage/649a018a091c7843509cdda5/649aebe273e91c8256cb5dce"
     return (
-        <section className="w-full h-screen" id="contacto">
-            <iframe src={url} title="Registrateprincipal" className="w-full h-full" />
-        </section>
+        <div className="bg-yellow-300 p-40" id="omnisend-embedded-v2-64ca72889eb05c8cf017f8fe"></div>
     );
 }
 export default Registrateprincipalttlink;

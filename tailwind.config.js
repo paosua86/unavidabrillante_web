@@ -4,15 +4,13 @@ module.exports = {
   theme: {
     screens: {
       'xs': '250px',
-      'sm': '640px',
-      'md': '770px',
+      'sm': '340px',
+      'md': '600px',
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
     },
-    minHeight: {
-      '1/2': '50%',
-    },
+
     extend: {
       colors: {
         'pink': '#ffe4cf',

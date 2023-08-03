@@ -4,7 +4,7 @@ const Testimonios = () => {
   const testimonials = [
     {
       name: 'Ana P.',
-      text: 'Gracias. Tener ayuda y acceso psicológico es sumamente primordial para mantener un equilibrio en la vida de cualquier ser humano. Cualquier tipo de terapia o ayuda funciona como herramienta para mejorar la calidad de vida y ofrece guía para poder acércanos a las decisiones más sanas y precisas en el camino de nuestra vida.',
+      text: 'Gracias. Tener ayuda y acceso psicológico es sumamente primordial para mantener un equilibrio en la vida. Cualquier tipo de terapia o app funciona, con ustedes he mejorado en mi forma de vivir.',
     },
     {
       name: 'Laura S.',

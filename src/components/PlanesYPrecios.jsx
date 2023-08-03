@@ -9,16 +9,16 @@ const PlanesYPrecios = () => {
         <div class=" container sm:px-6 py-8 mx-auto">
           <div class="xl:items-center xl:-mx-8 xl:flex">
             <div class="flex flex-col items-center xl:items-start xl:mx-8">
-              <h2 class="text-3xl max-w-xs sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-2">Nuestros planes</h2>
+              <h2 class="text-3xl max-w-xs sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-2">Precio mensual</h2>
               <div class="mt-4">
                 <span class="inline-block w-40 h-1 bg-strong-pink rounded-full"></span>
                 <span class="inline-block w-3 h-1 mx-1 bg-strong-pink rounded-full"></span>
                 <span class="inline-block w-1 h-1 bg-strong-pink rounded-full"></span>
               </div>
 
-              <h3 class="mt-4 text-xl max-w-xs sm:text-2xl md:text-3xl textfont-medium text-white dark:text-gray-300">
+              {/* <h3 class="mt-4 text-xl max-w-xs sm:text-2xl md:text-3xl textfont-medium text-white dark:text-gray-300">
                 Diferentes necesidades, diferente precio
-              </h3>
+              </h3> */}
             </div>
 
             <div class=" px-0 flex-1 xl:mx-8" data-aos="fade-up-left">
@@ -28,12 +28,13 @@ const PlanesYPrecios = () => {
                     <h1 class="text-xl font-medium text-gray-700 capitalize lg:text-2xl dark:text-white">Mensual</h1>
 
                     <p class="mt-4 text-gray-500 dark:text-gray-300">
-                      Contrata el plan mensual, renovación automática, cancela cuando desees.
+                      Contrata el plan mensual, renovación automática,
                     </p>
+                    <p class=" text-gray-500 dark:text-gray-300">cancela cuando desees.</p>
 
                     <h2 class="mt-4 text-2xl font-semibold text-gray-700 sm:text-3xl dark:text-gray-300">$14.99 <span class="text-base font-medium">/al mes</span></h2>
 
-                    <button class="w-full px-4 py-2 mt-6 tracking-wide text-white capitalize transition-colors duration-300 transform bg-strong-pink rounded-md hover:bg-pink hover:text-gray-700 focus:outline-none focus:bg-strong-pink focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                    <button class="w-full px-4 py-2 mt-6 tracking-wide text-white capitalize transition-colors duration-300 transform bg-strong-pink rounded-md hover:bg-pink hover:text-gray-700 focus:outline-none focus:bg-strong-pink focus:ring focus:ring-blue-300 focus:ring-opacity-80" onClick={() => window.scrollTo(0, 1000)}>
                       Empieza hoy
                     </button>
                   </div>
@@ -49,7 +50,7 @@ const PlanesYPrecios = () => {
                           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                         </svg>
 
-                        <span class="mx-4 text-gray-700 dark:text-gray-300">Acesso a la app movil de Una Vida Brillante</span>
+                        <span class="mx-4 text-gray-700 dark:text-gray-300">Acesso a la app de Una Vida Brillante</span>
                       </div>
 
                       <div class="flex items-center">
@@ -57,7 +58,7 @@ const PlanesYPrecios = () => {
                           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                         </svg>
 
-                        <span class="mx-4 text-gray-700 dark:text-gray-300">7 días de prueba</span>
+                        <span class="mx-4 text-gray-700 dark:text-gray-300">7 días de prueba gratuitos</span>
                       </div>
 
                       <div class="flex items-center">
@@ -73,14 +74,6 @@ const PlanesYPrecios = () => {
                           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                         </svg>
 
-                        <span class="mx-4 text-gray-700 dark:text-gray-300">Foros de participación</span>
-                      </div>
-
-                      <div class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-strong-pink" viewBox="0 0 20 20" fill="currentColor">
-                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                        </svg>
-
                         <span class="mx-4 text-gray-700 dark:text-gray-300">Acceso desde varios dispositivos</span>
                       </div>
 
@@ -89,7 +82,47 @@ const PlanesYPrecios = () => {
                           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                         </svg>
 
-                        <span class="mx-4 text-gray-700 dark:text-gray-300">Meditaciones</span>
+                        <span class="mx-4 text-gray-700 dark:text-gray-300">Mindfulness</span>
+                      </div>
+
+                      <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-strong-pink" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+
+                        <span class="mx-4 text-gray-700 dark:text-gray-300">Eleva tu autoestima</span>
+                      </div>
+
+                      <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-strong-pink" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+
+                        <span class="mx-4 text-gray-700 dark:text-gray-300">Desbloquea tu potencial</span>
+                      </div>
+
+                      <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-strong-pink" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+
+                        <span class="mx-4 text-gray-700 dark:text-gray-300">Aprendizaje personalizado</span>
+                      </div>
+
+                      <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-strong-pink" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+
+                        <span class="mx-4 text-gray-700 dark:text-gray-300">Avanza a tu ritmo</span>
+                      </div>
+
+                      <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-strong-pink" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+
+                        <span class="mx-4 text-gray-700 dark:text-gray-300">Fomenta el autodescubrimiento</span>
                       </div>
 
                       <div class="flex items-center">
@@ -104,7 +137,7 @@ const PlanesYPrecios = () => {
                   </div>
                 </div>
 
-                <div class="flex-1 xl:mx-8">
+                {/* <div class="flex-1 xl:mx-8">
                   <div class="mt-8 space-y-8 md:-mx-4 md:flex md:items-center md:justify-center md:space-y-0 xl:mt-0 ">
                     <div class="max-w-sm mx-auto border rounded-lg md:mx-4 dark:border-gray-700 bg-white">
                       <div class="p-6">
@@ -196,7 +229,7 @@ const PlanesYPrecios = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
