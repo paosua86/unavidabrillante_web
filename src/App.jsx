@@ -17,8 +17,9 @@ import CondicionesDeServicio from './components/CondicionesDeServicio';
 import Registrateprincipalttlink from './components/Registratelink';
 import Registratecurso from './components/Registratecurso';
 import Eliminarcuenta from './components/Eliminarcuenta';
-
-
+import Bannergeneral from './components/bannergeneral';
+import BlogComponent from './components/blogcomponent';
+import Registratecursoblog from './components/Registratecursoblog';
 
 
 function App() {
@@ -68,6 +69,42 @@ function App() {
           }
         />
         <Route exact
+          path="/pint"
+          element={
+            <div>
+              <Header />
+              <Registrateprincipalttlink />
+              <Nosotros />
+              <PropuestaDeValor />
+              <CaracteristicasPrincipales />
+              <Howitworks />
+              <PlanesYPrecios />
+              <Testimonios />
+              <LlamadasAccion />
+              <Registratecurso />
+              <FAQ />
+            </div>
+          }
+        />
+        <Route exact
+          path="/omnisend"
+          element={
+            <div>
+              <Header />
+              <Registrateprincipalttlink />
+              <Nosotros />
+              <PropuestaDeValor />
+              <CaracteristicasPrincipales />
+              <Howitworks />
+              <PlanesYPrecios />
+              <Testimonios />
+              <LlamadasAccion />
+              <Registratecurso />
+              <FAQ />
+            </div>
+          }
+        />
+        <Route exact
           path="/landingapp"
           element={
             <div>
@@ -94,6 +131,14 @@ function App() {
         <Route exact path="/condicionesdeservicio" element={
           <div>
             <CondicionesDeServicio />
+          </div>
+        }
+        />
+        <Route exact path="/9manerasdialogointerno" element={
+          <div>
+            <BlogComponent />
+            <Bannergeneral />
+            <Registratecursoblog />
           </div>
         }
         />

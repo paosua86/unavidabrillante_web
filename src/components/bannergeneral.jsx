@@ -1,21 +1,17 @@
 import React from 'react';
-import cara from '../assets/cara.svg';
-import 'aos/dist/aos.css';
+import chica from '../assets/mujersonrisa.svg';
 
-const Header = () => {
+const Bannergeneral = () => {
   return (
-    <section id="descargas" className="bg-gradient-to-b overflow-x-hidden from-strong-pink to-yellow-300 flex justify-center items-center">
-      <div className="container mx-4 flex flex-col lg:flex-row justify-center items-center m-20 ">
-        <div className="mb-8 lg:w-1/2" data-aos="zoom-in">
-          <img src={cara} alt="Cara" />
-        </div>
-        <div className="lg:w-1/2 flex justify-center">
+    <section className="overflow-x-hidden bg-gradient-to-b  from-gray-200 to-strong-pink">
+      <div className="lg:container lg:mx-auto py-12 px-2 lg:py-24 lg:px-8 flex flex-col lg:flex-row items-center">
+        <div className="md:w-1/2 flex flex-col justify-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-7xl font-bold text-white dark:text-white mb-2">
-              ¡Descubre <h2 data-aos="zoom-in" >"UNA VIDA BRILLANTE"</h2>y comienza tu transformación hoy!
-            </h1>
-            <p className="text-4xl text-pink mb-8">
-              Mejora tu autoestima y vive la vida que mereces con nuestra aplicación diseñada por expertos en psicología.
+            <h2 className="lg:p-8 text-8xl lg:text-6xl font-bold text-white dark:text-white">
+              Desarrolla tu autoestima y valía personal
+            </h2>
+            <p className="p-8 text-lg md:text-2xl lg:text-3xl text-pink mb-8" data-aos="fade-up" data-aos-delay="200">
+              Con ejercicios diarios y lecciones entretenidas diseñadas por psicólogos experimentados, a un precio accesible para todas. <a href="https://www.unavidabrillante.com/#/pint" className="underline text-white hover:text-gray-300">Conoce más</a>
             </p>
 
             <div class="lg:mt-8 items-center justify-center lg:justify-left space-x-4  flex flex-col lg:flex-row">
@@ -43,9 +39,13 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <div data-aos="fade-down" className="md:w-1/2 mb-8 md:mb-0 order-first md:order-last my-5">
+          <img src={chica} alt="Chicas" />
+        </div>
       </div>
+
     </section>
   );
 };
 
-export default Header;
+export default Bannergeneral;
