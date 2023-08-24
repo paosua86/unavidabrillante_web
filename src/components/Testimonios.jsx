@@ -35,7 +35,7 @@ const Testimonios = () => {
           Testimonios
         </h2>
 
-        <div className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-aos="zoom-in-up">
+        <div className="relative grid gap-5 lg:grid-cols-3" data-aos="zoom-in-up">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8 flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 group hover:shadow-2xl">
               <p className="text-gray-600 justify-center  align-middle dark:text-white">

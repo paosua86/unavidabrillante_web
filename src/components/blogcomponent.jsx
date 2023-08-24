@@ -9,16 +9,16 @@ const BlogComponent = () => {
        <div data-aos="fade-down" className="flex items-center justify-center ">
         <img src={logo} alt="logo" className="h-24" />
       </div>
-      <p class="mb-2 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-center">
+      <p class="mb-2 text-base font-semibold tracking-wide text-gray-600 uppercase sm:text-center">
         22 Ago 2023
       </p>
       <div class="max-w-xl mb-5 md:mx-auto sm:text-center lg:max-w-2xl">
         <div class="mb-4">
-          <h1 aria-label="Article" class="inline-block max-w-lg font-sans text-3xl font-extrabold leading-none tracking-tight text-black transition-colors duration-200 hover:text-deep-purple-accent-700 sm:text-4xl">
+          <h1 aria-label="Article" class="inline-block max-w-lg font-sans text-4xl font-extrabold leading-none tracking-tight text-black transition-colors duration-200 hover:text-deep-purple-accent-700 sm:text-4xl">
             Cómo se ve y se siente una persona que está mejorando su diálogo interno?
           </h1>
         </div>
-        <p class="text-base text-gray-700 md:text-lg">
+        <p class="text-xl text-gray-700 md:text-lg">
           <p>9 formas de evaluar si estoy avanzando</p>
         </p>
 
@@ -36,7 +36,7 @@ const BlogComponent = () => {
           <p class="text-sm font-medium leading-4 text-gray-600">Author</p>
         </div> */}
       </div>
-      <div class=" flex flex-col items-center px-5 py-8 mx-auto max-w-3xl sm:px-6 lg:px-8">
+      <div class=" flex text-xl flex-col items-center px-5 py-8 mx-auto max-w-3xl sm:px-6 lg:px-8">
         <div class="flex flex-col w-full max-w-3xl mx-auto prose text-left prose-blue">
           <div class="w-full mx-auto text-gray-700">
             <p>Todos tenemos ese pequeño crítico interior,</p>

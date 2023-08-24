@@ -3,7 +3,7 @@ import logocompleto from '../assets/logocompleto.svg';
 
 const Nosotros = () => {
     return (
-        <section  className="overflow-x-hidden flex justify-center items-center h-auto bg-gradient-to-b  from-yellow-300 to-light-blue p-40">
+        <section  className="overflow-x-hidden flex justify-center items-center h-auto bg-gradient-to-b  from-yellow-300 to-light-blue p-2 md:p-40">
         <div data-aos="flip-down" className="flex max-w-xl overflow-hidden  bg-white rounded-lg shadow-lg">
           <div className="w-1/3">
             <img src={logocompleto} alt="Logo completo" className="h-28 sm:h-36 xl:h-48 max-w-xl lg mx-auto" />

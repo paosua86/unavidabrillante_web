@@ -7,10 +7,10 @@ const PropuestaDeValor = () => {
       <div className="lg:container lg:mx-auto py-12 px-2 lg:py-24 lg:px-8 flex flex-col lg:flex-row items-center">
         <div className="md:w-1/2 flex flex-col justify-center">
           <div className="text-center lg:text-left">
-            <h2 className="text-8xl lg:text-6xl font-bold text-white dark:text-white">
+            <h2 className="text-5xl lg:text-6xl font-bold text-white dark:text-white">
               Desarrolla tu autoestima y valía personal
             </h2>
-            <p className="p-8 text-lg md:text-2xl lg:text-3xl text-pink mb-8" data-aos="fade-up" data-aos-delay="200">
+            <p className="p-8 text-xl md:text-2xl lg:text-3xl text-pink mb-8" data-aos="fade-up" data-aos-delay="200">
               Con ejercicios diarios y lecciones entretenidas, diseñadas por psicólogos experimentados, a un precio accesible para todas.
             </p>
           </div>

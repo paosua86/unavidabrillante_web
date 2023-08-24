@@ -45,7 +45,7 @@ const FAQ = () => {
       </h2>
       <ul className="flex flex-wrap items-start gap-8">
         {faqs.map((faq, index) => (
-          <li className="w-2/5" key={index}>
+          <li className="md:w-2/5" key={index}>
             <p className="text-lg font-medium leading-6 text-gray-900">
               {faq.question}
             </p>

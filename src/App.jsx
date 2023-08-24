@@ -20,7 +20,7 @@ import Eliminarcuenta from './components/Eliminarcuenta';
 import Bannergeneral from './components/bannergeneral';
 import BlogComponent from './components/blogcomponent';
 import Registratecursoblog from './components/Registratecursoblog';
-
+import Gracias from './components/Gracias';
 
 function App() {
   useEffect(() => {
@@ -139,6 +139,12 @@ function App() {
             <BlogComponent />
             <Bannergeneral />
             <Registratecursoblog />
+          </div>
+        }
+        />
+        <Route exact path="/gracias" element={
+          <div>
+            <Gracias />
           </div>
         }
         />

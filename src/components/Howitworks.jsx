@@ -6,7 +6,7 @@ const Howitworks = () => {
   return (
     <section className="overflow-x-hidden bg-gradient-to-b  from-dark-blue to-yellow-300 px-4 py-24 flex flex-col items-center">
       <div className="container mx-auto py-12 px-2 sm:px-6 lg:py-24 lg:px-8 flex flex-col items-center">
-        <h2 className="px-16 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
+        <h2 className="px-16 text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
           ¿Cómo funciona?
         </h2>
         <p className="mt-2 leading-6 text-white text-base sm:text-lg md:text-xl lg:text-2xl dark:text-gray-300">

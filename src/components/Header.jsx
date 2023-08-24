@@ -11,7 +11,7 @@ const Header = () => {
         </div>
         <div className="lg:w-1/2 flex justify-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-7xl font-bold text-white dark:text-white mb-2">
+            <h1 className="text-4xl md:text-7xl font-bold text-white dark:text-white mb-2">
               ¡Descubre <h2 data-aos="zoom-in" >"UNA VIDA BRILLANTE"</h2>y comienza tu transformación hoy!
             </h1>
             <p className="text-4xl text-pink mb-8">

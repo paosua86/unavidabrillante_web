@@ -6,7 +6,7 @@ const LlamadasAccion = () => {
   return (
     <section className="overflow-hidden bg-gradient-to-b  from-light-blue to-yellow-300 text-black py-10">
 
-      <div class="py-24 flex flex-row w-full p-4 text-center items-center justify-center border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div class="py-24 flex flex-col md:flex-row w-full p-4 text-center items-center justify-center border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <div>
           <h2 data-aos="fade-down"
             data-aos-easing="linear"
@@ -36,7 +36,7 @@ const LlamadasAccion = () => {
             </a>
           </div>
         </div>
-        <img src={mujerinvitacion} alt="mujerinvitacion" class="max-w-md flex items-center justify-center" />
+        <img src={mujerinvitacion} alt="mujerinvitacion" class="hidden max-w-md md:flex items-center justify-center" />
 
       </div>
     </section>
