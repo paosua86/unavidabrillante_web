@@ -37,17 +37,18 @@ function App() {
           path="/"
           element={
             <div>
-              <Header />
-              <Registrateprincipalttlink />
-              <Nosotros />
-              <PropuestaDeValor />
-              <CaracteristicasPrincipales />
-              <Howitworks />
-              <PlanesYPrecios />
-              <Testimonios />
-              <LlamadasAccion />
-              <Registratecurso />
-            </div>
+            <Header />
+            <Registrateprincipalttlink />
+            <Nosotros />
+            <PropuestaDeValor />
+            <CaracteristicasPrincipales />
+            <Howitworks />
+            <PlanesYPrecios />
+            <Testimonios />
+            <LlamadasAccion />
+            <Registratecurso />
+            <FAQ />
+          </div>
           }
         />
         <Route exact
