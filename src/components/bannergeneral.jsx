@@ -39,9 +39,7 @@ const Bannergeneral = () => {
                 <div class="text-left">
                   <div class="mb-1 font-sans text-2xl lg:text-xs">Próximamente en</div>
                   <div class="-mt-1 mb-2 font-sans text-4xl lg:text-sm font-semibold">Mac App Store</div>
-                  <p className="p-8 text-xs md:text-2xl lg:text-3xl text-pink mb-8" data-aos="fade-up" data-aos-delay="200">
-                    *Si tienes un producto apple puedes usar la versión web
-                  </p>
+
                 </div>
               </a>
             </div>

@@ -20,6 +20,7 @@ import Eliminarcuenta from './components/Eliminarcuenta';
 import Bannergeneral from './components/bannergeneral';
 import BlogComponent from './components/blogcomponent';
 import Registratecursoblog from './components/Registratecursoblog';
+import BlogComponent2 from './components/blogcomponent2';
 import Gracias from './components/Gracias';
 
 function App() {
@@ -138,6 +139,14 @@ function App() {
         <Route exact path="/9manerasdialogointerno" element={
           <div>
             <BlogComponent />
+            <Bannergeneral />
+            <Registratecursoblog />
+          </div>
+        }
+        />
+        <Route exact path="/aceptarloscumplidos" element={
+          <div>
+            <BlogComponent2 />
             <Bannergeneral />
             <Registratecursoblog />
           </div>
