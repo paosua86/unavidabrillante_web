@@ -83,10 +83,10 @@ de `@`. Si se quedan, el dominio nunca llegará a apuntar a GitHub.
 | A     | @    | 185.199.109.153      | Automatic |
 | A     | @    | 185.199.110.153      | Automatic |
 | A     | @    | 185.199.111.153      | Automatic |
-| CNAME | www  | TU-USUARIO.github.io.| Automatic |
+| CNAME | www  | paosua86.github.io.| Automatic |
 
 Las cuatro `A` son obligatorias: son los cuatro servidores de GitHub Pages y
-dan tolerancia a fallos. El punto final de `TU-USUARIO.github.io.` es parte
+dan tolerancia a fallos. El punto final de `paosua86.github.io.` es parte
 del valor, no una errata.
 
 Opcional pero recomendable, para que el dominio también responda por IPv6:
