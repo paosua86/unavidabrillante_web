@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-07-29",
+    "verb": "redesign",
+    "macrostructure": "Long Document",
+    "theme": "custom",
+    "theme_axes": "light / roman-serif / chromatic-other (sage 168°) + warm CTA (terracota 25°)",
+    "vibe": "cálida, serena, profesional — papelería de autor",
+    "genre": "editorial",
+    "nav": "none (landing sin menú, por brief)",
+    "footer": "Ft1 legal-mínimo",
+    "enrichment": "fotografía real del kit (sin ilustración ni stock)",
+    "brief": "Mi Rincón de la Calma · kit imprimible de regulación emocional infantil, $17 USD, tráfico frío de Meta a móvil",
+    "scope": "site/index.html",
+    "notes": "Macroestructura conservada a propósito: la auditoría la validó. El redesign se concentró en el hero (CTA sobre el pliegue) y en el ritmo de cabeceras (9 eyebrows → 3). Tokens inline por requisito de rendimiento del brief; no hay tokens.css externo."
+  }
+]

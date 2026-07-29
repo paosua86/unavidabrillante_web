@@ -1,24 +1,29 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# --- basura del sistema ---
+Thumbs.db
+Desktop.ini
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+node_modules/
+
+# --- fuera del repositorio público ---
+# El repositorio es público. Lo que hay aquí abajo no debe salir de tu disco.
+
+# Copy de ventas, secuencia de emails, guiones de anuncios y brief de diseño,
+# si algún día los copias a esta carpeta.
+textos/
+
+# PNG originales a máxima calidad (28 MB). Las versiones WebP que usa la web
+# viven en site/rincon-calma-estandar/img/.
+fotos-originales/
+
+# Herramientas de trabajo local: no forman parte de la web.
+.agents/
+.claude/
+.codex/
+.impeccable/
+.github/hooks/
+.github/skills/
+skills-lock.json
+
+# Experimentos sueltos en la raíz. La web está en site/.
+/landing.html
+/landing-v2.html
