@@ -91,9 +91,27 @@ después, dentro de la misma cuenta de Analytics y el mismo píxel.
 
 **Dónde lo miras.** En GA4: *Informes → Interacción → Eventos*. Para el embudo,
 crea una *Exploración* de tipo embudo con `ver_seccion` filtrando por `orden` 1, 2,
-3… y verás en qué escalón se cae la gente. Los parámetros nuevos (`seccion`,
-`origen`, `producto_id`…) hay que darlos de alta una vez en *Administrar →
-Definiciones personalizadas → Dimensiones personalizadas*, o saldrán en blanco.
+3… y verás en qué escalón se cae la gente.
+
+**Dimensiones y métricas ya dadas de alta** (29 jul 2026), en *Administrar →
+Definiciones personalizadas*. Sin esto los parámetros salen en blanco:
+
+| Nombre en los informes | Parámetro | Tipo |
+|---|---|---|
+| Sección | `seccion` | dimensión · Evento |
+| Origen del botón | `origen` | dimensión · Evento |
+| Producto | `producto_id` | dimensión · Evento |
+| Última sección | `ultima_seccion` | dimensión · Evento |
+| Pregunta FAQ | `pregunta` | dimensión · Evento |
+| Respuesta cookies | `respuesta` | dimensión · Evento |
+| Profundidad máxima | `profundidad_max` | métrica · Estándar |
+| Segundos en página | `segundos` | métrica · Estándar |
+
+Pendiente de crear, recomendable: **`seccion_alcanzada`** (dimensión, Evento) —
+hasta dónde había leído al pulsar comprar. Dice cuánta página hace falta de verdad.
+
+Si añades una landing nueva con parámetros nuevos, acuérdate de darlos de alta
+también: **no rellenan datos del pasado**, solo cuentan desde que se crean.
 
 Los eventos `ViewContent`, `InitiateCheckout` y `Lead` van también al píxel de Meta,
 que es lo que necesita para optimizar los anuncios. El `Purchase` lo dispara Hotmart
@@ -101,26 +119,32 @@ por su lado.
 
 ---
 
-## Lo que falta para poder publicar
+## Lo que falta
 
-### 1. La medición de anuncios (imprescindible si vas a pagar publicidad)
-En ese mismo bloque:
-
+### El píxel de Meta — lo único que bloquea los anuncios
 ```js
-metaPixelId: '',   // el ID de tu píxel de Meta
-ga4Id: '',         // tu ID de Google Analytics, tipo 'G-XXXXXXXXXX'
+metaPixelId: '',   // sigue vacío
 ```
+Todavía no existe el píxel. En *Administrador de eventos → Conectar datos → Web*,
+le pones nombre y te da un número de 15-16 cifras. Ese número va aquí. Mientras
+esté vacío no se carga nada de Meta y la página funciona igual, pero los anuncios
+no pueden optimizar.
 
-Si los dejas vacíos no se carga nada y la página funciona igual — pero no vas a
-poder optimizar los anuncios, que es como tirar el dinero.
+**Cuidado:** el ID de la cuenta publicitaria NO es el píxel. Son dos números
+distintos y confundirlos hace que la medición no funcione sin dar ningún error.
 
-### 2. Tus datos en las páginas legales
-En `site/privacidad.html` y `site/terminos.html`, sustituye `[NOMBRE O RAZÓN SOCIAL]`
-y `[PAÍS]`. Están señalados con un recuadro verde para que no se te pasen.
-Meta revisa esa página antes de aprobar los anuncios.
+### Confirmar el correo de contacto
+`hola@unavidabrillante.com` está en el pie y en las dos páginas legales.
 
-### 3. Confirmar el correo de contacto
-He puesto `hola@unavidabrillante.com` en el pie y en las legales. Si es otro, dímelo.
+---
+
+## Ya resuelto
+
+- **Publicada** en `unavidabrillante.com`, con HTTPS y dominio propio.
+- **Google Analytics** conectado (`G-R80645DXN4`) y comprobado con datos reales:
+  llegan `ver_seccion`, `abrir_faq`, `respuesta_cookies` y `salida`.
+- **Legales completas:** Paola Suárez · RUC 1803827672001 · Ecuador.
+- **Checkout de Hotmart** funcionando en los 7 botones.
 
 ---
 
