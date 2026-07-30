@@ -447,16 +447,23 @@ footer a:hover{color:var(--ink);box-shadow:inset 0 -1px var(--ink-2)}
 footer .legal{max-width:30em;margin-inline:auto}
 
 /* --- barra fija de compra (móvil) ------------------------------------ */
+/* --cookies-h vale la altura del aviso de cookies mientras está en pantalla, y
+   0px el resto del tiempo (lo pone el script del aviso). Sin esto la barra de
+   compra queda DEBAJO del aviso en el móvil —ambos van pegados abajo— y el
+   botón "Quiero el kit" es inaccesible justo en los primeros segundos. */
 .sticky{
-  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  position:fixed;left:0;right:0;bottom:var(--cookies-h,0px);z-index:60;
   display:flex;align-items:center;gap:1rem;
   padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
   background:rgba(251,248,243,.94);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   border-top:1px solid var(--line);
-  transform:translateY(105%);transition:transform .35s var(--ease);
+  transform:translateY(105%);transition:transform .35s var(--ease),bottom .35s var(--ease);
 }
 .sticky.is-on{transform:translateY(0)}
+/* elevada sobre el aviso ya no toca el borde del móvil: el hueco del notch lo
+   pone el aviso, y sumarlo otra vez engordaría la barra sin motivo */
+body.aviso-visible .sticky{padding-bottom:.7rem}
 .sticky__price{flex:1;min-width:0;line-height:1.25}
 .sticky__price b{display:block;font-family:Fraunces,Georgia,serif;font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
 .sticky__price span{display:block;font-size:.875rem;color:var(--ink-2)}
@@ -464,7 +471,7 @@ footer .legal{max-width:30em;margin-inline:auto}
 @media (min-width:900px){.sticky{display:none}}
 /* la barra suma el safe-area a su padding, así que la compensación del body
    tiene que sumarlo también o en un iPhone con notch tapa ~30px del pie */
-body.has-sticky{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-inset-bottom))}
 @media (min-width:900px){body.has-sticky{padding-bottom:0}}
 
 /* --- fotografías ------------------------------------------------------ */
@@ -1027,7 +1034,7 @@ body.has-sticky{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
 <!-- Aviso de cookies. Ni el píxel ni GA4 se cargan hasta que responda. -->
 <div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
   <div class="cookies__in">
-    <p>Usamos cookies propias y de terceros para medir cómo funcionan nuestros anuncios. Puedes aceptarlas o quedarte solo con las necesarias. <a href="../privacidad.html">Más información</a>.</p>
+    <p>Usamos cookies propias y de terceros para ver qué partes de esta página ayudan de verdad y poder mejorarla. Si prefieres que no, la página funciona exactamente igual. <a href="../privacidad.html">Más información</a>.</p>
     <div class="cookies__row">
       <button class="no" type="button" data-cookies="no">Solo las necesarias</button>
       <button class="yes" type="button" data-cookies="yes">Aceptar</button>
@@ -1218,10 +1225,25 @@ function medir(nombre, datos){
   void caja.offsetHeight;
   caja.classList.add('is-on');
 
+  /* El aviso y la barra de compra viven los dos pegados abajo. Publicar la
+     altura del aviso deja que la barra se coloque encima en vez de quedar
+     tapada: en el móvil son los primeros segundos de la visita, justo cuando
+     más gente pulsa comprar. El alto se recalcula al girar el teléfono, que
+     es cuando el texto pasa de tres líneas a dos y cambia. */
+  const medirAviso = () =>
+    document.documentElement.style.setProperty('--cookies-h', caja.offsetHeight + 'px');
+  medirAviso();
+  document.body.classList.add('aviso-visible');
+  addEventListener('resize', medirAviso);
+
   caja.querySelectorAll('[data-cookies]').forEach(b => b.addEventListener('click', () => {
     const si = b.dataset.cookies === 'yes';
     localStorage.setItem('uvb_cookies', si ? 'yes' : 'no');
     caja.classList.remove('is-on');
+    // la barra baja a su sitio a la vez que el aviso se va, no después
+    removeEventListener('resize', medirAviso);
+    document.documentElement.style.setProperty('--cookies-h', '0px');
+    document.body.classList.remove('aviso-visible');
     setTimeout(() => { caja.hidden = true; }, 350);
     if (si) cargarMedicion();
   }));
