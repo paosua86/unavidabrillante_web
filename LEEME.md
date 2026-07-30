@@ -43,7 +43,7 @@ Todo lo configurable vive en el bloque `CONFIG`, casi al final de `site/index.ht
 
 ### El precio
 ```js
-precio: 17,
+precio: 12,
 moneda: 'USD',
 ```
 Cámbialo ahí y se reescribe solo en los 6 botones, en los dos precios grandes, en la
