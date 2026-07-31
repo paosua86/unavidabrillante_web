@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-07-30",
+    "verb": "default (copy-scope)",
+    "macrostructure": "Catalogue (conservada)",
+    "theme": "custom (conservado)",
+    "theme_axes": "light / roman-serif / chromatic-other (sage 168°)",
+    "genre": "editorial",
+    "nav": "none",
+    "footer": "Ft1 legal-mínimo",
+    "enrichment": "none (solo tipografía)",
+    "brief": "Portada unavidabrillante.com · subir titular y entradilla de nivel producto a nivel marca: el catálogo pasa a ser psicología aplicada en general (infancia, adultos, familia) en varios formatos",
+    "scope": "site/index.html (portada, no la landing)",
+    "notes": "Cambio de copy, no de diseño: la diversificación no aplica porque es la misma página. Añadida una sola regla nueva, .rumbo, con tokens existentes: declara que el catálogo empieza en infancia y crece, para que una lista de un solo producto no lea como página a medias. Disclaimer generalizado a «todo lo que publicamos» de cara a los productos para adultos."
+  },
+  {
     "date": "2026-07-29",
     "verb": "redesign",
     "macrostructure": "Long Document",
