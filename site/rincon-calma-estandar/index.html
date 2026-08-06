@@ -512,6 +512,16 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
 .exit input[type=email]:focus-visible{border-color:var(--sage-deep);outline:2px solid var(--focus);outline-offset:2px}
 .exit .hp{position:absolute;left:-9999px}
 .exit .no{background:none;border:0;font:inherit;font-size:.875rem;color:var(--ink-2);text-decoration:underline;cursor:pointer;padding:.5rem}
+.exit button[type=submit][disabled]{opacity:.65;cursor:progress}
+/* estado «ya te la mandé»: sustituye al formulario sin sacarla de la página */
+.exit__ok{display:none}
+.exit.is-ok .exit__ask{display:none}
+.exit.is-ok .exit__ok{display:block}
+.exit__ok .tick{
+  width:56px;height:56px;border-radius:50%;background:var(--sage-soft);
+  display:grid;place-items:center;margin:0 0 1rem;
+  color:var(--sage-deep);font-size:1.6rem;line-height:1;
+}
 
 /* --- entrada suave (se desactiva sin JS y con reduced-motion) -------- */
 .js .reveal{opacity:0;transform:translateY(14px)}
@@ -1046,17 +1056,28 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
 <div class="exit" id="exit" role="dialog" aria-modal="true" aria-labelledby="exit-title">
   <div class="exit__box">
     <button class="exit__close" type="button" data-exit-close aria-label="Cerrar">&times;</button>
-    <h2 id="exit-title">Espera — llévate al menos esto.</h2>
-    <p>Si hoy no es el momento del kit completo, no pasa nada.</p>
-    <p>Pero no te vayas con las manos vacías: te mando gratis <strong>las 5 frases que uso para bajar un berrinche en menos de 60 segundos</strong>. Es una hoja. La lees en dos minutos y la puedes usar esta misma noche.</p>
-    <form id="exit-form" method="post">
-      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="hp" for="exit-email">Tu correo</label>
-      <input id="exit-email" type="email" name="email" placeholder="Tu correo" required autocomplete="email">
-      <button class="btn" type="submit">Enviármelas gratis</button>
-      <button class="no" type="button" data-exit-close>No, gracias</button>
-    </form>
-    <p class="small center" style="margin-top:.75rem"><em>Sin spam. Te sales cuando quieras, con un clic.</em></p>
+    <div class="exit__ask">
+      <h2 id="exit-title">Espera — llévate al menos esto.</h2>
+      <p>Si hoy no es el momento del kit completo, no pasa nada.</p>
+      <p>Pero no te vayas con las manos vacías: te mando gratis <strong>«Los 90 segundos antes de gritar»</strong>, una hoja para pegar en la nevera con qué hacer con tu propio cuerpo cuando ya estás a punto — y qué decir si ya gritaste. Es para ti, no para él.</p>
+      <form id="exit-form" method="post">
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="hp" for="exit-email">Tu correo</label>
+        <!-- MailerLite lee el correo del campo «fields[email]». Con name="email"
+             a secas recibe el envío sin la dirección dentro. -->
+        <input id="exit-email" type="email" name="fields[email]" placeholder="Tu correo" required autocomplete="email">
+        <button class="btn" type="submit">Enviármela gratis</button>
+        <button class="no" type="button" data-exit-close>No, gracias</button>
+      </form>
+      <p class="small center" style="margin-top:.75rem"><em>Sin spam. Te sales cuando quieras, con un clic.</em></p>
+    </div>
+    <div class="exit__ok" role="status" aria-live="polite">
+      <p class="tick" aria-hidden="true">✓</p>
+      <h2 tabindex="-1">Hecho. Revísalo en un minuto.</h2>
+      <p>Te acabo de mandar la hoja a tu correo.</p>
+      <p>Si en cinco minutos no la ves, mira en <strong>Promociones</strong> o en <strong>Spam</strong>. Y si la encuentras ahí, arrástrala a Principal: así lo siguiente que te mande te llega bien.</p>
+      <p class="small" style="margin-top:1.25rem"><button class="no" type="button" data-exit-close>Seguir leyendo la página</button></p>
+    </div>
   </div>
 </div>
 
@@ -1091,7 +1112,16 @@ const CONFIG = {
   ga4Id: 'G-R80645DXN4',
   // 4. URL de acción del formulario de MailerLite/Brevo.
   //    Mientras esté vacía, el popup de salida NO aparece.
-  mailerliteAction: ''
+  mailerliteAction: '',
+  // 5. Cómo se llama el campo del correo EN TU PLATAFORMA. Cada una usa el suyo
+  //    y si no coincide recibirás los envíos vacíos, sin ningún aviso de error:
+  //      · MailerLite → 'fields[email]'
+  //      · Brevo      → 'EMAIL'
+  //    Sácalo del código de inserción que te da la plataforma: es el atributo
+  //    name="..." del campo de correo. Copia ese, sea cual sea.
+  //    Puesto para Brevo el 2026-08-06. Confírmalo contra el código de
+  //    inserción de tu formulario antes de dar el embudo por bueno.
+  campoCorreo: 'EMAIL'
 };
 
 /* --- año del pie --- */
@@ -1379,6 +1409,8 @@ if ('IntersectionObserver' in window) {
   const form = document.getElementById('exit-form');
   const fondo = [document.querySelector('main'), document.querySelector('footer'), document.querySelector('header')];
   form.action = CONFIG.mailerliteAction;
+  // el campo se nombra según la plataforma (ver CONFIG.campoCorreo)
+  document.getElementById('exit-email').name = CONFIG.campoCorreo || 'fields[email]';
   let abierto = false, origen = null;
 
   const focusables = () => [...caja.querySelectorAll('a[href],button,input,select,textarea')]
@@ -1403,6 +1435,38 @@ if ('IntersectionObserver' in window) {
 
   exit.querySelectorAll('[data-exit-close]').forEach(b => b.addEventListener('click', cerrar));
   exit.addEventListener('click', e => { if (e.target === exit) cerrar(); });
+
+  /* Envío sin recargar. Con un <form> normal el navegador se va de la página y
+     aterriza en la respuesta técnica de MailerLite ({"success":true}), que es
+     feo y además pierde a la persona justo cuando más interesada está.
+     mode:'no-cors' significa que no podemos leer la respuesta —MailerLite no
+     devuelve cabeceras CORS—, pero la petición sí llega y el alta se hace. Si
+     la red falla de verdad, cae al envío nativo de toda la vida. */
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form.website.value) { hecho(); return; }     // trampa para bots
+    const boton = form.querySelector('button[type=submit]');
+    const texto = boton.textContent;
+    boton.disabled = true;
+    boton.textContent = 'Enviando…';
+    try {
+      await fetch(CONFIG.mailerliteAction, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new FormData(form)
+      });
+      hecho();
+    } catch (err) {
+      boton.disabled = false;
+      boton.textContent = texto;
+      form.submit();                                  // red de seguridad
+    }
+  });
+
+  function hecho(){
+    exit.classList.add('is-ok');
+    exit.querySelector('.exit__ok h2').focus();       // lleva el foco al aviso
+  }
 
   document.addEventListener('keydown', e => {
     if (!abierto) return;
