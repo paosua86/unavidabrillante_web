@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tu hoja va en camino — Una Vida Brillante</title>
-<meta name="description" content="Confirmación de suscripción: «Los 90 segundos antes de gritar» va camino a tu correo.">
+<title>Los 90 segundos antes de gritar — Una Vida Brillante</title>
+<meta name="description" content="Descarga «Los 90 segundos antes de gritar»: una hoja para pegar en la nevera, para ti, no para él.">
 
-<!-- Página interna de embudo: no debe indexarse ni aparecer en buscadores. -->
+<!-- Página interna de embudo: se llega desde el correo 1. No debe indexarse. -->
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#FBF8F3">
 
@@ -32,11 +32,12 @@
 }
 
 /* ==========================================================================
-   GRACIAS — 5 frases para bajar berrinches en 60 segundos
-   Página de confirmación tras dejar el correo en el popup.
-   Un solo mensaje: que el correo llegue. Aquí NO se vende nada, así que el
-   terracota (--cta del sistema) no aparece: está reservado en exclusiva a los
-   botones de compra de las landings.
+   REGALO — Los 90 segundos antes de gritar
+   Página de descarga a la que llega el correo 1 de la secuencia.
+   Un solo trabajo: que descargue la hoja. El botón de descarga va en salvia;
+   el terracota sigue reservado a los botones de compra de las landings.
+   La mención al kit existe pero al final y en texto plano: quien llega aquí
+   acaba de suscribirse hace un día — todavía no es momento de vender.
    Tokens inline a propósito, misma decisión que en site/rincon-calma-estandar.
    ========================================================================== */
 
@@ -51,6 +52,7 @@
   --line:      rgba(46,42,37,.14);
   --line-soft: rgba(46,42,37,.08);
   --r-card: 12px;
+  --r-btn: 10px;
   --measure: 620px;
 }
 
@@ -93,27 +95,29 @@ a{color:var(--sage-deep)}
 }
 .lede{font-size:1.05em;max-width:30em}
 
-/* --- marca de recibido -------------------------------------------------- */
-/* El tic va antes del titular: es lo primero que confirma que el envío salió. */
-.tick{
-  display:flex;align-items:center;justify-content:center;
-  width:56px;height:56px;margin:0 0 1.5rem;
-  background:var(--sage-soft);border-radius:50%;color:var(--sage-deep);
-}
-.tick svg{display:block}
-
-/* --- el bloque que salva la entrega ------------------------------------- */
-/* Es lo más importante de la página, así que es lo único con fondo propio:
-   sobrevive a una lectura en diagonal de tres segundos. */
-.entrega{
-  margin:2.75rem 0 0;padding:clamp(1.5rem,1.1rem + 1.8vw,2.25rem);
+/* --- la descarga --------------------------------------------------------- */
+/* Único bloque con fondo propio: es el trabajo de la página y tiene que
+   sobrevivir a una lectura en diagonal de tres segundos. */
+.descarga{
+  margin:2.5rem 0 0;padding:clamp(1.5rem,1.1rem + 1.8vw,2.25rem);
   background:var(--surface);
   border:1px solid var(--line-soft);
   border-left:3px solid var(--sage);
   border-radius:var(--r-card);
 }
-.entrega h2{margin-bottom:.6em}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:52px;padding:.85rem 1.75rem;
+  font:inherit;font-size:1.0625rem;font-weight:600;letter-spacing:-.005em;
+  color:#fff;background:var(--sage-deep);
+  border:0;border-radius:var(--r-btn);cursor:pointer;text-decoration:none;
+  transition:background-color .18s ease;
+}
+.btn:hover{background:#35594f}
+.btn svg{flex:none}
+.nota{font-size:.875rem;color:var(--ink-2);margin-top:.85rem}
 
+/* --- cómo usarla --------------------------------------------------------- */
 .pasos{list-style:none;margin:1.5rem 0 0;padding:0;counter-reset:paso}
 .pasos li{
   position:relative;padding-left:2.75rem;margin-bottom:1.35rem;
@@ -129,26 +133,9 @@ a{color:var(--sage-deep)}
   font-family:Fraunces,Georgia,serif;font-weight:600;font-size:.95rem;
   border-radius:50%;font-variant-numeric:tabular-nums;
 }
-/* El correo se rompe antes que desbordar en pantallas de 320px. */
-.correo{
-  font-weight:600;color:var(--sage-deep);
-  word-break:break-word;overflow-wrap:anywhere;
-}
 
-/* --- de quién viene ----------------------------------------------------- */
-.remite{
-  margin-top:2rem;padding-top:1.35rem;
-  border-top:1px solid var(--line-soft);
-  font-size:.99em;
-}
-.remite .de{
-  display:block;margin-top:.5rem;
-  font-family:Fraunces,Georgia,serif;font-size:1.1875rem;
-  color:var(--sage-deep);letter-spacing:-.01em;
-}
-
-/* --- cierre ------------------------------------------------------------- */
-.cierre{margin-top:clamp(2.75rem,2rem + 2vw,3.5rem);max-width:30em}
+/* --- cierre y mención del kit -------------------------------------------- */
+.cierre{margin-top:clamp(2.75rem,2rem + 2vw,3.5rem);max-width:32em}
 .cierre p{margin-bottom:.9em}
 .firma{
   margin-top:1.75rem;
@@ -158,6 +145,10 @@ a{color:var(--sage-deep)}
 .firma::before{
   content:"";display:block;width:44px;height:1.5px;
   background:var(--sage);opacity:.5;margin-bottom:1rem;
+}
+.kit{
+  margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line-soft);
+  font-size:.94em;color:var(--ink-2);max-width:34em;
 }
 
 footer{
@@ -178,33 +169,35 @@ footer a:hover{color:var(--ink);box-shadow:inset 0 -1px var(--ink-2)}
 <div class="wrap">
 <main>
 
-  <p class="tick" aria-hidden="true">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-  </p>
+  <p class="eyebrow">Tu hoja</p>
+  <h1>Los 90 segundos antes de gritar</h1>
+  <p class="lede">Aquí está. Una sola hoja, hecha para la nevera — para ti, no para él.</p>
 
-  <p class="eyebrow">Recibido</p>
-  <h1>Tu hoja va camino a tu correo.</h1>
-  <p class="lede">Llegan en un par de minutos. A veces tardan un poco más, según el proveedor de correo, pero llegan.</p>
-
-  <section class="entrega" aria-labelledby="entrega-titulo">
-    <h2 id="entrega-titulo">Antes de cerrar esta página</h2>
-    <p>Este es el único paso que de verdad importa ahora mismo. Muchos correos con archivos adjuntos terminan fuera de la bandeja principal, y ahí es donde se pierden.</p>
+  <section class="descarga" aria-labelledby="descarga-titulo">
+    <h2 id="descarga-titulo">Descárgala e imprímela hoy</h2>
+    <p>Aunque hoy haya sido un día tranquilo. Guardada en el teléfono no sirve: sirve pegada donde la vas a ver justo cuando no puedes pensar.</p>
+    <p style="margin-top:1.5rem">
+      <a class="btn" href="los-90-segundos-antes-de-gritar-CARTA.pdf" download>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"/></svg>
+        Descargar la hoja (PDF)
+      </a>
+    </p>
+    <p class="nota">Tamaño carta, lista para cualquier impresora. Es tuya: imprímela las veces que quieras.</p>
 
     <ol class="pasos">
-      <li>Revisa la carpeta de <strong>Promociones</strong> y la de <strong>Spam</strong> o <strong>Correo no deseado</strong>. Si el PDF está ahí, muévelo a tu bandeja principal.</li>
-      <li>Agrega <span class="correo">hola@unavidabrillante.com</span> a tus contactos. Así los siguientes correos entran directo, sin desviarse.</li>
+      <li>Imprímela ahora, mientras la tienes abierta.</li>
+      <li>Pégala en la nevera, o donde pases cuando la casa se pone difícil.</li>
+      <li>Léela una vez en frío. Con eso basta: cuando llegue el momento, tu cuerpo va a saber dónde mirar.</li>
     </ol>
-
-    <p class="remite">El correo aparecerá a nombre de:
-      <span class="de">Paola de Una Vida Brillante</span>
-    </p>
   </section>
 
   <div class="cierre">
-    <p>Yo aprendí tarde lo que dice esa hoja. Durante años me desbordé primero y busqué qué hacer después, cuando ya había gritado y me quedaba la noche entera dándole vueltas.</p>
-    <p>No lo tenía a mano porque nadie me lo había dado por escrito. Ahora lo tienes tú, en una hoja, antes de necesitarlo.</p>
+    <p>Yo la escribí para mí antes que para nadie. La pegué en mi propia nevera, y la primera semana me dio un poco de vergüenza que estuviera ahí, a la vista.</p>
+    <p>Después entendí que esa era exactamente la gracia: no depende de que en el momento difícil yo me acuerde de nada. Está ahí, y con mirarla alcanza.</p>
     <p class="firma">Paola</p>
   </div>
+
+  <p class="kit">Esta hoja es la parte que me corresponde a mí. La parte de enseñarle a él a volver a la calma —el rincón, el termómetro, el plan de cuatro semanas— es <a href="../rincon-calma-estandar/">Mi Rincón de la Calma</a>, y te lo cuento con calma en los próximos correos.</p>
 
 </main>
 
