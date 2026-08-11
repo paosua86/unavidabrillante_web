@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tu PDF va en camino — Una Vida Brillante</title>
+<meta name="description" content="Confirmación de suscripción: las 5 frases para bajar berrinches en 60 segundos van camino a tu correo.">
+
+<!-- Página interna de embudo: no debe indexarse ni aparecer en buscadores. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF8F3">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235B8A80'/%3E%3Cpath d='M9 20c3-8 11-8 14 0' stroke='%23FBF8F3' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<!-- Tipografías del propio dominio, igual que en el resto del sitio. -->
+<link rel="preload" href="../fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/fraunces-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+/* --- tipografías -------------------------------------------------------- */
+@font-face{
+  font-family:Fraunces;font-style:normal;font-weight:400 700;font-display:swap;
+  src:url(../fonts/fraunces-500-latin.woff2) format('woff2');
+}
+@font-face{
+  font-family:Fraunces;font-style:italic;font-weight:400 700;font-display:swap;
+  src:url(../fonts/fraunces-400-italic-latin.woff2) format('woff2');
+}
+@font-face{
+  font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;
+  src:url(../fonts/inter-400-latin.woff2) format('woff2');
+}
+
+/* ==========================================================================
+   GRACIAS — 5 frases para bajar berrinches en 60 segundos
+   Página de confirmación tras dejar el correo en el popup.
+   Un solo mensaje: que el correo llegue. Aquí NO se vende nada, así que el
+   terracota (--cta del sistema) no aparece: está reservado en exclusiva a los
+   botones de compra de las landings.
+   Tokens inline a propósito, misma decisión que en site/rincon-calma-estandar.
+   ========================================================================== */
+
+:root{
+  --bg:        #FBF8F3;
+  --surface:   #FFFDFA;
+  --ink:       #2E2A25;
+  --ink-2:     #6B635A;
+  --sage:      #5B8A80;
+  --sage-deep: #3F6C63;
+  --sage-soft: #E7EFEB;
+  --line:      rgba(46,42,37,.14);
+  --line-soft: rgba(46,42,37,.08);
+  --r-card: 12px;
+  --measure: 620px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+
+body{
+  margin:0;
+  padding:clamp(2.5rem,1.75rem + 4vw,5rem) 0 clamp(3rem,2rem + 3vw,5rem);
+  background-color:var(--bg);
+  /* misma textura de papel al 4% que el resto del sitio, sin peticiones extra */
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.042'/%3E%3C/svg%3E");
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:clamp(1.125rem,1.05rem + .28vw,1.1875rem);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+
+.wrap{width:min(100% - 48px, var(--measure));margin-inline:auto}
+
+h1,h2{
+  font-family:Fraunces,"Iowan Old Style",Georgia,serif;
+  font-weight:600;line-height:1.14;letter-spacing:-.02em;
+  margin:0 0 .5em;text-wrap:balance;
+}
+h1{font-size:clamp(1.875rem,1.3rem + 2.6vw,3rem)}
+h2{font-size:clamp(1.25rem,1.15rem + .5vw,1.5rem)}
+p{margin:0 0 1.1em}
+p:last-child{margin-bottom:0}
+strong{font-weight:600}
+em{font-style:italic}
+a{color:var(--sage-deep)}
+:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:4px}
+
+.eyebrow{
+  font-size:.875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--sage-deep);margin:0 0 1.1rem;line-height:1.4;
+}
+.lede{font-size:1.05em;max-width:30em}
+
+/* --- marca de recibido -------------------------------------------------- */
+/* El tic va antes del titular: es lo primero que confirma que el envío salió. */
+.tick{
+  display:flex;align-items:center;justify-content:center;
+  width:56px;height:56px;margin:0 0 1.5rem;
+  background:var(--sage-soft);border-radius:50%;color:var(--sage-deep);
+}
+.tick svg{display:block}
+
+/* --- el bloque que salva la entrega ------------------------------------- */
+/* Es lo más importante de la página, así que es lo único con fondo propio:
+   sobrevive a una lectura en diagonal de tres segundos. */
+.entrega{
+  margin:2.75rem 0 0;padding:clamp(1.5rem,1.1rem + 1.8vw,2.25rem);
+  background:var(--surface);
+  border:1px solid var(--line-soft);
+  border-left:3px solid var(--sage);
+  border-radius:var(--r-card);
+}
+.entrega h2{margin-bottom:.6em}
+
+.pasos{list-style:none;margin:1.5rem 0 0;padding:0;counter-reset:paso}
+.pasos li{
+  position:relative;padding-left:2.75rem;margin-bottom:1.35rem;
+  font-size:.99em;line-height:1.6;
+}
+.pasos li:last-child{margin-bottom:0}
+.pasos li::before{
+  counter-increment:paso;content:counter(paso);
+  position:absolute;left:0;top:.05em;
+  display:flex;align-items:center;justify-content:center;
+  width:1.85rem;height:1.85rem;
+  background:var(--sage-soft);color:var(--sage-deep);
+  font-family:Fraunces,Georgia,serif;font-weight:600;font-size:.95rem;
+  border-radius:50%;font-variant-numeric:tabular-nums;
+}
+/* El correo se rompe antes que desbordar en pantallas de 320px. */
+.correo{
+  font-weight:600;color:var(--sage-deep);
+  word-break:break-word;overflow-wrap:anywhere;
+}
+
+/* --- de quién viene ----------------------------------------------------- */
+.remite{
+  margin-top:2rem;padding-top:1.35rem;
+  border-top:1px solid var(--line-soft);
+  font-size:.99em;
+}
+.remite .de{
+  display:block;margin-top:.5rem;
+  font-family:Fraunces,Georgia,serif;font-size:1.1875rem;
+  color:var(--sage-deep);letter-spacing:-.01em;
+}
+
+/* --- cierre ------------------------------------------------------------- */
+.cierre{margin-top:clamp(2.75rem,2rem + 2vw,3.5rem);max-width:30em}
+.cierre p{margin-bottom:.9em}
+.firma{
+  margin-top:1.75rem;
+  font-family:Fraunces,Georgia,serif;font-style:italic;
+  font-size:1.3125rem;color:var(--sage-deep);letter-spacing:.01em;
+}
+.firma::before{
+  content:"";display:block;width:44px;height:1.5px;
+  background:var(--sage);opacity:.5;margin-bottom:1rem;
+}
+
+footer{
+  margin-top:clamp(3rem,2.25rem + 2.5vw,4.5rem);
+  padding-top:1.75rem;border-top:1px solid var(--line);
+  font-size:.875rem;line-height:1.6;color:var(--ink-2);
+}
+footer nav{display:flex;flex-wrap:wrap;gap:0 1.25rem;margin-bottom:.75rem}
+footer a{
+  display:inline-flex;align-items:center;min-height:44px;   /* objetivo táctil */
+  color:var(--ink-2);text-decoration:none;box-shadow:inset 0 -1px var(--line);
+}
+footer a:hover{color:var(--ink);box-shadow:inset 0 -1px var(--ink-2)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<main>
+
+  <p class="tick" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  </p>
+
+  <p class="eyebrow">Recibido</p>
+  <h1>Tus 5 frases van camino a tu correo.</h1>
+  <p class="lede">Llegan en un par de minutos. A veces tardan un poco más, según el proveedor de correo, pero llegan.</p>
+
+  <section class="entrega" aria-labelledby="entrega-titulo">
+    <h2 id="entrega-titulo">Antes de cerrar esta página</h2>
+    <p>Este es el único paso que de verdad importa ahora mismo. Muchos correos con archivos adjuntos terminan fuera de la bandeja principal, y ahí es donde se pierden.</p>
+
+    <ol class="pasos">
+      <li>Revisa la carpeta de <strong>Promociones</strong> y la de <strong>Spam</strong> o <strong>Correo no deseado</strong>. Si el PDF está ahí, muévelo a tu bandeja principal.</li>
+      <li>Agrega <span class="correo">hola@unavidabrillante.com</span> a tus contactos. Así los siguientes correos entran directo, sin desviarse.</li>
+    </ol>
+
+    <p class="remite">El correo aparecerá a nombre de:
+      <span class="de">Paola de Una Vida Brillante</span>
+    </p>
+  </section>
+
+  <div class="cierre">
+    <p>Yo aprendí esas cinco frases tarde. Durante años me desbordé primero y busqué qué decir después, cuando ya había gritado y me quedaba la noche entera dándole vueltas.</p>
+    <p>No las tenía a mano porque nadie me las había dado por escrito. Ahora las tienes tú, en una hoja, antes de necesitarlas.</p>
+    <p class="firma">Paola</p>
+  </div>
+
+</main>
+
+<footer>
+  <nav aria-label="Enlaces legales">
+    <a href="../politica-de-privacidad/">Política de privacidad</a>
+    <a href="../terminos.html">Términos</a>
+    <a href="mailto:hola@unavidabrillante.com">Contacto</a>
+  </nav>
+  <p>© <span id="anio">2026</span> Una Vida Brillante</p>
+</footer>
+</div>
+
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
