@@ -1046,7 +1046,7 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
   <div class="cookies__in">
     <p>Usamos cookies propias y de terceros para ver qué partes de esta página ayudan de verdad y poder mejorarla. Si prefieres que no, la página funciona exactamente igual. <a href="../politica-de-privacidad/">Más información</a>.</p>
     <div class="cookies__row">
-      <button class="no" type="button" data-cookies="no">Solo las necesarias</button>
+      <button class="no" type="button" data-cookies="no">Rechazar</button>
       <button class="yes" type="button" data-cookies="yes">Aceptar</button>
     </div>
   </div>
@@ -1416,7 +1416,10 @@ if ('IntersectionObserver' in window) {
 -------------------------------------------------------------------------- */
 (function(){
   if (!CONFIG.mailerliteAction) return;              // sin lista configurada, no aparece
-  if (localStorage.getItem('uvb_exit') === '1') return;
+  /* ?popup=1 fuerza la apertura y se salta la marca de «ya se mostró». Es la
+     única forma de verificar el popup sin ponerse a adivinar por qué no sale. */
+  const prueba = new URLSearchParams(location.search).get('popup') === '1';
+  if (!prueba && localStorage.getItem('uvb_exit') === '1') return;
 
   const exit = document.getElementById('exit');
   const caja = exit.querySelector('.exit__box');
@@ -1497,13 +1500,33 @@ if ('IntersectionObserver' in window) {
   const leyoBastante = () =>
     (scrollY + innerHeight) / document.documentElement.scrollHeight > 0.55;
 
-  if (window.matchMedia('(max-width: 899px)').matches) {
+  /* «Ya leyó bastante» se queda pegado una vez que pasa. Si se recalculara en
+     el momento de abrir, subir de vuelta al inicio lo volvería falso justo
+     cuando más falta hace. */
+  let leyo = leyoBastante();
+  addEventListener('scroll', () => { if (leyoBastante()) leyo = true; }, {passive:true});
+
+  if (prueba) {
+    abrir();
+  } else if (window.matchMedia('(max-width: 899px)').matches) {
+    /* Móvil. Dos señales de que se está yendo, porque la primera sola casi no
+       se ve: dispara con la pestaña ya oculta, así que solo lo nota quien
+       vuelve. */
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden' && leyoBastante()) abrir();
+      if (document.visibilityState === 'hidden' && leyo) abrir();
     });
+    /* Subir de golpe hacia el inicio después de haber leído es el equivalente
+       móvil de sacar el cursor por arriba: ya vio lo que quería ver. */
+    let ultimaY = scrollY, subida = 0;
+    addEventListener('scroll', () => {
+      const y = scrollY;
+      subida = y < ultimaY ? subida + (ultimaY - y) : 0;
+      ultimaY = y;
+      if (subida > 900 && leyo) abrir();
+    }, {passive:true});
   } else {
     document.addEventListener('mouseout', e => {
-      if (!e.relatedTarget && e.clientY <= 0 && leyoBastante()) abrir();
+      if (!e.relatedTarget && e.clientY <= 0 && leyo) abrir();
     });
   }
 })();
