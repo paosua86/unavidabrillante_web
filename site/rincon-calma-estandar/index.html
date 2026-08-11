@@ -496,7 +496,13 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
   background:var(--bg);border-radius:var(--r-card);
   padding:clamp(1.75rem,1.25rem + 2vw,2.5rem);
   box-shadow:0 40px 80px -30px rgba(46,42,37,.55);
+  /* La caja nunca puede ser más alta que la ventana: en pantallas bajas —o con
+     el teclado del móvil abierto— desbordaba y cortaba el título y la X de
+     cerrar. dvh y no vh: el vh clásico ignora el teclado y la barra del
+     navegador móvil, que es justo el caso que rompía. */
+  max-height:calc(100dvh - 3rem);overflow-y:auto;overscroll-behavior:contain;
 }
+@supports not (height:100dvh){.exit__box{max-height:calc(100vh - 3rem)}}
 .exit__close{
   position:absolute;top:.5rem;right:.5rem;width:44px;height:44px;
   background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:1.5rem;line-height:1;
