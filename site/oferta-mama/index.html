@@ -22,8 +22,8 @@
   src:url(../fonts/inter-400-latin.woff2) format('woff2');
 }
 
-/* Mismos tokens que la landing rincon-calma-estandar. El terracota no se
-   declara: el único botón de compra de esta página lo pinta Hotmart. */
+/* Mismos tokens que la landing rincon-calma-estandar. El terracota solo se
+   usa en el botón que baja a la compra; la compra en sí la pinta Hotmart. */
 :root{
   --bg:        #FBF8F3;
   --surface:   #FFFDFA;
@@ -31,12 +31,18 @@
   --ink-2:     #6B635A;
   --sage:      #5B8A80;
   --sage-deep: #3F6C63;
+  --sage-soft: #E7EFEB;
+  --cta:       #BE5138;
+  --cta-hi:    #A84632;
   --line-soft: rgba(46,42,37,.08);
+  --r-card: 12px;
+  --r-btn: 8px;
   --measure: 620px;
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;overflow-x:clip}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 
 body{
   margin:0;
@@ -66,9 +72,18 @@ h1{
   margin:0 0 .6em;text-wrap:balance;
 }
 
+h2{
+  font-family:Fraunces,"Iowan Old Style",Georgia,serif;
+  font-weight:600;line-height:1.15;letter-spacing:-.015em;
+  font-size:clamp(1.375rem, 1.2rem + .9vw, 1.75rem);
+  margin:0 0 .7em;text-wrap:balance;
+}
+
 p{margin:0 0 1.1em;max-width:30em}
 p:last-child{margin-bottom:0}
 strong{font-weight:600}
+:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:4px}
+[id]{scroll-margin-top:2rem}
 
 /* entrada que ancla: la compra ya está hecha, esto es solo un alto en el camino */
 .puente{
@@ -78,16 +93,47 @@ strong{font-weight:600}
 }
 .puente strong{color:var(--ink)}
 
-.copy{margin-bottom:2.5rem}
-.copy .apunte{
+section{margin-top:clamp(2.75rem, 2rem + 3vw, 4rem)}
+
+/* botón terracota: no compra nada, baja hasta el widget de Hotmart */
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  width:100%;min-height:56px;padding:1rem clamp(.75rem,3.5vw,1.5rem);
+  background:var(--cta);color:#fff;
+  font-family:inherit;font-size:1.125rem;font-weight:600;letter-spacing:-.005em;
+  text-align:center;text-decoration:none;border:0;border-radius:var(--r-btn);cursor:pointer;
+  box-shadow:0 1px 2px rgba(46,42,37,.10), 0 10px 24px -14px rgba(196,85,58,.65);
+  transition:background-color .18s ease, box-shadow .18s ease;
+}
+.btn:hover{background:var(--cta-hi)}
+@media (min-width:700px){.btn{width:auto;min-width:340px;margin-inline:auto}}
+.btn-note{margin:.85rem auto 0;max-width:30em;font-size:.875rem;color:var(--ink-2);text-align:center}
+.cta-block{margin-top:2rem}
+
+/* qué incluye */
+.dentro{list-style:none;margin:1.75rem 0 0;padding:0}
+.dentro li{position:relative;padding-left:2rem;margin-bottom:1.1rem;font-size:.99em;line-height:1.6;max-width:32em}
+.dentro li:last-child{margin-bottom:0}
+.dentro li::before{
+  content:"";position:absolute;left:0;top:.42em;width:14px;height:8px;
+  border-left:2px solid var(--sage-deep);border-bottom:2px solid var(--sage-deep);
+  transform:rotate(-45deg);border-radius:1px;
+}
+.dentro strong{display:block}
+
+.nota-clara{
+  margin-top:2rem;padding:1.35rem 1.5rem;
+  background:var(--sage-soft);border-radius:var(--r-card);
+  font-size:.99em;line-height:1.6;max-width:32em;
+}
+
+.apunte{
   margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line-soft);
   font-size:.875rem;line-height:1.55;color:var(--ink-2);
 }
 
 /* El widget de Hotmart pinta su propia tarjeta; solo se le da aire alrededor. */
 #hotmart-sales-funnel{margin-top:1rem}
-
-:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:4px}
 </style>
 </head>
 <body>
@@ -98,23 +144,54 @@ strong{font-weight:600}
     <p class="puente"><strong>Tu compra ya está confirmada</strong> y el kit va camino de tu correo. Pero antes de que vayas a imprimirlo, quiero que sepas una cosa:</p>
     <h1>Ya tienes el rincón de tu hijo. Ahora falta el tuyo.</h1>
 
-    <div class="copy">
-      <p>Un niño no se calma junto a un adulto desbordado. Esta es la otra mitad del método: la parte que nadie te enseñó, <strong>para ti</strong>.</p>
-      <p>Puede que tú ya sepas volver a la calma cuando la presión aprieta. Pero si no sabes cómo —si acabas peleando contigo misma o culpándote—, quiero decirte algo: <strong>no eres una mala madre</strong>. Solo te faltan herramientas que a ti nadie te dio. Si las necesitas, aquí están.</p>
-      <p>Son materiales de apoyo pensados para los mismos momentos que el rincón de tu hijo: cuando la casa se acelera y tú también necesitas un lugar al que volver. Pausas breves y realistas, escritas por una psicóloga clínica, que caben en un día con niños.</p>
-      <p class="apunte">Y algo importante: el kit que ya compraste funciona igual con o sin este. Si hoy no es el momento, no pasa nada — aquí abajo puedes verlo o continuar sin él.</p>
+    <p>Un niño no se calma junto a un adulto desbordado. Esta es la otra mitad del método: la parte que nadie te enseñó, <strong>para ti</strong>.</p>
+    <p>Puede que tú ya sepas volver a la calma cuando la presión aprieta. Pero si no sabes cómo —si acabas peleando contigo misma o culpándote—, quiero decirte algo: <strong>no eres una mala madre</strong>. Solo te faltan herramientas que a ti nadie te dio. Si las necesitas, aquí están.</p>
+
+    <div class="cta-block">
+      <a class="btn" href="#oferta">Sí, quiero el mío</a>
+      <p class="btn-note">Te lleva al final de la página, donde está la oferta completa.</p>
     </div>
 
-    <!-- HOTMART - Sales Funnel Widget -->
-    <!--- sales funnel container --->
-    <div id="hotmart-sales-funnel"></div>
+    <section>
+      <h2>Qué es exactamente</h2>
+      <p><em>Mi Rincón de la Calma para Mamá</em> es un cuaderno imprimible de <strong>34 páginas</strong>, creado por una psicóloga clínica: el mismo entrenamiento que el kit le da a tu hijo, aplicado a un cuerpo adulto que tiene que seguir funcionando mientras se regula — de pie, con la cena a medias y alguien llorando al lado.</p>
+      <ul class="dentro">
+        <li><strong>Tus señales tempranas.</strong> Un mapa corporal, tus disparadores reales y un registro de 7 días para volver a notar que te estás llenando <em>antes</em> de desbordarte.</li>
+        <li><strong>Tu termómetro — el mismo que el suyo.</strong> La misma escala del 1 al 5 que tu hijo ya conoce. Poder decir «mamá está en 4» y que él entienda exactamente qué pasa: un idioma en común.</li>
+        <li><strong>El protocolo de los 90 segundos.</strong> Cuatro pasos, de pie, para pegar en la puerta del refrigerador — y qué decirle a tu hijo mientras te regulas.</li>
+        <li><strong>10 estrategias de 30 segundos.</strong> Pensadas para hacerse en medio del caos: sin silencio, sin tiempo libre y sin que el niño colabore.</li>
+        <li><strong>6 tarjetas de bolsillo para recortar.</strong> Una en la cocina, una en el baño, una en tu bolso, una en la mesita de noche.</li>
+        <li><strong>Guiones de reparación, textuales y por edad.</strong> Qué decir después de un mal momento, palabra por palabra. Puedes leerlos tal cual.</li>
+        <li><strong>Plan de 4 semanas</strong> que corre en paralelo con el plan del kit de tu hijo, semana a semana.</li>
+      </ul>
+    </section>
 
-    <!--- script load and setup --->
-    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
-    <script>
-    checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
-    </script>
-    <!-- HOTMART - Sales Funnel Widget -->
+    <section>
+      <h2>Qué no es</h2>
+      <p>No es un cuaderno de autocuidado: no te va a pedir que madrugues a meditar ni que encuentres un tiempo libre que no tienes. Ninguna de sus prácticas necesita silencio ni que el niño colabore.</p>
+      <p>Y no es terapia ni la sustituye: es material educativo de apoyo, con sus límites dichos por escrito — el propio cuaderno te indica cuándo lo que estás atravesando necesita acompañamiento profesional.</p>
+      <div class="nota-clara">
+        <strong>¿Por qué junto al kit de tu hijo?</strong>
+        Porque hay dos personas aprendiendo la misma habilidad al mismo tiempo, y el kit del niño solo entrenaba a una. Tu hijo aprende a calmarse mirándote a ti: cuando tú tienes un lugar al que volver, su rincón funciona mejor.
+      </div>
+    </section>
+
+    <section id="oferta">
+      <h2>Lo imprimes una vez y es tuyo</h2>
+      <p>Se imprime en casa, en tamaño Carta, las veces que lo necesites. Sin suscripción y sin caducidad: son <strong>$27</strong>, una sola vez.</p>
+      <p class="apunte">Y algo importante: el kit que ya compraste funciona igual con o sin este. Si hoy no es el momento, no pasa nada — aquí abajo puedes verlo o continuar sin él.</p>
+
+      <!-- HOTMART - Sales Funnel Widget -->
+      <!--- sales funnel container --->
+      <div id="hotmart-sales-funnel"></div>
+
+      <!--- script load and setup --->
+      <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+      <script>
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+      </script>
+      <!-- HOTMART - Sales Funnel Widget -->
+    </section>
   </div>
 </main>
 
