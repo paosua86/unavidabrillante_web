@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compra confirmada — Una Vida Brillante</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF8F3">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235B8A80'/%3E%3Cpath d='M9 20c3-8 11-8 14 0' stroke='%23FBF8F3' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<link rel="preload" href="../fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/fraunces-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+@font-face{
+  font-family:Fraunces;font-style:normal;font-weight:400 700;font-display:swap;
+  src:url(../fonts/fraunces-500-latin.woff2) format('woff2');
+}
+@font-face{
+  font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;
+  src:url(../fonts/inter-400-latin.woff2) format('woff2');
+}
+
+/* Mismos tokens que la landing rincon-calma-estandar. Sin terracota:
+   en esta página no hay nada que comprar. */
+:root{
+  --bg:        #FBF8F3;
+  --surface:   #FFFDFA;
+  --ink:       #2E2A25;
+  --ink-2:     #6B635A;
+  --sage:      #5B8A80;
+  --sage-deep: #3F6C63;
+  --sage-soft: #E7EFEB;
+  --line:      rgba(46,42,37,.14);
+  --line-soft: rgba(46,42,37,.08);
+  --r-card: 12px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+
+body{
+  margin:0;
+  background-color:var(--bg);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.042'/%3E%3C/svg%3E");
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:clamp(1.125rem, 1.05rem + .28vw, 1.1875rem);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+
+.wrap{width:min(100% - 48px, 680px);margin-inline:auto}
+
+main{padding-block:clamp(2.5rem, 1.5rem + 4vw, 5.5rem) clamp(3rem, 2rem + 4vw, 6rem)}
+
+.eyebrow{
+  font-size:.875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--sage-deep);margin:0 0 1.1rem;line-height:1.4;
+}
+
+h1{
+  font-family:Fraunces,"Iowan Old Style",Georgia,serif;
+  font-weight:600;line-height:1.12;letter-spacing:-.02em;
+  font-size:clamp(1.9375rem, 1.35rem + 3vw, 3rem);
+  margin:0 0 .5em;text-wrap:balance;
+}
+
+h2{
+  font-family:Inter,sans-serif;font-size:1.0625rem;font-weight:700;
+  line-height:1.4;margin:0 0 .35rem;
+}
+
+p{margin:0 0 1.1em;max-width:32em}
+p:last-child{margin-bottom:0}
+strong{font-weight:600}
+a{color:var(--sage-deep)}
+:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:4px}
+
+.lede{max-width:30em;margin-bottom:2.25rem}
+
+/* pasos: misma lógica visual que la lista .plan de la landing */
+.pasos{list-style:none;margin:0;padding:0}
+.pasos li{position:relative;padding:0 0 1.9rem 3.25rem}
+.pasos li:last-child{padding-bottom:0}
+.pasos li::before{
+  content:attr(data-n);position:absolute;left:0;top:-.3rem;
+  font-family:Fraunces,Georgia,serif;font-weight:600;font-size:1.75rem;
+  color:var(--sage);line-height:1;width:2.25rem;text-align:center;
+}
+.pasos li::after{
+  content:"";position:absolute;left:1.125rem;top:1.7rem;bottom:.3rem;
+  width:1.5px;background:linear-gradient(var(--sage),rgba(91,138,128,.25));
+}
+.pasos li:last-child::after{display:none}
+.pasos p{font-size:.99em;line-height:1.6}
+
+.ayuda{
+  margin-top:2.75rem;padding:1.35rem 1.5rem;
+  background:var(--sage-soft);border-radius:var(--r-card);
+  font-size:.99em;line-height:1.6;max-width:32em;
+}
+.ayuda strong{display:block;margin-bottom:.2rem}
+
+footer{
+  padding:2.25rem 0 3rem;border-top:1px solid var(--line-soft);
+  font-size:.875rem;color:var(--ink-2);line-height:1.6;text-align:center;
+}
+</style>
+</head>
+<body>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Una Vida Brillante</p>
+    <h1>Tu compra está confirmada.</h1>
+    <p class="lede">Gracias por tu confianza. Aquí tienes lo que va a pasar ahora, paso a paso, para que no tengas que adivinar nada.</p>
+
+    <ol class="pasos">
+      <li data-n="1">
+        <h2>La descarga llega por correo electrónico</h2>
+        <p>Hotmart envía el acceso al material al <strong>mismo correo que usaste en la compra</strong>. Suele tardar unos minutos.</p>
+      </li>
+      <li data-n="2">
+        <h2>Si no lo ves, revisa spam y promociones</h2>
+        <p>A veces el correo se archiva solo. Busca en las carpetas de spam o promociones por <strong>«Hotmart»</strong> o <strong>«Una Vida Brillante»</strong>.</p>
+      </li>
+      <li data-n="3">
+        <h2>También puedes entrar desde tu cuenta de Hotmart</h2>
+        <p>El material queda guardado en tu área de compras: entra en <a href="https://purchase.hotmart.com" rel="noopener">purchase.hotmart.com</a> con el correo de la compra y lo encontrarás ahí, hoy y siempre.</p>
+      </li>
+    </ol>
+
+    <div class="ayuda">
+      <strong>¿Necesitas ayuda?</strong>
+      Escríbenos a <a href="mailto:hola@unavidabrillante.com">hola@unavidabrillante.com</a> y lo resolvemos contigo.
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Una Vida Brillante</p>
+  </div>
+</footer>
+
+</body>
+</html>
