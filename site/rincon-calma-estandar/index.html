@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mi Rincón de la Calma — Kit imprimible para niños de 3 a 9 años</title>
-<meta name="description" content="Kit imprimible de 21 páginas creado por una psicóloga clínica: enseña a tu hijo a calmarse solo, y a ti qué hacer mientras tanto. Descarga inmediata, $17 USD.">
+<meta name="description" content="Kit imprimible de 21 hojas creado por una psicóloga clínica: enseña a tu hijo a calmarse solo, y a ti qué hacer mientras tanto. Descarga inmediata, $17 USD.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://unavidabrillante.com/rincon-calma-estandar/">
 
 <meta property="og:type" content="product">
 <meta property="og:title" content="Mi Rincón de la Calma — kit imprimible">
-<meta property="og:description" content="21 páginas listas para imprimir para que tu hijo aprenda a volver a la calma por sí mismo. Creado por una psicóloga clínica.">
+<meta property="og:description" content="21 hojas listas para imprimir para que tu hijo aprenda a volver a la calma por sí mismo. Creado por una psicóloga clínica.">
 <meta property="og:locale" content="es_ES">
 <meta property="og:url" content="https://unavidabrillante.com/rincon-calma-estandar/">
 <meta property="og:image" content="https://unavidabrillante.com/rincon-calma-estandar/img/kit-21-hojas.webp">
@@ -19,472 +19,340 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235B8A80'/%3E%3Cpath d='M9 20c3-8 11-8 14 0' stroke='%23FBF8F3' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 
-<!-- Tipografías servidas desde el propio dominio: ahorra dos conexiones nuevas
-     a Google, que en 4G cuestan cientos de milisegundos. -->
+<!-- Tipografías servidas desde el propio dominio: cero peticiones a terceros. -->
 <link rel="preload" href="../fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/fraunces-500-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-<script>document.documentElement.classList.add('js');</script>
-
 <style>
-/* --- tipografías (variables: una sola descarga cubre todos los pesos) --- */
+/* --- tipografías: las dos son variables, una descarga cubre 100–900 ------ */
 @font-face{
-  font-family:Fraunces;font-style:normal;font-weight:400 700;font-display:swap;
+  font-family:Fraunces;font-style:normal;font-weight:100 900;font-display:swap;
   src:url(../fonts/fraunces-500-latin.woff2) format('woff2');
 }
 @font-face{
-  font-family:Fraunces;font-style:italic;font-weight:400 700;font-display:swap;
+  font-family:Fraunces;font-style:italic;font-weight:100 900;font-display:swap;
   src:url(../fonts/fraunces-400-italic-latin.woff2) format('woff2');
 }
 @font-face{
-  font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;
+  font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;
   src:url(../fonts/inter-400-latin.woff2) format('woff2');
 }
 
-/* Hallmark · pre-emit critique: P5 H5 E5 S5 R4 V4
- * Hallmark · genre: editorial · macrostructure: Long Document
- * tone: cálida · serena · profesional  ·  anchor hue: sage 168°
- * nav: none (landing sin menú, por brief) · footer: Ft1 legal-mínimo
- * enrichment: fotografía real del kit (sin ilustración generada)
- * tokens: inline a propósito — el brief exige una sola petición HTTP y <2,5s en 4G,
- *         así que un tokens.css externo sería una petición bloqueante de más.
- * ==========================================================================
+/* ==========================================================================
    MI RINCÓN DE LA CALMA — landing de ventas
-   Sistema: crema cálido + salvia (calma) + terracota EXCLUSIVO de los botones.
-   Mobile-first real: se diseña a 320px y se escala hacia arriba.
+   Crema cálido + salvia (calma) + terracota EXCLUSIVO de los botones.
+   Arquitectura y ritmo: 11 secciones, cada una con su prueba visual.
    ========================================================================== */
-
 :root{
-  --bg:        #FBF8F3;   /* crema cálido, nunca blanco puro */
-  --bg-alt:    #F1EBE1;   /* fondo alterno de sección */
-  --surface:   #FFFDFA;   /* tarjetas */
-  --ink:       #2E2A25;   /* texto */
-  --ink-2:     #6B635A;   /* letra pequeña, notas */
-  --sage:      #5B8A80;   /* primario / calma — SOLO decoración: filetes, bordes, fondos */
-  --sage-deep: #3F6C63;   /* la misma salvia oscurecida: TEXTO e iconos (5.6:1 sobre crema) */
+  --bg:        #FBF8F3;
+  --bg-alt:    #F1EBE1;
+  --surface:   #FFFDFA;
+  --ink:       #2E2A25;
+  --ink-2:     #6B635A;
+  --sage:      #5B8A80;   /* SOLO decoración: filetes, bordes, fondos */
+  --sage-deep: #3F6C63;   /* texto e iconos sobre crema */
   --sage-soft: #E7EFEB;
-  /* Terracota del brief (#C4553A) oscurecido un 2%: con blanco encima daba 4,49:1
-     y WebAIM lo marca como fallo. Así queda en 4,8:1 y a ojo es el mismo color. */
-  --cta:       #BE5138;   /* TERRACOTA — solo botones de compra */
+  --cta:       #BE5138;   /* terracota: solo botones de compra */
   --cta-hi:    #A84632;
-  --lake:      #6B9BC3;   /* azul lago del termómetro, acentos */
+  --lake:      #6B9BC3;   /* acentos de dato, nunca texto pequeño */
   --line:      rgba(46,42,37,.14);
   --line-soft: rgba(46,42,37,.08);
-  /* anillo de foco: uno para fondo claro y otro para los bloques salvia,
-     donde --sage-deep sobre --sage-deep daría contraste 1:1 (invisible). */
   --focus:     #3F6C63;
-  --focus-inv: #FFFFFF;
 
-  --r-card: 12px;
-  --r-btn: 8px;
-  --ease: cubic-bezier(.16,1,.3,1);
-
-  --gap-section: clamp(80px, 4.5rem + 4vw, 140px);
-  --measure: 620px;      /* 65 caracteres máximo */
+  --r-card: 14px;
+  --r-btn: 10px;
+  --gap-section: clamp(64px, 3.5rem + 4vw, 128px);
+  --measure: 62ch;
 }
 
 *,*::before,*::after{box-sizing:border-box}
-/* clip, no hidden: 'hidden' en html crea un contenedor de scroll y rompe
-   position:sticky/fixed en iOS. Va en los dos elementos o el html sigue
-   arrastrándose de lado. */
 html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; overflow-x:clip}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 
 body{
   margin:0;
   background-color:var(--bg);
-  /* textura de papel sutil (4%), en tile de 200px: sin peticiones extra */
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.042'/%3E%3C/svg%3E");
+  /* textura de papel al 4%, en un tile de 200px: sin peticiones extra */
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
   color:var(--ink);
   font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-size:clamp(1.125rem, 1.05rem + .28vw, 1.1875rem); /* 18px → 19px */
-  line-height:1.65;
+  font-size:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:clip;
 }
-
 img{max-width:100%;height:auto;display:block}
 
 h1,h2,h3{
   font-family:Fraunces,"Iowan Old Style",Georgia,serif;
-  font-weight:600;
-  line-height:1.12;
-  letter-spacing:-.02em;
-  margin:0 0 .5em;
+  font-optical-sizing:auto;
+  font-weight:900;
+  line-height:1.05;
+  letter-spacing:-.025em;
+  margin:0 0 .45em;
   text-wrap:balance;
 }
-/* 31px a 320 · 34px a 390 (el ancho de referencia del brief) · 64px en escritorio.
-   El rango 34–38 del brief se escribió para 390px; a 320 el dispositivo es un 18%
-   más estrecho y el titular necesita bajar con él o se come la pantalla. */
-h1{font-size:clamp(1.9375rem, 1.05rem + 4.5vw, 4rem)}      /* 31 → 64 */
-h2{font-size:clamp(1.625rem, 1.15rem + 2.1vw, 2.75rem)}    /* 26 → 44 */
-h3{font-size:clamp(1.25rem, 1.15rem + .45vw, 1.5rem)}      /* 20 → 24 */
-p{margin:0 0 1.1em}
-p:last-child{margin-bottom:0}
-strong{font-weight:600}
-em{font-style:italic}
+h1{font-size:clamp(1.9375rem,1.35rem + 2.9vw,3.75rem)}   /* 31 → 60 */
+h2{font-size:clamp(1.75rem,1.25rem + 2.4vw,3rem)}        /* 28 → 48 */
+h3{font-size:clamp(1.0625rem,1rem + .3vw,1.25rem);font-weight:800;letter-spacing:-.01em}
+p{margin:0 0 1rem;max-width:var(--measure)}
+a{color:var(--sage-deep)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
 
-a{color:inherit}
-:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
-/* sobre los bloques salvia el anillo tiene que invertirse o desaparece */
-.clinic :focus-visible,.closing :focus-visible{outline-color:var(--focus-inv)}
-[id]{scroll-margin-top:2rem}
-
-/* --- estructura ------------------------------------------------------- */
-.wrap{width:min(100% - 48px, 1120px);margin-inline:auto}
-.narrow{max-width:var(--measure);margin-inline:auto}
-/* La regla de "65 caracteres" depende del tamaño de letra: 620px son 65
-   caracteres a 19px, pero 87 a 14px. Por eso los bloques de letra pequeña
-   se miden en em y no en píxeles. */
-.fit li,.plan p,.ps p{max-width:30em}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+.narrow{width:min(760px,92vw);margin-inline:auto}
+.wrap > h2,.wrap > .remate,.wrap > .faq,.wrap > .precio-caja{max-width:820px}
 section{padding-block:var(--gap-section)}
 .alt{background:var(--bg-alt)}
-.eyebrow{
-  font-size:.875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--sage-deep);margin:0 0 1.1rem;line-height:1.4;
-}
-.small{font-size:.875rem;line-height:1.55;color:var(--ink-2)}
+.filete{border-top:1px solid var(--line-soft)}
 .center{text-align:center}
-.lede{font-size:1.05em}
+.eyebrow{
+  font-size:.8125rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--sage-deep);margin:0 0 1rem;
+}
+.lead{font-size:clamp(1.0625rem,1rem + .4vw,1.3125rem);color:var(--ink-2);line-height:1.5}
+.small{font-size:.875rem;color:var(--ink-2);line-height:1.5}
 
-/* --- botones ---------------------------------------------------------- */
+/* --- botón de compra: el único terracota de la página ------------------- */
 .btn{
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
-  width:100%;min-height:56px;padding:1rem clamp(.75rem,3.5vw,1.5rem);
-  background:var(--cta);color:#fff;
-  font-family:inherit;font-size:1.125rem;font-weight:600;letter-spacing:-.005em;
-  /* un rótulo de botón nunca debe partir en dos líneas: deja de leerse como
-     botón y descuadra la altura entre secciones. Se resuelve con rótulos
-     cortos (≤26 caracteres), no con nowrap: si la lectora tiene el tamaño de
-     letra del navegador aumentado, nowrap recortaría el texto, y partirlo es
-     mejor fallo que perderlo. */
-  text-align:center;
-  text-decoration:none;border:0;border-radius:var(--r-btn);cursor:pointer;
-  box-shadow:0 1px 2px rgba(46,42,37,.10), 0 10px 24px -14px rgba(196,85,58,.65);
-  transition:background-color .18s ease, transform .18s var(--ease), box-shadow .18s ease;
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  background:var(--cta);color:#fff;text-decoration:none;
+  font-family:Inter,sans-serif;font-weight:700;font-size:1.0625rem;
+  padding:1.0625rem 1.75rem;border-radius:var(--r-btn);
+  box-shadow:0 6px 18px rgba(190,81,56,.22);
+  transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
+  text-align:center;line-height:1.2;
 }
-.btn:hover{background:var(--cta-hi);box-shadow:0 1px 2px rgba(46,42,37,.10), 0 14px 28px -14px rgba(196,85,58,.75)}
-.btn:active{transform:translateY(1px)}
-.btn--lg{min-height:62px}
-@media (min-width:700px){
-  .btn{width:auto;min-width:340px;margin-inline:auto}
-  .btn--lg{font-size:1.1875rem}
-}
-
-.btn-note{margin:.85rem auto 0;max-width:30em;font-size:.875rem;color:var(--ink-2);text-align:center}
+.btn:hover{background:var(--cta-hi);transform:translateY(-1px);box-shadow:0 10px 24px rgba(190,81,56,.28)}
+.btn:active{transform:translateY(0)}
+.btn--lg{font-size:1.1875rem;padding:1.25rem 2.25rem}
+.cta-note{margin:.85rem 0 0;font-size:.8125rem;color:var(--ink-2)}
 .cta-block{margin-top:2.5rem}
 
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:.4rem;min-height:44px;  /* objetivo táctil */
-  font-weight:600;color:var(--sage-deep);text-decoration:none;
-  box-shadow:inset 0 -1.5px rgba(91,138,128,.45);  /* subrayado sin inflar la caja */
+/* --- 1 · HERO ----------------------------------------------------------- */
+.hero{padding-block:clamp(28px,2rem + 2vw,80px) var(--gap-section)}
+.hero__grid{display:grid;gap:clamp(28px,3vw,56px);align-items:center}
+.hero h1{margin-bottom:.55rem}
+.hero .lead{max-width:34ch}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:1.25rem 0 1.5rem}
+.pills li{
+  display:flex;align-items:center;gap:.4rem;
+  background:var(--sage-soft);color:var(--sage-deep);
+  font-size:.8125rem;font-weight:600;line-height:1.2;
+  padding:.5rem .75rem;border-radius:999px;
 }
-.btn-ghost:hover{box-shadow:inset 0 -1.5px var(--sage-deep)}
-
-/* --- hero -------------------------------------------------------------
-   Reordenado para que el botón entre en la primera pantalla de un iPhone SE:
-   eyebrow → H1 → propuesta → BOTÓN → microcopy → refuerzo → imagen.
-   La frase «Lo imprimes hoy» pasa a debajo del botón: ahí refuerza en vez de
-   empujar el CTA fuera de pantalla, y deja de necesitar la Fraunces itálica
-   (81 KB) por encima de la línea de flotación. */
-.hero{padding-block:clamp(1rem,.5rem + 3vw,5.5rem) clamp(3rem,2.5rem + 3vw,6rem)}
-.hero__grid{display:grid;gap:2.25rem}
-.hero .eyebrow{margin-bottom:.7rem}
-.hero h1{margin-bottom:.4em}
-.hero__sub{max-width:30em}
-/* 1.55 en vez del 1.65 del cuerpo: es un párrafo suelto y a mayor tamaño,
-   y esos 18px recuperados son los que meten el botón en la primera pantalla */
-.hero__sub .lead-in{font-size:1.03em;line-height:1.55}
-.hero__print{
-  display:block;margin:1.1rem auto 0;max-width:26em;text-align:center;
-  font-family:Fraunces,Georgia,serif;font-size:1.1em;line-height:1.4;
-  color:var(--sage-deep);
-}
-/* si no cabe en una línea, que parta entre las dos frases y no a mitad de una */
-.nb{white-space:nowrap}
-.hero .cta-block{margin-top:1.125rem}
-.hero__note{display:block;text-align:center;margin-inline:auto}
+.pills svg{flex:none}
 .hero__fig{margin:0}
 .hero__fig img{
-  width:100%;border-radius:var(--r-card);
-  /* en móvil se recorta a 4:3 para que la imagen asome por debajo del pliegue
-     e invite a bajar, en vez de ocupar media pantalla de más */
-  aspect-ratio:4/3;object-fit:cover;object-position:50% 35%;
-  box-shadow:0 2px 6px rgba(46,42,37,.06), 0 30px 60px -40px rgba(46,42,37,.45);
+  border-radius:var(--r-card);
+  box-shadow:0 18px 44px rgba(46,42,37,.14);
+  border:1px solid var(--line-soft);
 }
 @media (min-width:900px){
-  .hero__grid{grid-template-columns:1.05fr .95fr;align-items:center;gap:4rem}
-  .hero .btn{margin-inline:0}
-  .hero__note,.hero__print{text-align:left;margin-inline:0}
-  .hero__fig img{aspect-ratio:auto}
+  .hero__grid{grid-template-columns:1.05fr .95fr}
+  .hero__fig{order:2}
 }
 
-/* --- sección 2: la escena -------------------------------------------- */
-.scene{text-align:center}
-.scene .quotes{
-  margin:2.25rem auto;padding:1.75rem 1rem;
-  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
-  max-width:26em;
+/* --- 2 · EL PROBLEMA ---------------------------------------------------- */
+.fallos{list-style:none;padding:0;margin:0 0 2.25rem;max-width:34rem}
+.fallos li{
+  display:grid;grid-template-columns:auto 1fr;gap:.85rem;align-items:start;
+  padding:.9rem 0;border-bottom:1px solid var(--line-soft);
+  font-size:1.0625rem;line-height:1.45;
 }
-.scene .quotes p{
-  font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:400;
-  font-size:clamp(1.25rem,1.1rem + .8vw,1.625rem);line-height:1.55;
-  color:var(--ink);margin:0 0 .35em;
+.fallos li:last-child{border-bottom:0}
+.mark{
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:.9375rem;font-weight:700;line-height:1;flex:none;margin-top:.1rem;
 }
-.scene .quotes p:last-child{margin-bottom:0}
-.scene .beat{font-size:1.06em}
-
-/* --- sección 3: por qué no funciona ---------------------------------- */
-.fails{display:grid;gap:2.25rem;margin-top:2.75rem}
-.fail h3{
-  font-family:Inter,sans-serif;font-size:1.125rem;font-weight:700;
-  letter-spacing:0;margin-bottom:.4rem;
-}
-.fail h3::before{
-  content:"";display:block;width:28px;height:2px;background:var(--sage);
-  margin-bottom:.9rem;border-radius:2px;
-}
-.pull{
-  margin:2.75rem 0 0;padding:.25rem 0 .25rem 1.5rem;
-  border-left:3px solid var(--sage);
-  font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:400;
-  font-size:clamp(1.25rem,1.15rem + .5vw,1.4375rem);line-height:1.45;
-}
-.pull p{margin:0}
-
-/* --- sección 4: qué es ------------------------------------------------ */
-.what__fig{margin:2.5rem 0 0}
-@media (min-width:900px){
-  .what__grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-  .what__fig{margin:0}
-  .what__grid .narrow{margin-inline:0}
+.mark--no{background:rgba(107,99,90,.16);color:#5A5148}
+.mark--si{background:var(--sage-soft);color:var(--sage-deep)}
+.remate--sm{font-size:clamp(1.125rem,1rem + .55vw,1.375rem);max-width:38ch}
+.remate{
+  font-family:Fraunces,Georgia,serif;font-weight:700;font-style:italic;
+  font-size:clamp(1.25rem,1.05rem + .9vw,1.75rem);line-height:1.3;
+  color:var(--ink);border-left:4px solid var(--sage);
+  padding:.25rem 0 .25rem 1.25rem;margin:0;max-width:30ch;
 }
 
-/* --- sección 5: qué incluye ------------------------------------------ */
-/* auto-fit: pasa a dos columnas en cuanto caben, para que ninguna línea
-   se estire más allá de los 65 caracteres en tablets.
-   El min() es obligatorio: con minmax(330px,1fr) a pelo, auto-fit no puede
-   bajar del mínimo y la pista se queda en 330px dentro de un contenedor de
-   272px — desbordaba 34px y cortaba el texto de las 13 tarjetas a 320px. */
-.cards{
-  display:grid;gap:1rem;margin-top:2.5rem;list-style:none;padding:0;
-  grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));
+/* --- 3 · POR QUÉ FALLA -------------------------------------------------- */
+.que-es{margin-top:clamp(40px,3vw,64px)}
+.que-es--top{align-items:start}
+.dato-gigante{
+  font-family:Fraunces,Georgia,serif;font-weight:900;letter-spacing:-.03em;
+  font-size:clamp(1.75rem,1.1rem + 3.2vw,3.25rem);line-height:1.08;
+  color:var(--sage-deep);max-width:18ch;margin:0 0 1.5rem;
 }
-@media (min-width:820px){.cards{grid-template-columns:1fr 1fr;gap:1.25rem}}
-.card{
-  position:relative;background:var(--surface);border:1px solid var(--line-soft);
-  border-radius:var(--r-card);padding:1.5rem 1.5rem 1.6rem;
-  overflow:hidden;
-}
-.card__n{
-  display:block;font-family:Fraunces,Georgia,serif;font-weight:600;
-  font-size:1.0625rem;color:var(--sage-deep);margin-bottom:.55rem;
-  font-variant-numeric:tabular-nums;
-}
-.card h3{font-size:1.1875rem;margin-bottom:.45rem;letter-spacing:-.015em}
-/* em, no rem: rem se mide contra la raíz (16px) y dejaba el cuerpo en 15,8px.
-   El brief fija 17px como suelo innegociable en móvil. .99em = 17,8px. */
-.card p{font-size:.99em;line-height:1.6;margin:0}
-.card p + p{margin-top:.6em}
-.card .strategies{
-  color:var(--ink-2);font-size:.96em;
+.sub-h2{font-size:clamp(1.5rem,1.15rem + 1.6vw,2.25rem);font-weight:900;
+  line-height:1.08;letter-spacing:-.02em;margin:0 0 1rem}
+.tres{display:grid;gap:1.75rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:2rem}
+.tres h3{margin-bottom:.35rem}
+.tres p{font-size:.9375rem;color:var(--ink-2);margin:0}
+.ico{
+  width:44px;height:44px;border-radius:12px;background:var(--sage-soft);
+  color:var(--sage-deep);display:grid;place-items:center;margin-bottom:.85rem;
 }
 
-/* --- sección 6: la parte clínica (bloque de autoridad) --------------- */
-.clinic{background:var(--sage-deep);color:#F4F8F6}
-.clinic h2{color:#fff}
-.clinic .eyebrow{color:#DDEAE6}
-.clinic .grid{display:grid;gap:2rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
-@media (min-width:820px){.clinic .grid{grid-template-columns:1fr 1fr;gap:2.5rem 3.5rem}}
-.clinic h3{
-  font-family:Inter,sans-serif;font-size:1.0625rem;font-weight:700;letter-spacing:0;
-  color:#fff;margin-bottom:.4rem;
+/* --- 4 · QUÉ ES --------------------------------------------------------- */
+.foto-ancha{margin:2.5rem 0 0}
+.foto-ancha img{border-radius:var(--r-card);box-shadow:0 16px 40px rgba(46,42,37,.13);width:100%}
+.que-es{display:grid;gap:clamp(24px,3vw,48px);align-items:center}
+@media (min-width:900px){.que-es{grid-template-columns:1fr .8fr}.que-es .foto-ancha{margin:0}}
+.foto-ancha figcaption{margin-top:.75rem;font-size:.8125rem;color:var(--ink-2)}
+
+/* --- 5 · QUÉ INCLUYE ---------------------------------------------------- */
+.hojas{
+  list-style:none;padding:0;margin:2rem 0 0;
+  display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
 }
-.clinic p{color:#DCE8E4}
-.clinic .disclaimer{
-  margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.18);
-  font-size:.875rem;font-style:italic;line-height:1.6;color:#DCE8E4;
-  max-width:30em;   /* a 14px, los 620px de --measure darían 94 caracteres */
+.hoja{
+  background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r-card);
+  padding:1.25rem 1.25rem 1.35rem;box-shadow:0 2px 10px rgba(46,42,37,.05);
+  border-top:3px solid var(--sage);
+}
+.hoja img{
+  border-radius:8px;border:1px solid var(--line-soft);width:100%;
+  background:#fff;margin-bottom:.85rem;
+}
+.hoja h3{margin:0 0 .3rem;font-size:1rem}
+.hoja p{margin:0;font-size:.875rem;color:var(--ink-2);line-height:1.45;max-width:none}
+@media (min-width:820px){.hojas{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+.num{
+  font-family:Fraunces,Georgia,serif;font-weight:900;font-size:1.5rem;line-height:1;
+  color:var(--sage-deep);opacity:.5;display:block;margin-bottom:.5rem;
 }
 
-/* --- sección 7: la verdad incómoda + plan de 4 semanas --------------- */
-.plan{list-style:none;margin:2.5rem 0 0;padding:0;position:relative}
-.plan li{position:relative;padding:0 0 2rem 3.75rem}
-.plan li:last-child{padding-bottom:0}
-.plan li::before{
-  content:attr(data-n);position:absolute;left:0;top:-.35rem;
-  font-family:Fraunces,Georgia,serif;font-weight:600;font-size:2rem;
-  color:var(--sage);line-height:1;width:2.5rem;text-align:center;
+/* --- 6 · FRANJA DE CIFRAS ----------------------------------------------- */
+.cifras{padding-block:clamp(48px,3rem + 2vw,80px)}
+.cifras ul{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1rem;text-align:center;
 }
-.plan li::after{
-  content:"";position:absolute;left:1.25rem;top:2rem;bottom:.35rem;
-  width:1.5px;background:linear-gradient(var(--sage),rgba(91,138,128,.25));
+.cifras b{
+  display:block;font-family:Fraunces,Georgia,serif;font-weight:900;
+  font-size:clamp(2.5rem,1.6rem + 4vw,4.25rem);line-height:1;letter-spacing:-.03em;
+  color:var(--sage-deep);
 }
-.plan li:last-child::after{display:none}
-.plan h3{font-family:Inter,sans-serif;font-size:1.0625rem;font-weight:700;letter-spacing:0;margin-bottom:.3rem}
-.plan p{margin:0;font-size:.99em}
-.honest{margin-top:2.5rem}
-.honest p{margin-bottom:.5em}
+.cifras span{display:block;margin-top:.5rem;font-size:.875rem;color:var(--ink-2);font-weight:600}
+.cifras li{position:relative}
+.cifras li::after{
+  content:"";position:absolute;left:50%;bottom:-.9rem;transform:translateX(-50%);
+  width:28px;height:3px;border-radius:2px;background:var(--lake);opacity:.55;
+}
+@media (min-width:760px){.cifras ul{grid-template-columns:repeat(4,1fr)}}
 
-/* --- sección 8: quién está detrás ------------------------------------ */
-.about p{max-width:var(--measure)}
-.sign{
-  margin-top:2rem;font-family:Fraunces,Georgia,serif;font-style:italic;
-  font-size:1.375rem;color:var(--sage-deep);letter-spacing:.01em;
-}
-.sign::before{content:"";display:block;width:44px;height:1.5px;background:var(--sage);opacity:.5;margin-bottom:1rem}
 
-/* --- sección 9: para quién sí / no ----------------------------------- */
-.fit{display:grid;gap:2.5rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
-@media (min-width:820px){.fit{grid-template-columns:1fr 1fr;gap:3.5rem}}
-.fit > div{max-width:var(--measure)}
-.fit h3{font-size:1.3125rem}
-.fit ul{list-style:none;margin:1.25rem 0 0;padding:0}
-.fit li{position:relative;padding-left:2rem;margin-bottom:.9rem;font-size:.99em;line-height:1.6}
-.fit li:last-child{margin-bottom:0}
-.fit--yes li::before{
-  content:"";position:absolute;left:0;top:.42em;width:14px;height:8px;
-  border-left:2px solid var(--sage-deep);border-bottom:2px solid var(--sage-deep);
-  transform:rotate(-45deg);border-radius:1px;
+/* --- pasos de puesta en marcha --- */
+.pasos{list-style:none;padding:0;margin:0;display:grid;gap:2rem}
+.pasos li{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+.pasos h3{grid-column:2;margin:0 0 .15rem}
+.pasos p{grid-column:2;margin:0;font-size:.9375rem;color:var(--ink-2);max-width:38ch}
+.paso-n{
+  grid-row:span 2;width:46px;height:46px;border-radius:50%;background:var(--sage-soft);
+  color:var(--sage-deep);display:grid;place-items:center;font-family:Fraunces,Georgia,serif;
+  font-weight:900;font-size:1.375rem;
 }
-.fit--no li::before{
-  content:"";position:absolute;left:0;top:.72em;width:13px;height:2px;
-  background:var(--ink-2);opacity:.55;border-radius:2px;
+/* --- sello de autoría --- */
+.sello{
+  background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r-card);
+  padding:2rem 1.75rem;text-align:center;color:var(--sage-deep);
+  box-shadow:0 2px 12px rgba(46,42,37,.05);
+}
+.sello svg{margin:0 auto .75rem;display:block}
+.sello__t{font-size:.8125rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;margin:0 0 .75rem;max-width:none}
+.sello__f{
+  font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:600;
+  font-size:1.5rem;color:var(--ink);margin:0;max-width:none;
 }
 
-/* --- sección 10: precio ---------------------------------------------- */
-.price{text-align:center}
-.price .compare{max-width:30em;margin-inline:auto}
-.price__fig{max-width:280px;margin:2.5rem auto 0}
-.price__fig img{border-radius:var(--r-card);box-shadow:0 2px 6px rgba(46,42,37,.06), 0 24px 48px -32px rgba(46,42,37,.5)}
-/* deja explícito que es un archivo, no un paquete que llega por correo:
-   es la duda que más frena la compra justo en el momento de pagar */
-.price__fig figcaption{margin-top:.9rem;font-size:.875rem;line-height:1.5;color:var(--ink-2)}
-.price__tag{
-  font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.035em;
-  font-size:clamp(3rem,2rem + 5.2vw,4.5rem);line-height:1;
-  margin:2rem 0 .35rem;
+/* --- 7 · TIMELINE ------------------------------------------------------- */
+.timeline{list-style:none;padding:0;margin:2.5rem 0 2.5rem;display:grid;gap:1.5rem}
+.timeline li{position:relative;padding-left:2.5rem}
+.timeline li::before{
+  content:"";position:absolute;left:.5625rem;top:1.6rem;bottom:-1.5rem;width:2px;
+  background:var(--line);
 }
-.price__tag .moneda{font-size:.42em;font-weight:600;letter-spacing:-.01em;vertical-align:.55em;margin-left:.15em;color:var(--ink-2)}
-.forever{
-  max-width:30em;margin:2rem auto 0;padding:1.35rem 1.5rem;
-  background:var(--sage-soft);border-radius:var(--r-card);
-  font-size:.99em;line-height:1.6;text-align:left;
+.timeline li:last-child::before{display:none}
+.timeline .punto{
+  position:absolute;left:0;top:.35rem;width:20px;height:20px;border-radius:50%;
+  background:var(--sage);border:4px solid var(--bg);box-shadow:0 0 0 2px var(--sage);
 }
-.forever strong{display:block;margin-bottom:.2rem}
-.trust{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.5rem;
-  margin:1.75rem 0 0;padding:0;list-style:none;
-  font-size:.875rem;color:var(--ink-2);
+.timeline .sem{
+  display:block;font-size:.75rem;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--sage-deep);margin-bottom:.15rem;
 }
-.trust li{display:flex;align-items:center;gap:.45rem}
-.trust svg{flex:none;color:var(--sage-deep)}
+.timeline p{margin:.25rem 0 0;font-size:.9375rem;color:var(--ink-2)}
+@media (min-width:860px){
+  .timeline{grid-template-columns:repeat(4,1fr);gap:1.75rem}
+  .timeline li{padding-left:0;padding-top:2.25rem}
+  .timeline li::before{left:1.25rem;right:-1.75rem;top:.5625rem;bottom:auto;width:auto;height:2px}
+  .timeline .punto{top:0}
+}
 
-/* --- sección 11: garantía -------------------------------------------- */
-.guarantee{
-  max-width:640px;margin-inline:auto;text-align:center;
-  background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-card);padding:clamp(2rem,1.5rem + 2vw,3rem) clamp(1.5rem,1rem + 2vw,3rem);
+/* --- 8 · FUERA DE CASA + 9 · TESTIMONIOS -------------------------------- */
+.cita{
+  background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r-card);
+  padding:1.5rem;box-shadow:0 2px 12px rgba(46,42,37,.05);margin:0;
 }
-.guarantee .shield{color:var(--sage);margin-bottom:1.25rem}
-.guarantee p{max-width:30em;margin-inline:auto}
-.guarantee .fineprint{margin-top:1.5rem;font-size:.875rem;font-style:italic;color:var(--ink-2)}
+.cita p{font-size:1rem;line-height:1.55;margin:0 0 1rem;max-width:none}
+.cita footer{
+  display:flex;align-items:center;gap:.6rem;font-size:.8125rem;color:var(--ink-2);
+  border-top:1px solid var(--line-soft);padding-top:.9rem;
+}
+.avatar{
+  width:34px;height:34px;border-radius:50%;background:var(--sage-soft);color:var(--sage-deep);
+  display:grid;place-items:center;font-weight:800;font-size:.8125rem;flex:none;
+  font-family:Fraunces,Georgia,serif;
+}
+.cita cite{font-style:normal;font-weight:700;color:var(--ink);display:block}
+.rejilla{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:2.5rem}
+.nota-upsell{
+  border-left:4px solid var(--sage);padding-left:1.25rem;margin:1.75rem 0 2.5rem;
+  font-size:.9375rem;color:var(--ink-2);max-width:44ch;
+}
 
-/* --- sección 13: FAQ -------------------------------------------------- */
-.faq{max-width:var(--measure);margin:2.5rem auto 0}
-.faq details{border-bottom:1px solid var(--line);}
-.faq details:first-of-type{border-top:1px solid var(--line)}
+/* --- 10 · OFERTA -------------------------------------------------------- */
+.precio-caja{
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;
+  padding:clamp(1.75rem,1rem + 3vw,3rem);box-shadow:0 10px 34px rgba(46,42,37,.08);
+  text-align:center;margin-top:2rem;
+}
+.precio{
+  font-family:Fraunces,Georgia,serif;font-weight:900;letter-spacing:-.04em;
+  font-size:clamp(3.5rem,2rem + 7vw,6.5rem);line-height:.95;color:var(--ink);
+  display:block;margin:.25rem 0;
+}
+.precio small{font-size:.28em;font-weight:800;letter-spacing:0;color:var(--ink-2);margin-left:.25rem}
+.checks{list-style:none;padding:0;margin:1.75rem auto 2rem;max-width:24rem;text-align:left}
+.checks li{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;padding:.5rem 0;font-size:.9375rem}
+.tachado{color:var(--ink-2);font-size:1rem;margin:0;max-width:52ch}
+
+/* --- FAQ ---------------------------------------------------------------- */
+.faq{margin-top:2rem;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
 .faq summary{
-  display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;
-  padding:1.25rem 0;cursor:pointer;list-style:none;
-  font-weight:600;font-size:1.06em;line-height:1.45;
+  list-style:none;cursor:pointer;padding:1.15rem 2.5rem 1.15rem 0;position:relative;
+  font-weight:700;font-size:1.0625rem;line-height:1.4;
 }
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{
-  content:"";flex:none;width:12px;height:12px;margin-top:.45rem;
+  content:"";position:absolute;right:.35rem;top:1.5rem;width:10px;height:10px;
   border-right:2px solid var(--sage-deep);border-bottom:2px solid var(--sage-deep);
-  transform:rotate(45deg);transition:transform .25s var(--ease);
+  transform:rotate(45deg);transition:transform .2s ease;
 }
 .faq details[open] summary::after{transform:rotate(-135deg)}
-.faq .answer{padding:0 0 1.4rem;font-size:.99em;max-width:30em}
-.faq .answer p{margin-bottom:.7em}
+.faq p{margin:0 0 1.15rem;font-size:.9375rem;color:var(--ink-2);max-width:60ch}
 
-/* --- sección 14: cierre ---------------------------------------------- */
-.closing{background:var(--sage-deep);color:#F4F8F6;text-align:center}
-.closing h2{color:#fff;max-width:16em;margin-inline:auto}
-.closing p{color:#DCE8E4}
-.closing .price__tag{color:#fff;margin-top:1.75rem}
-.closing .price__tag .moneda{color:#D6E6E1}   /* #BBD6CE daba 3,85:1 sobre salvia */
-.closing .btn{
-  background:#fff;color:var(--cta);
-  box-shadow:0 1px 2px rgba(0,0,0,.10), 0 14px 30px -18px rgba(0,0,0,.6);
-}
-.closing .btn:hover{background:#FFF6F3;color:var(--cta-hi)}
-.closing .btn-note{color:#DCE8E4}
-.ps{
-  max-width:var(--measure);margin:0 auto;
-  background:var(--bg-alt);border-radius:var(--r-card);
-  padding:clamp(1.75rem,1.25rem + 2vw,2.75rem);
-}
-.ps .label{
-  font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.125rem;
-  color:var(--sage-deep);margin:0 0 .6rem;
-}
-.ps p{font-size:.99em}
-@media (max-width:400px){ .ps{padding:1.25rem} }  /* deja ancho suficiente al botón */
+/* --- 11 · CIERRE + pie -------------------------------------------------- */
+.cierre{background:var(--sage-soft)}
+.cierre h2{max-width:16ch;margin-inline:auto}
+footer.pie{background:var(--bg-alt);padding-block:2.5rem;font-size:.8125rem;color:var(--ink-2)}
+footer.pie a{color:var(--sage-deep)}
+footer.pie nav{display:flex;flex-wrap:wrap;gap:1.25rem;margin-bottom:1rem}
+.legal{max-width:70ch;margin:0}
 
-/* --- pie -------------------------------------------------------------- */
-footer{
-  padding:2.5rem 0 3rem;border-top:1px solid var(--line-soft);
-  font-size:.875rem;color:var(--ink-2);line-height:1.6;text-align:center;
-}
-footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:0 1.25rem;margin-bottom:1rem}
-footer a{
-  display:inline-flex;align-items:center;min-height:44px;   /* objetivo táctil */
-  color:var(--ink-2);text-decoration:none;box-shadow:inset 0 -1px var(--line);
-}
-footer a:hover{color:var(--ink);box-shadow:inset 0 -1px var(--ink-2)}
-footer .legal{max-width:30em;margin-inline:auto}
 
-/* --- barra fija de compra (móvil) ------------------------------------ */
-/* --cookies-h vale la altura del aviso de cookies mientras está en pantalla, y
-   0px el resto del tiempo (lo pone el script del aviso). Sin esto la barra de
-   compra queda DEBAJO del aviso en el móvil —ambos van pegados abajo— y el
-   botón "Quiero el kit" es inaccesible justo en los primeros segundos. */
-.sticky{
-  position:fixed;left:0;right:0;bottom:var(--cookies-h,0px);z-index:60;
-  display:flex;align-items:center;gap:1rem;
-  padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
-  background:rgba(251,248,243,.94);
-  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-  border-top:1px solid var(--line);
-  transform:translateY(105%);transition:transform .35s var(--ease),bottom .35s var(--ease);
-}
-.sticky.is-on{transform:translateY(0)}
-/* elevada sobre el aviso ya no toca el borde del móvil: el hueco del notch lo
-   pone el aviso, y sumarlo otra vez engordaría la barra sin motivo */
-body.aviso-visible .sticky{padding-bottom:.7rem}
-.sticky__price{flex:1;min-width:0;line-height:1.25}
-.sticky__price b{display:block;font-family:Fraunces,Georgia,serif;font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
-.sticky__price span{display:block;font-size:.875rem;color:var(--ink-2)}
-.sticky .btn{width:auto;min-width:0;flex:none;min-height:52px;padding:.75rem 1.25rem;font-size:1rem;box-shadow:none}
-@media (min-width:900px){.sticky{display:none}}
-/* la barra suma el safe-area a su padding, así que la compensación del body
-   tiene que sumarlo también o en un iPhone con notch tapa ~30px del pie */
-body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-inset-bottom))}
-@media (min-width:900px){body.has-sticky{padding-bottom:0}}
-
-/* --- fotografías ------------------------------------------------------ */
-.shot{margin:0}
-.shot img{
-  width:100%;border-radius:var(--r-card);
-  box-shadow:0 2px 6px rgba(46,42,37,.06), 0 30px 60px -40px rgba(46,42,37,.45);
-}
-.shot figcaption{
-  margin-top:.9rem;font-size:.875rem;line-height:1.5;color:var(--ink-2);text-align:center;
-}
-
-/* --- popup de salida -------------------------------------------------- */
+/* --- popup de salida ---------------------------------------------------- */
 .exit{
   position:fixed;inset:0;z-index:80;display:none;
   align-items:center;justify-content:center;padding:1.5rem;
@@ -496,10 +364,8 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
   background:var(--bg);border-radius:var(--r-card);
   padding:clamp(1.75rem,1.25rem + 2vw,2.5rem);
   box-shadow:0 40px 80px -30px rgba(46,42,37,.55);
-  /* La caja nunca puede ser más alta que la ventana: en pantallas bajas —o con
-     el teclado del móvil abierto— desbordaba y cortaba el título y la X de
-     cerrar. dvh y no vh: el vh clásico ignora el teclado y la barra del
-     navegador móvil, que es justo el caso que rompía. */
+  /* dvh y no vh: el vh clásico ignora el teclado del móvil, que era justo el
+     caso que cortaba el título y la X de cerrar. */
   max-height:calc(100dvh - 3rem);overflow-y:auto;overscroll-behavior:contain;
 }
 @supports not (height:100dvh){.exit__box{max-height:calc(100vh - 3rem)}}
@@ -508,7 +374,7 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
   background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:1.5rem;line-height:1;
 }
 .exit h2{font-size:1.5rem}
-.exit p{font-size:.96em}
+.exit p{font-size:.96em;max-width:none}
 .exit form{display:grid;gap:.75rem;margin-top:1.25rem}
 .exit input[type=email]{
   width:100%;min-height:52px;padding:.85rem 1rem;font:inherit;font-size:1rem;
@@ -516,10 +382,12 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
 }
 /* nunca outline:none a secas — es la única entrada de datos de la página */
 .exit input[type=email]:focus-visible{border-color:var(--sage-deep);outline:2px solid var(--focus);outline-offset:2px}
+/* el regalo no es una compra: la terracota se queda para los botones de pago */
+.exit button[type=submit]{background:var(--sage-deep);box-shadow:none}
+.exit button[type=submit]:hover{background:#35594F}
 .exit .hp{position:absolute;left:-9999px}
 .exit .no{background:none;border:0;font:inherit;font-size:.875rem;color:var(--ink-2);text-decoration:underline;cursor:pointer;padding:.5rem}
 .exit button[type=submit][disabled]{opacity:.65;cursor:progress}
-/* estado «ya te la mandé»: sustituye al formulario sin sacarla de la página */
 .exit__ok{display:none}
 .exit.is-ok .exit__ask{display:none}
 .exit.is-ok .exit__ok{display:block}
@@ -529,536 +397,276 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
   color:var(--sage-deep);font-size:1.6rem;line-height:1;
 }
 
-/* --- entrada suave (se desactiva sin JS y con reduced-motion) -------- */
-.js .reveal{opacity:0;transform:translateY(14px)}
-.js .reveal.is-in{opacity:1;transform:none;transition:opacity .7s var(--ease), transform .7s var(--ease)}
-@media (prefers-reduced-motion: reduce){
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .sticky,.btn,.faq summary::after,.cookies{transition:none}
-  .btn:active{transform:none}
-}
-
-/* --- aviso de cookies -------------------------------------------------
-   Ni el píxel de Meta ni GA4 se cargan antes de la respuesta. Sobrio a
-   propósito: es lo primero que ve, y un banner agresivo contradice el
-   producto. Sin terracota — ese color es solo de los botones de compra. */
+/* --- aviso de cookies --------------------------------------------------- */
 .cookies{
-  position:fixed;left:0;right:0;bottom:0;z-index:90;
-  padding:1rem 1.25rem calc(1rem + env(safe-area-inset-bottom));
-  background:var(--surface);border-top:1px solid var(--line);
-  box-shadow:0 -12px 32px -24px rgba(46,42,37,.5);
-  transform:translateY(105%);transition:transform .35s var(--ease);
+  position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--surface);
+  border-top:1px solid var(--line);box-shadow:0 -8px 28px rgba(46,42,37,.12);
+  transform:translateY(110%);transition:transform .35s ease;
 }
-.cookies.is-on{transform:translateY(0)}
-.cookies__in{width:min(100% , 900px);margin-inline:auto;display:grid;gap:.9rem}
-.cookies p{margin:0;font-size:.875rem;line-height:1.55;color:var(--ink-2);max-width:60ch}
-.cookies a{color:var(--sage-deep)}
-.cookies__row{display:flex;flex-wrap:wrap;gap:.6rem}
+.cookies.is-on{transform:none}
+.cookies__in{
+  width:min(1140px,92vw);margin-inline:auto;padding:1rem 0 max(1rem,env(safe-area-inset-bottom));
+  display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
+}
+.cookies p{margin:0;font-size:.8125rem;color:var(--ink-2);max-width:60ch}
+.cookies__row{display:flex;gap:.5rem}
 .cookies button{
-  flex:1 1 auto;min-height:48px;padding:.7rem 1.1rem;
-  font:inherit;font-size:1rem;font-weight:600;
-  border-radius:var(--r-btn);cursor:pointer;white-space:nowrap;
-  transition:background-color .18s ease,border-color .18s ease;
+  font:inherit;font-size:.875rem;font-weight:600;padding:.6rem 1.1rem;
+  border-radius:var(--r-btn);cursor:pointer;border:1px solid var(--line);
+  background:transparent;color:var(--ink);
 }
-.cookies .yes{background:var(--sage-deep);color:#fff;border:1.5px solid var(--sage-deep)}
-.cookies .yes:hover{background:#35594f;border-color:#35594f}
-.cookies .no{background:none;color:var(--ink);border:1.5px solid var(--line)}
-.cookies .no:hover{border-color:var(--ink-2)}
-@media (min-width:700px){
-  .cookies__in{grid-template-columns:1fr auto;align-items:center;gap:1.5rem}
-  .cookies__row{flex:none}
-  .cookies button{flex:none;min-width:170px}
-}
+.cookies button.yes{background:var(--sage-deep);border-color:var(--sage-deep);color:#fff}
 </style>
 </head>
-
 <body>
 
-<!-- ====================== 1 · HERO ====================== -->
+<!-- ══ 1 · HERO ══════════════════════════════════════════════════════════ -->
 <header class="hero" data-seccion="01-hero">
   <div class="wrap hero__grid">
-
-    <div class="hero__copy">
-      <p class="eyebrow">Para madres y padres de niños de&nbsp;3 a&nbsp;9&nbsp;años</p>
-
-      <h1>El berrinche dura diez minutos. La culpa de haber gritado te dura toda la noche.</h1>
-
-      <div class="hero__sub">
-        <p class="lead-in"><strong>Mi Rincón de la Calma</strong> es un kit imprimible de 21 páginas, creado por una psicóloga clínica, que le enseña a tu hijo a calmarse solo — y a ti, qué hacer mientras tanto.</p>
-      </div>
-
-      <div class="cta-block">
-        <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10&bid=1786722058583&src=hero" data-checkout data-cta="hero">Quiero el kit — <span data-precio>$17 USD</span></a>
-        <p class="btn-note hero__note">Descarga inmediata · Garantía de 30 días</p>
-        <p class="hero__print"><span class="nb">Lo imprimes hoy.</span> <span class="nb">Lo usan esta misma tarde.</span></p>
-      </div>
+    <div>
+      <p class="eyebrow">Para madres y padres de niños de 3 a 9 años</p>
+      <h1>El berrinche dura diez minutos.<br>La culpa te dura toda la noche.</h1>
+      <p class="lead">Un kit imprimible que le enseña a tu hijo a calmarse solo, y a ti qué hacer mientras tanto. Lo imprimes hoy y lo usan esta misma tarde.</p>
+      <ul class="pills">
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>21 hojas para imprimir</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Creado por psicóloga clínica</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Lo imprimes hoy, lo usan esta tarde</li>
+      </ul>
+      <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10" data-checkout data-cta="hero">Quiero el kit — <span data-precio>$17 USD</span></a>
+      <p class="cta-note">Descarga inmediata · Garantía de 30 días · Tamaño Carta</p>
     </div>
-
     <figure class="hero__fig">
-      <img src="img/kit-portada.webp" width="900" height="1200" fetchpriority="high" decoding="async"
-           alt="El kit Mi Rincón de la Calma impreso, apoyado en una silla de madera junto a un peluche, en la habitación de un niño.">
+      <img src="img/kit-portada.webp" width="900" height="1200" alt="Las hojas del kit Mi Rincón de la Calma impresas sobre una mesa" fetchpriority="high" decoding="async">
     </figure>
-
   </div>
 </header>
 
-<main>
-
-<!-- ====================== 2 · LA ESCENA ====================== -->
-<section class="scene" data-seccion="02-la-escena">
-  <div class="wrap narrow reveal">
+<!-- ══ 2 · EL PROBLEMA ═══════════════════════════════════════════════════ -->
+<section class="alt" data-seccion="02-problema">
+  <div class="wrap">
     <h2>Ya sabes exactamente cómo empieza.</h2>
-
-    <p>Un zapato que no entra. Un hermano que le quitó algo. Un «no» tuyo a las siete de la tarde.</p>
-
-    <p>Y de pronto ya está en el suelo. Gritando. Y tú de pie, con la cena a medias, diciéndole cosas que no sirven:</p>
-
-    <div class="quotes">
-      <p>«Cálmate.»</p>
-      <p>«No es para tanto.»</p>
-      <p>«Respira.»</p>
-      <p>«Si sigues así nos vamos.»</p>
-    </div>
-
-    <p class="beat">Nada aterriza. La cosa sube. Y llega el momento que más odias: <strong>levantas la voz.</strong></p>
-
-    <p>Funciona. Se calla. Y quince minutos después está dormido y tú sigues despierta, mirando el techo, pensando <em>«no quiero ser esta mamá»</em>.</p>
-
-    <p><strong>No es que seas mala madre. Es que estás intentando enseñarle a nadar en medio de la tormenta.</strong></p>
+    <ul class="fallos">
+      <li><span class="mark mark--no" aria-hidden="true">✕</span><span>«Cálmate», repetido cuarenta veces y cada vez más alto.</span></li>
+      <li><span class="mark mark--no" aria-hidden="true">✕</span><span>La silla de pensar, que le enseña a esconder el enojo.</span></li>
+      <li><span class="mark mark--no" aria-hidden="true">✕</span><span>Explicarle por qué no debe enojarse, cuando no puede escucharte.</span></li>
+      <li><span class="mark mark--no" aria-hidden="true">✕</span><span>Y al final gritas. Funciona. Y esa noche no duermes.</span></li>
+    </ul>
+    <p class="remate">No es que seas mala madre. Le estás enseñando a nadar en plena tormenta.</p>
   </div>
 </section>
 
-<!-- ====================== 3 · POR QUÉ NADA FUNCIONA ====================== -->
-<section class="alt" data-seccion="03-por-que-falla">
-  <div class="wrap narrow reveal">
-    <h2>No te falta paciencia. Te falta la herramienta.</h2>
-    <p>Lo que la mayoría intentamos, falla por una razón concreta:</p>
-
-    <div class="fails">
-      <div class="fail">
-        <h3>«Cuenta hasta diez.»</h3>
-        <p>Cuando un niño está desbordado, la parte pensante de su cerebro está literalmente fuera de servicio. No es que no quiera obedecer: en ese momento no puede procesar instrucciones.</p>
+<!-- ══ 3 · POR QUÉ FALLA + QUÉ ES ═══════════════════════════════════════ -->
+<section data-seccion="03-la-herramienta">
+  <div class="wrap">
+    <h2>No te falta paciencia.<br>Te falta la herramienta.</h2>
+    <p class="dato-gigante">Un cerebro en alarma no aprende ni razona.</p>
+    <p class="remate">La calma se entrena antes, en frío. Como un simulacro de incendio.</p>
+    <div class="que-es que-es--top">
+      <div>
+        <h3 class="sub-h2">Un rincón. Doce estrategias.<br>Un plan de cuatro semanas.</h3>
+        <p>Mi Rincón de la Calma convierte una esquina de tu casa —un cojín, una manta, un peluche— en el lugar al que tu hijo va cuando algo se siente demasiado grande.</p>
+        <p>No es castigo. No es el rincón de pensar. Es un espacio con herramientas visuales a la altura de sus ojos, donde aprende, contigo al lado, a volver a la calma solo. Y no lo inventas tú: está listo para imprimir.</p>
       </div>
-      <div class="fail">
-        <h3>La silla de pensar.</h3>
-        <p>Lo deja solo con una emoción que todavía no sabe manejar, y le enseña que sentir enojo tiene consecuencias. Aprende a esconderlo, no a atravesarlo.</p>
-      </div>
-      <div class="fail">
-        <h3>Explicarle por qué no debe enojarse.</h3>
-        <p>Las palabras entran cuando el cuerpo ya bajó. Antes, no. Estás hablándole a alguien que no está en casa.</p>
-      </div>
+      <figure class="foto-ancha">
+        <img src="img/rincon-montado.webp" width="1000" height="1250" alt="El rincón de la calma montado en casa: cojín, manta y las láminas colgadas en la pared" decoding="async">
+        <figcaption>El rincón montado en casa, con el termómetro y las estrategias a la altura de sus ojos.</figcaption>
+      </figure>
     </div>
-
-    <p style="margin-top:2.75rem"><strong>Y aquí está la pieza que falta:</strong></p>
-    <blockquote class="pull">
-      <p>La calma no se enseña durante la crisis. Se entrena antes, en frío, cuando todo está tranquilo — igual que un simulacro de incendio.</p>
-    </blockquote>
-    <p style="margin-top:1.75rem">Eso es exactamente lo que hace este kit.</p>
   </div>
 </section>
 
-<!-- ====================== 4 · QUÉ ES ====================== -->
-<section data-seccion="04-que-es">
-  <div class="wrap what__grid reveal">
-    <div class="narrow">
-      <h2>Un rincón. Doce estrategias. Un plan de cuatro semanas.</h2>
-      <p><strong>Mi Rincón de la Calma</strong> convierte una esquina de tu casa —un cojín, una manta, un peluche— en el lugar al que tu hijo va cuando algo se siente demasiado grande.</p>
-      <p>No es un castigo. No es el rincón de pensar. Es un espacio con herramientas visuales colgadas a la altura de sus ojos, donde tu hijo aprende, contigo al lado, la habilidad más importante de la infancia: <strong>volver a la calma por sí mismo.</strong></p>
-      <p>Y no lo tienes que inventar tú. Está todo diseñado, ilustrado y listo para imprimir.</p>
-      <p style="margin-top:1.75rem"><a class="btn-ghost" href="#incluye">Ver qué incluye ↓</a></p>
-    </div>
-
-    <figure class="what__fig shot reveal">
-      <img src="img/rincon-montado.webp" width="1000" height="1250" loading="lazy" decoding="async"
-           alt="Un rincón de la calma montado junto a una ventana: un cojín de suelo, una manta doblada, un peluche, una cesta con tarjetas y tres pósters del kit colgados en la pared a la altura de un niño.">
+<!-- ══ 5 · QUÉ INCLUYE ═══════════════════════════════════════════════════ -->
+<section class="filete" data-seccion="05-incluye">
+  <div class="wrap">
+    <p class="eyebrow">Qué incluye</p>
+    <h2>Las 21 hojas, una por una</h2>
+        <figure class="foto-ancha">
+      <img src="img/kit-21-hojas.webp" width="1500" height="844" alt="Las 21 hojas del kit impresas y extendidas sobre una mesa" loading="lazy" decoding="async">
+      <figcaption>Las 21 hojas impresas y listas para recortar.</figcaption>
     </figure>
-  </div>
-</section>
-
-<!-- ====================== 5 · QUÉ INCLUYE ====================== -->
-<section class="alt" id="incluye" data-seccion="05-que-incluye">
-  <div class="wrap reveal">
-    <div class="narrow">
-      <p class="eyebrow">21 páginas · 13 materiales</p>
-      <h2>Las 21 páginas, una por una</h2>
-    </div>
-
-    <figure class="shot reveal" style="margin-top:2.5rem">
-      <img src="img/kit-21-hojas.webp" width="1500" height="844" loading="lazy" decoding="async"
-           alt="Las 21 páginas del kit impresas y extendidas sobre una mesa de madera: el termómetro de las emociones, la ruleta ¿qué me ayuda hoy?, las afirmaciones positivas y las tarjetas de emociones, junto a unos lápices de colores y unas tijeras.">
-      <figcaption>Las 21 páginas del kit, impresas y listas para recortar.</figcaption>
-    </figure>
-
-    <ol class="cards">
-      <li class="card reveal">
-        <span class="card__n">01</span>
-        <h3>El Termómetro de las Emociones</h3>
-        <p>Cinco niveles con nombre e ilustración: Lago quieto, Brisa, Cosquillas molestas, Olla caliente, Volcán. Deja de preguntar «¿qué te pasa?» y empieza a preguntar «¿en qué número estás?». Es la diferencia entre un niño que no sabe explicarse y uno que te señala un número.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">02</span>
-        <h3>Doce estrategias de calma ilustradas</h3>
-        <p class="strategies">Flor y Vela · Respiración del Cuadrado · Abrazo de Mariposa · Aprieta y Suelta · 5-4-3-2-1 · Cuenta Regresiva · Vaso de Agua · Empuja la Pared · Abrazo Fuerte · Dibuja tu Emoción · Botella de la Calma · Ponle Nombre.</p>
-        <p>Doce, no una: porque el niño al que la respiración lo enoja más necesita empujar una pared, y ahora tienes las dos opciones.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">03</span>
-        <h3>Doce tarjetas de emociones con sensación corporal</h3>
-        <p>Enojo («fuego en el pecho»), Miedo («mariposas frías»), Vergüenza («calor en la cara»)… Cada emoción con el nombre y con dónde se siente. Así aprende a identificarla antes de que lo tumbe.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">04</span>
-        <h3>La ruleta «¿Qué me ayuda hoy?»</h3>
-        <p>Recorta, pon un broche y listo. Elegir su propia estrategia le devuelve la sensación de control — que es justo lo que perdió durante el desborde.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">05</span>
-        <h3>Póster «Mi Rincón de la Calma»</h3>
-        <p>El cartel para la pared, con las tres reglas del rincón escritas para él.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">06</span>
-        <h3>«Mi cuerpo me avisa»</h3>
-        <p>Las cinco señales tempranas: calor en la cara, corazón rápido, nudo en la panza, puños apretados, ganas de llorar. Cuando las reconoce a tiempo, calmarse deja de ser una batalla.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">07</span>
-        <h3>Dos hojas «Después de la calma»</h3>
-        <p>Una para 3–5 años (para rodear y dibujar, junto a ti) y otra para 6–9 años (para escribir). La conversación que sí sirve, en el momento en que sí sirve: después.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">08</span>
-        <h3>Ocho tarjetas de afirmaciones</h3>
-        <p class="strategies"><em>«Puedo sentir cosas grandes y estar a salvo.» · «Las emociones son como nubes: llegan y se van.» · «No soy mi enojo. Soy quien aprende a calmarlo.»</em></p>
-        <p>Para leer en voz alta. Su propia voz también lo calma.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">09</span>
-        <h3>«Mi semana en colores»</h3>
-        <p>Un registro semanal —mañana, tarde y noche— para marcar con el color del termómetro. En tres semanas vas a ver un patrón que hoy no ves: a qué hora, qué día, después de qué.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">10</span>
-        <h3>La Guía para Padres</h3>
-        <p>Cómo montar el rincón, cómo presentarlo (esto define si funciona o no), qué decir exactamente en plena crisis, y los tres errores que arruinan el rincón el primer día.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">11</span>
-        <h3>«Por qué funciona»</h3>
-        <p>La explicación clínica, en dos minutos y sin jerga, de qué está haciendo cada estrategia en el cuerpo de tu hijo. Para que no las apliques a ciegas.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">12</span>
-        <h3>Tu Plan de 4 Semanas</h3>
-        <p>El calendario semana por semana. Qué hacer la semana 1 (nada de crisis todavía), la 2, la 3 y la 4. Sin esto, la mayoría abandona el día seis.</p>
-      </li>
-      <li class="card reveal">
-        <span class="card__n">13</span>
-        <h3>«Cuándo no funciona»</h3>
-        <p>Qué hacer si se niega a ir al rincón, si respirar lo enoja más, si parece que «no te hace caso» — y en qué momento esto ya no basta y toca buscar ayuda profesional.</p>
-      </li>
-    </ol>
-
-    <div class="cta-block narrow">
-      <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10&bid=1786722058583&src=incluye" data-checkout data-cta="incluye">Quiero el kit — <span data-precio>$17 USD</span></a>
-      <p class="btn-note">Descarga inmediata · Garantía de 30 días</p>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== 6 · LA PARTE CLÍNICA ====================== -->
-<section class="clinic" data-seccion="06-parte-clinica">
-  <div class="wrap reveal">
-    <div class="narrow">
-      <h2>Esto no son ideas sueltas de Pinterest.</h2>
-      <p>Cada estrategia del kit está elegida por lo que hace en el sistema nervioso de un niño:</p>
-    </div>
-
-    <div class="grid">
-      <div>
-        <h3>Exhalar largo, no respirar hondo.</h3>
-        <p>La exhalación prolongada activa el nervio vago y enciende el freno natural del cuerpo. Por eso «sopla la vela despacio» calma, y «respira hondo» muchas veces no hace nada.</p>
-      </div>
-      <div>
-        <h3>Empujar, apretar, abrazar fuerte.</h3>
-        <p>La presión profunda organiza el sistema nervioso y le da a la energía del enojo una salida segura. Para muchos niños el cuerpo tiene que ir antes que el aire.</p>
-      </div>
-      <div>
-        <h3>Anclar en los sentidos.</h3>
-        <p>5-4-3-2-1, el vaso de agua fría: sacan al niño del modo alarma y vuelven a encender la parte pensante de su cerebro.</p>
-      </div>
-      <div>
-        <h3>Ponerle nombre.</h3>
-        <p>Nombrar la emoción baja su intensidad. Por eso «estoy sintiendo enojo» funciona mejor que «no estés enojado».</p>
-      </div>
-    </div>
-
-    <p class="disclaimer narrow">Kit desarrollado por una psicóloga clínica, sobre principios básicos de regulación emocional y desarrollo. Es una herramienta de acompañamiento; no sustituye la evaluación ni el tratamiento de un profesional de salud mental.</p>
-  </div>
-</section>
-
-<!-- ====================== 7 · LA VERDAD INCÓMODA ====================== -->
-<section data-seccion="07-plan-4-semanas">
-  <div class="wrap narrow reveal">
-    <h2>Esto no va a funcionar el lunes.</h2>
-    <p>Te lo digo antes de que pagues, no después.</p>
-    <p>Calmarse es una <strong>habilidad</strong>, no un interruptor. Se entrena, como amarrarse los zapatos. La primera vez que le ofrezcas el rincón en plena crisis, es probable que te diga que no. Eso es normal y está previsto en el kit.</p>
-    <p>Por eso adentro tienes un plan de cuatro semanas, no una hoja suelta:</p>
-
-    <ol class="plan">
-      <li data-n="1">
-        <h3>Presentar en calma.</h3>
-        <p>Montan el rincón juntos. No se usa en crisis todavía. Juegan a nombrar emociones con las tarjetas.</p>
-      </li>
-      <li data-n="2">
-        <h3>Practicar en verde.</h3>
-        <p>Ensayan dos estrategias cuando está tranquilo, como juego. Se entrena antes de necesitarlas.</p>
-      </li>
-      <li data-n="3">
-        <h3>Acompañar en crisis.</h3>
-        <p>En el próximo desborde, tú lo llevas y regulan juntos. Sin exigir, sin castigo.</p>
-      </li>
-      <li data-n="4">
-        <h3>Hacia la autonomía.</h3>
-        <p>Empieza a ir solo, o a pedirlo.</p>
-      </li>
-    </ol>
-
-    <div class="honest">
-      <p>Si buscas que tu hijo deje de hacer berrinches mañana, este kit te va a decepcionar y prefiero que no lo compres.</p>
-      <p><strong>Si estás dispuesta a darle un mes, cambia la casa.</strong></p>
-    </div>
-
+<ul class="hojas">
+      <li class="hoja"><span class="num">01</span><h3>El Termómetro de las Emociones</h3><p>Cinco niveles con nombre: en vez de «¿qué te pasa?», «¿en qué número estás?».</p></li>
+      <li class="hoja"><span class="num">02</span><h3>Doce estrategias ilustradas</h3><p>Doce, no una: al que respirar lo enoja más, le toca empujar la pared.</p></li>
+      <li class="hoja"><span class="num">03</span><h3>Doce tarjetas de emociones</h3><p>Cada emoción con su nombre y dónde se siente: «fuego en el pecho».</p></li>
+      <li class="hoja"><span class="num">04</span><h3>La ruleta «¿Qué me ayuda hoy?»</h3><p>Recorta, pon un broche y elige. Elegir le devuelve el control que perdió.</p></li>
+      <li class="hoja"><span class="num">05</span><h3>Póster del rincón</h3><p>El cartel de la pared, con las tres reglas escritas para él.</p></li>
+      <li class="hoja"><span class="num">06</span><h3>«Mi cuerpo me avisa»</h3><p>Las cinco señales tempranas: calor en la cara, puños apretados, nudo en la panza.</p></li>
+      <li class="hoja"><span class="num">07</span><h3>Dos hojas «Después de la calma»</h3><p>Una para 3–5 años y otra para 6–9. La conversación, cuando ya sirve.</p></li>
+      <li class="hoja"><span class="num">08</span><h3>Ocho tarjetas de afirmaciones</h3><p>Para leer en voz alta: su propia voz también lo calma.</p></li>
+      <li class="hoja"><span class="num">09</span><h3>«Mi semana en colores»</h3><p>Registro semanal con el color del termómetro. Verás el patrón que hoy no ves.</p></li>
+      <li class="hoja"><span class="num">10</span><h3>La Guía para Padres</h3><p>Cómo montarlo, cómo presentarlo y los tres errores que lo arruinan el primer día.</p></li>
+      <li class="hoja"><span class="num">11</span><h3>«Por qué funciona»</h3><p>La explicación clínica, en dos minutos y sin jerga. Para no aplicarlo a ciegas.</p></li>
+      <li class="hoja"><span class="num">12</span><h3>Tu Plan de 4 Semanas</h3><p>Qué hacer cada semana, en orden, para no abandonarlo a los tres días.</p></li>
+      <li class="hoja"><span class="num">13</span><h3>«Cuándo no funciona»</h3><p>Si se niega, si respirar lo enoja, y cuándo toca buscar ayuda profesional.</p></li>
+    </ul>
     <div class="cta-block">
-      <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10&bid=1786722058583&src=plan" data-checkout data-cta="plan">Quiero el kit — <span data-precio>$17 USD</span></a>
-      <p class="btn-note">Descarga inmediata · Garantía de 30 días</p>
+      <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10" data-checkout data-cta="incluye">Quiero el kit — <span data-precio>$17 USD</span></a>
+      <p class="cta-note">Descarga inmediata · Garantía de 30 días · Tamaño Carta</p>
     </div>
   </div>
 </section>
 
-<!-- ====================== 8 · QUIÉN ESTÁ DETRÁS ====================== -->
-<section class="alt about" data-seccion="08-quien-esta-detras">
-  <div class="wrap narrow reveal">
-    <h2>Quién hizo esto</h2>
-    <p>Soy psicóloga clínica. También soy mamá.</p>
-    <p>Este kit no nació en un consultorio: nació en mi propia casa, con mi propio hijo en el suelo y yo respirando en la cocina antes de volver a entrar.</p>
-    <p>Durante años expliqué estas herramientas una por una, en sesión, a madres que salían con apuntes en una servilleta. Un día me di cuenta de que estaba explicando siempre lo mismo, y que todas se iban con la misma pregunta: <em>«¿y esto no está en algún lado ya hecho?»</em>.</p>
-    <p>Ahora sí lo está. Es esto.</p>
-    <p class="sign">Una Vida Brillante</p>
-
-    <figure class="shot reveal" style="margin-top:2.5rem">
-      <img src="img/manos-recortando.webp" width="1200" height="800" loading="lazy" decoding="async"
-           alt="Manos recortando las tarjetas de emociones con unas tijeras, sobre una mesa con el termómetro de las emociones, lápices de colores y una taza de café.">
-    </figure>
-  </div>
-</section>
-
-<!-- ====================== 9 · PARA QUIÉN SÍ / NO ====================== -->
-<section data-seccion="09-para-quien">
-  <div class="wrap reveal">
-    <div class="narrow">
-      <h2>Para quién sí y para quién no</h2>
-    </div>
-
-    <div class="fit">
-      <div class="fit--yes">
-        <h3>Este kit es para ti si:</h3>
-        <ul>
-          <li>Tienes un hijo de entre 3 y 9 años</li>
-          <li>Los desbordes en tu casa terminan en gritos —suyos, tuyos, o los dos—</li>
-          <li>Ya intentaste «cuenta hasta diez» y la silla de pensar, y sabes que no funcionan</li>
-          <li>Quieres algo listo para imprimir, no otro libro de 300 páginas que no vas a leer</li>
-          <li>Estás dispuesta a acompañarlo cuatro semanas</li>
-        </ul>
-      </div>
-      <div class="fit--no">
-        <h3>Este kit no es para ti si:</h3>
-        <ul>
-          <li>Buscas que se porte bien de inmediato sin que tú cambies nada</li>
-          <li>Esperas usarlo como castigo («vete a tu rincón»)</li>
-          <li>Tu hijo tiene desbordes muy intensos o muy frecuentes para su edad y todavía no lo ha visto un profesional — en ese caso, esto acompaña, pero primero busca evaluación</li>
-          <li>No tienes cómo imprimir ni acceso a una papelería</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== 10 · PRECIO ====================== -->
-<section class="alt price" data-seccion="10-precio">
-  <div class="wrap reveal">
-    <p class="eyebrow">La oferta</p>
-    <h2>Lo que cuesta</h2>
-    <p class="compare">Una sola sesión de psicología infantil cuesta entre $50 y $90&nbsp;USD, y de ahí normalmente sales con dos o tres de estas herramientas anotadas a mano.</p>
-    <p class="compare">Aquí tienes las 21 páginas completas, ilustradas y listas para imprimir:</p>
-
-    <figure class="price__fig">
-      <img src="img/kit-detalle.webp" width="700" height="909" loading="lazy" decoding="async"
-           alt="Portada del kit imprimible Mi Rincón de la Calma.">
-      <figcaption>Archivo PDF · 21 páginas · A4 y Carta · lo descargas y lo imprimes tú</figcaption>
-    </figure>
-
-    <p class="price__tag">$<span data-precio-cifra>17</span><span class="moneda" data-moneda>USD</span></p>
-
-    <div class="forever">
-      <strong>Y lo imprimes para siempre:</strong>
-      Cuando se rompa, se manche o lo pinte tu hijo de dos años — lo vuelves a imprimir. Sin límite. También sirve para el hermano que viene después.
-    </div>
-
-    <div class="cta-block narrow">
-      <a class="btn btn--lg" href="https://pay.hotmart.com/P106868890T?checkoutMode=10&bid=1786722058583&src=precio" data-checkout data-cta="precio">Descargar mi kit — <span data-precio>$17 USD</span></a>
-      <p class="btn-note">Pago seguro a través de Hotmart · Recibes el PDF en tu correo en menos de 2 minutos · Formato A4 y Carta</p>
-    </div>
-
-    <ul class="trust">
-      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg> Pago seguro</li>
-      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"/></svg> Descarga inmediata</li>
-      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.2-2.8 7.6-7 9-4.2-1.4-7-4.8-7-9V6l7-3z"/></svg> Garantía de 30 días</li>
+<!-- ══ 6 · FRANJA DE CIFRAS ══════════════════════════════════════════════ -->
+<section class="alt cifras" data-seccion="06-cifras" aria-label="El kit en cifras">
+  <div class="wrap">
+    <ul>
+      <li><b>21</b><span>hojas listas para imprimir</span></li>
+      <li><b>12</b><span>estrategias de calma</span></li>
+      <li><b>4</b><span>semanas de plan</span></li>
+      <li><b>3–9</b><span>años de edad</span></li>
     </ul>
   </div>
 </section>
 
-<!-- ====================== 11 · GARANTÍA ====================== -->
-<section data-seccion="11-garantia">
-  <div class="wrap reveal">
-    <div class="guarantee">
-      <svg class="shield" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8 3.4v6.6c0 4.8-3.2 8.7-8 10.2-4.8-1.5-8-5.4-8-10.2V5.9l8-3.4z"/><path d="M8.6 12.2l2.3 2.3 4.5-4.6"/></svg>
-      <h2>Si no te sirve, no lo pagas.</h2>
-      <p>Tienes <strong>30 días</strong> desde tu compra para escribirme y pedir la devolución completa. No tienes que explicarme por qué. No te voy a pedir que demuestres nada.</p>
-      <p>Prefiero devolverte $<span data-precio-cifra>17</span> antes que tener a una mamá con un PDF que no le sirvió.</p>
-      <p class="fineprint">Devolución gestionada directamente por Hotmart.</p>
+
+<!-- ══ 6b · CÓMO EMPIEZAS HOY ════════════════════════════════════════════ -->
+<section data-seccion="06b-como-empiezas">
+  <div class="wrap">
+    <h2>De pagar a tenerlo en la pared:<br>una tarde.</h2>
+    <div class="que-es">
+      <ol class="pasos">
+        <li><span class="paso-n">1</span><h3>Lo descargas</h3><p>Recibes el PDF en tu correo en menos de dos minutos. No se envía nada físico.</p></li>
+        <li><span class="paso-n">2</span><h3>Lo imprimes</h3><p>En casa a color, o en la papelería de la esquina. Tamaño Carta, papel normal.</p></li>
+        <li><span class="paso-n">3</span><h3>Montan el rincón</h3><p>Un cojín, una manta, cinta y media hora. Esta noche el rincón ya existe.</p></li>
+      </ol>
+      <figure class="foto-ancha">
+        <img src="img/manos-recortando.webp" width="1200" height="800" alt="Unas manos recortando las tarjetas del kit sobre una mesa" loading="lazy" decoding="async">
+        <figcaption>Lo único que hay que comprar aparte: unas tijeras y cinta.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ====================== 12 · TESTIMONIOS ======================
-     BLOQUE OCULTO A PROPÓSITO. No se publica hasta tener 6 testimonios
-     REALES de este kit (ver documento 02). Para activarlo: quita el
-     atributo hidden de la etiqueta <section> y sustituye las citas.
-================================================================= -->
-<section class="alt" id="testimonios" hidden>
-  <div class="wrap narrow center">
+<!-- ══ 7 · LA VERDAD INCÓMODA ════════════════════════════════════════════ -->
+<section class="alt" data-seccion="07-verdad">
+  <div class="wrap">
+    <h2>Esto no va a funcionar el lunes.</h2>
+    <p>Te lo digo antes de que pagues. Calmarse es una habilidad, no un interruptor: la primera vez que le ofrezcas el rincón en crisis es probable que te diga que no. Por eso adentro hay un plan, no una hoja suelta.</p>
+    <ol class="timeline">
+      <li><span class="punto" aria-hidden="true"></span><span class="sem">Semana 1</span><h3>Presentar en calma</h3><p>Montan el rincón juntos. Nada de crisis todavía: solo jugar a nombrar emociones.</p></li>
+      <li><span class="punto" aria-hidden="true"></span><span class="sem">Semana 2</span><h3>Practicar en verde</h3><p>Ensayan dos estrategias cuando está tranquilo, como juego. Antes de necesitarlas.</p></li>
+      <li><span class="punto" aria-hidden="true"></span><span class="sem">Semana 3</span><h3>Acompañar en crisis</h3><p>En el próximo desborde tú lo llevas y se regulan juntos. Sin exigir, sin castigo.</p></li>
+      <li><span class="punto" aria-hidden="true"></span><span class="sem">Semana 4</span><h3>Hacia la autonomía</h3><p>Empieza a ir solo, o a pedirlo. Tú ya solo acompañas desde la puerta.</p></li>
+    </ol>
+    <p class="remate">Si buscas que deje de hacer berrinches mañana, prefiero que no lo compres.</p>
+    <div class="cta-block">
+      <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10" data-checkout data-cta="plan">Quiero el kit — <span data-precio>$17 USD</span></a>
+      <p class="cta-note">Descarga inmediata · Garantía de 30 días · Tamaño Carta</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8 · CUANDO PASA DELANTE DE TODOS ══════════════════════════════════ -->
+<section data-seccion="08-fuera-de-casa">
+  <div class="wrap">
+    <h2>¿Y cuando pasa en el súper?</h2>
+    <p>El rincón vive en casa, colgado en la pared. En el súper no tienes pared ni termómetro: tienes un pasillo, gente mirando y treinta segundos. Lo único que llevas encima son las estrategias que ya practicaron en casa.</p>
+    <p class="nota-upsell">Al pagar te ofrecemos el Pack Calma Portátil por $9: las mismas estrategias en tarjetas de bolsillo, para el coche y para la mochila.</p>
+    <figure class="cita">
+      <p>«Mi hijo estaba llorando porque se cayó y me dijo: “quiero llorar un poquito más, mami”. Las otras mamás me regresaron a ver con sorpresa. No sabía que mi hijo entendía sus emociones a este nivel. Gracias.»</p>
+      <footer><span class="avatar" aria-hidden="true">M</span><span><cite>Mamá de un niño de 6 años</cite></span></footer>
+    </figure>
+  </div>
+</section>
+
+<!-- ══ 9 · TESTIMONIOS ═══════════════════════════════════════════════════ -->
+<section class="alt" data-seccion="09-testimonios">
+  <div class="wrap">
     <p class="eyebrow">Lo que cuentan otras madres</p>
     <h2>Lo que pasó en otras casas</h2>
-    <blockquote class="pull" style="border:0;padding:0;margin-top:2.5rem;text-align:center">
-      <p>«El tercer día fue solo a sentarse. No me dijo nada, solo fue. Casi lloro.»</p>
-      <p class="small" style="font-style:normal;margin-top:.75rem"><strong>— Mamá de Mateo, 5 años</strong></p>
-    </blockquote>
-    <blockquote class="pull" style="border:0;padding:0;margin-top:2.5rem;text-align:center">
-      <p>«Lo que más me sirvió no fue para él, fue la hoja de las frases. Yo ya no grito primero.»</p>
-      <p class="small" style="font-style:normal;margin-top:.75rem"><strong>— Mamá de Sofía, 7 años, y Emilia, 4</strong></p>
-    </blockquote>
-  </div>
-</section>
-
-<!-- ====================== 13 · FAQ ====================== -->
-<section data-seccion="13-faq">
-  <div class="wrap reveal">
-    <div class="narrow">
-      <h2>Preguntas frecuentes</h2>
-    </div>
-
-    <div class="faq">
-      <details>
-        <summary>¿Cómo lo recibo?</summary>
-        <div class="answer"><p>Es un archivo digital. Apenas se confirma tu pago, Hotmart te envía el PDF a tu correo. No se envía nada físico.</p></div>
-      </details>
-      <details>
-        <summary>¿Necesito impresora a color?</summary>
-        <div class="answer"><p>Sí, funciona mucho mejor a color porque los niños usan el color para identificar el nivel del termómetro. Si no tienes impresora, llévalo a una papelería: imprimir las 21 páginas a color cuesta muy poco y quedan mejor.</p></div>
-      </details>
-      <details>
-        <summary>¿Cuántas veces puedo imprimirlo?</summary>
-        <div class="answer"><p>Las que quieras, siempre, para los hijos que tengas. Solo es para uso familiar, no para revender ni repartir.</p></div>
-      </details>
-      <details>
-        <summary>¿Sirve para un niño de 3 años?</summary>
-        <div class="answer"><p>Sí. Las estrategias y las tarjetas funcionan desde los 3 con tu acompañamiento, y hay una hoja de reflexión hecha específicamente para 3–5 años (solo dibujar y rodear).</p></div>
-      </details>
-      <details>
-        <summary>¿Y si mi hijo tiene 10?</summary>
-        <div class="answer"><p>Está diseñado hasta los 9. A partir de ahí muchos niños sienten las ilustraciones «de bebés». El termómetro y las estrategias les siguen sirviendo, pero no te lo prometo como hecho para su edad.</p></div>
-      </details>
-      <details>
-        <summary>Mi hijo tiene TDAH / está en evaluación por autismo. ¿Le sirve?</summary>
-        <div class="answer"><p>Muchas de estas estrategias son las mismas que se usan en esos contextos, y varias familias las encuentran útiles. Pero este kit no es un tratamiento ni está adaptado a un diagnóstico específico: úsalo como apoyo y sigue lo que te indique el profesional que lo atiende.</p></div>
-      </details>
-      <details>
-        <summary>¿Tengo que estar yo presente?</summary>
-        <div class="answer"><p>Las primeras semanas, sí. Esa es justamente la parte que funciona. Hacia la semana 4 empieza a ir solo.</p></div>
-      </details>
-      <details>
-        <summary>¿Y si no funciona?</summary>
-        <div class="answer"><p>Tienes 30 días para pedir la devolución completa, sin explicaciones.</p></div>
-      </details>
+    <div class="rejilla">
+      <figure class="cita">
+        <p>«Me costó enseñarle al inicio, creo que es porque yo tampoco sabía cómo regularme. Luego lo hicimos juntas, y ahora ya sabemos cuándo nos vamos a enojar y hasta lo hacemos como juego.»</p>
+        <footer><span class="avatar" aria-hidden="true">M</span><span><cite>Mamá de una niña de 5 años</cite></span></footer>
+      </figure>
+      <figure class="cita">
+        <p>«Ya conocía varias de estas técnicas y me sirvieron mucho. Mi hijo ahora es preadolescente y seguimos usándolas, pero con el kit es más fácil: no tengo que aprendérmelas de memoria y él entiende cómo calmarse solo.»</p>
+        <footer><span class="avatar" aria-hidden="true">M</span><span><cite>Mamá de un niño de 9 años</cite></span></footer>
+      </figure>
+      <figure class="cita">
+        <p>«Me gustó que sea fácil de usar. Yo sabía todas estas técnicas, pero la verdad es difícil aprendérselas todas. El kit imprimible me da una organización y una simplicidad que me queda perfecta.»</p>
+        <footer><span class="avatar" aria-hidden="true">M</span><span><cite>Mamá de niñas de 5 y 9 años</cite></span></footer>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ====================== 14 · CIERRE ====================== -->
-<section class="closing" data-seccion="14-cierre">
-  <div class="wrap narrow reveal">
-    <h2>Esta noche va a haber otro berrinche.</h2>
-    <p>La diferencia es si te agarra otra vez con las manos vacías — o con un rincón preparado, doce estrategias en la pared y cinco frases que sí sabes decir.</p>
 
-    <p class="price__tag">$<span data-precio-cifra>17</span><span class="moneda" data-moneda>USD</span></p>
-
-    <div class="cta-block">
-      <a class="btn btn--lg" href="https://pay.hotmart.com/P106868890T?checkoutMode=10&bid=1786722058583&src=cierre" data-checkout data-cta="cierre">Descargar mi kit — <span data-precio>$17 USD</span></a>
-      <p class="btn-note">Descarga inmediata · Garantía de 30 días · Lo imprimes para siempre</p>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0" data-seccion="15-posdata">
-  <div class="wrap reveal">
-    <div class="ps">
-      <p class="label">PD.</p>
-      <p>Si nada de esto te convence, quédate al menos con esto, que es gratis y es lo más importante de todo el kit: <strong>antes de corregirlo, regúlate tú.</strong> Baja el tono, afloja la cara, respira tú primero. El sistema nervioso de tu hijo se sincroniza con el tuyo. Los niños copian lo que ven, no lo que se les ordena.</p>
-      <p>Si eso solo ya te sirvió, imagínate las otras veinte páginas.</p>
-      <div class="cta-block" style="margin-top:1.75rem">
-        <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10&bid=1786722058583&src=pd" data-checkout data-cta="pd">Quiero el kit — <span data-precio>$17 USD</span></a>
-        <p class="btn-note">Descarga inmediata · Garantía de 30 días</p>
+<!-- ══ 9b · QUIÉN LO HIZO ════════════════════════════════════════════════ -->
+<section data-seccion="09b-autora">
+  <div class="wrap">
+    <h2>Quién hizo esto</h2>
+    <div class="que-es">
+      <div>
+        <p>Soy psicóloga clínica. También soy mamá. Este kit no nació en un consultorio: nació en mi casa, con mi hijo en el suelo y yo respirando en la cocina antes de volver a entrar.</p>
+        <p>En sesión veía siempre lo mismo: kits incompletos, manuales larguísimos y cada madre aplicando lo que podía, a su manera. Y para una madre el tiempo es oro.</p>
+        <p class="remate remate--sm">Por eso lo hice corto y concreto: lo imprimes, lo aplicas hoy, lo practican, lo repiten. Y de una.</p>
       </div>
+      <aside class="sello">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <p class="sello__t">Creado por psicóloga clínica</p>
+        <p class="sello__f">Una Vida Brillante</p>
+      </aside>
     </div>
   </div>
 </section>
 
-</main>
+<!-- ══ 10 · OFERTA + GARANTÍA ════════════════════════════════════════════ -->
+<section class="alt" data-seccion="10-precio">
+  <div class="wrap">
+    <h2>Lo que cuesta</h2>
+    <p class="tachado">Una sesión de psicología ronda los $50–90 USD. Esto son 21 hojas que se quedan en tu casa para siempre.</p>
+    <div class="precio-caja">
+      <p class="small" style="margin:0">Archivo PDF · 21 hojas · tamaño Carta</p>
+      <b class="precio"><span data-precio-cifra>$17</span><small data-moneda>USD</small></b>
+      <ul class="checks">
+        <li><span class="mark mark--si" aria-hidden="true">✓</span><span>Lo imprimes las veces que quieras, para siempre.</span></li>
+        <li><span class="mark mark--si" aria-hidden="true">✓</span><span>Sirve también para el hermano que viene después.</span></li>
+        <li><span class="mark mark--si" aria-hidden="true">✓</span><span>Garantía de 30 días, sin explicaciones y sin preguntas.</span></li>
+      </ul>
+      <a class="btn btn--lg" href="https://pay.hotmart.com/P106868890T?checkoutMode=10" data-checkout data-cta="precio">Quiero el kit — <span data-precio>$17 USD</span></a>
+      <p class="cta-note">Descarga inmediata · Garantía de 30 días · Tamaño Carta</p>
+    </div>
 
-<footer>
+    <!-- FAQ en acordeón -->
+    <div class="faq">
+      <details><summary>¿Cómo lo recibo?</summary><p>Es un archivo digital. Apenas se confirma el pago, Hotmart te envía el PDF a tu correo.</p></details>
+      <details><summary>¿Necesito impresora a color?</summary><p>Funciona mucho mejor a color: el niño identifica el nivel por el color. En una papelería cuesta muy poco.</p></details>
+      <details><summary>¿Cuántas veces puedo imprimirlo?</summary><p>Las que quieras, siempre, para los hijos que tengas. Es de uso familiar: no para revender ni repartir.</p></details>
+      <details><summary>¿Sirve para un niño de 3 años?</summary><p>Sí, con tu acompañamiento. Hay una hoja de reflexión hecha para 3–5 años: solo dibujar y rodear.</p></details>
+      <details><summary>¿Y si mi hijo tiene 10?</summary><p>Está diseñado hasta los 9. Después, muchos sienten las ilustraciones «de bebés»: le puede seguir sirviendo, pero no te lo prometo.</p></details>
+      <details><summary>Mi hijo tiene TDAH o está en evaluación por autismo. ¿Le sirve?</summary><p>Varias familias lo encuentran útil, pero no está adaptado a ningún diagnóstico ni sustituye la atención de un profesional. Úsalo como apoyo y sigue sus indicaciones.</p></details>
+      <details><summary>¿Tengo que estar yo presente?</summary><p>Las primeras semanas, sí: esa es justamente la parte que funciona. Hacia la cuarta empieza a ir solo.</p></details>
+      <details><summary>¿Y si no funciona?</summary><p>Tienes 30 días para pedir la devolución completa, sin explicaciones. La gestiona Hotmart.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11 · CIERRE ═══════════════════════════════════════════════════════ -->
+<section class="cierre center" data-seccion="11-cierre">
+  <div class="narrow">
+    <h2>Esta noche va a haber otro berrinche.</h2>
+    <p style="margin-inline:auto">La diferencia es si te agarra con las manos vacías o con el rincón ya montado. Lo imprimes hoy y lo estrenan esta misma tarde.</p>
+    <div class="cta-block">
+      <a class="btn btn--lg" href="https://pay.hotmart.com/P106868890T?checkoutMode=10" data-checkout data-cta="cierre">Quiero el kit — <span data-precio>$17 USD</span></a>
+      <p class="cta-note">Descarga inmediata · Garantía de 30 días · Tamaño Carta</p>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
   <div class="wrap">
     <nav aria-label="Enlaces legales">
       <a href="../politica-de-privacidad/">Política de privacidad</a>
       <a href="../terminos.html">Términos</a>
       <a href="mailto:hola@unavidabrillante.com">Contacto</a>
     </nav>
-    <p class="legal">Este material es una herramienta de acompañamiento educativo y no sustituye la evaluación, el diagnóstico ni el tratamiento de un profesional de salud mental.</p>
-    <p>© <span id="anio">2026</span> Una Vida Brillante</p>
+    <p class="legal">Este material es una herramienta de acompañamiento educativo creada por una psicóloga clínica y no sustituye la evaluación ni la atención de un profesional de salud mental.</p>
+    <p style="margin:.75rem 0 0">© <span id="anio">2026</span> Una Vida Brillante</p>
   </div>
 </footer>
 
-<!-- Barra fija de compra (solo móvil, aparece al pasar el hero) -->
-<div class="sticky" id="sticky" aria-hidden="true">
-  <div class="sticky__price">
-    <b data-precio>$17 USD</b>
-    <span>Descarga inmediata</span>
-  </div>
-  <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10&bid=1786722058583&src=sticky" data-checkout data-cta="sticky" tabindex="-1">Quiero el kit</a>
-</div>
-
-<!-- Aviso de cookies. Ni el píxel ni GA4 se cargan hasta que responda. -->
-<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
-  <div class="cookies__in">
-    <p>Usamos cookies propias y de terceros para ver qué partes de esta página ayudan de verdad y poder mejorarla. Si prefieres que no, la página funciona exactamente igual. <a href="../politica-de-privacidad/">Más información</a>.</p>
-    <div class="cookies__row">
-      <button class="no" type="button" data-cookies="no">Rechazar</button>
-      <button class="yes" type="button" data-cookies="yes">Aceptar</button>
-    </div>
-  </div>
-</div>
-
-<!-- Popup de salida — solo se activa si configuras mailerliteAction abajo -->
+<!-- Popup de salida — solo se activa si CONFIG.mailerliteAction tiene valor -->
 <div class="exit" id="exit" role="dialog" aria-modal="true" aria-labelledby="exit-title">
   <div class="exit__box">
     <button class="exit__close" type="button" data-exit-close aria-label="Cerrar">&times;</button>
@@ -1069,32 +677,38 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
       <form id="exit-form" method="post">
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="hp" for="exit-email">Tu correo</label>
-        <!-- MailerLite lee el correo del campo «fields[email]». Con name="email"
-             a secas recibe el envío sin la dirección dentro. -->
         <input id="exit-email" type="email" name="fields[email]" placeholder="Tu correo" required autocomplete="email">
-        <!-- Consentimiento RGPD. Sin premarcar y obligatorio: es lo que hace
-             defendible el opt-in simple, y además el endpoint de Brevo espera
-             el campo OPT_IN porque el formulario se creó con esa casilla. -->
+        <!-- Consentimiento RGPD: sin premarcar y obligatorio. El endpoint de
+             Brevo espera el campo OPT_IN porque el formulario se creó así. -->
         <label style="display:flex; gap:.5rem; align-items:flex-start; text-align:left; font-size:.85rem; line-height:1.4; margin:.85rem 0">
           <input type="checkbox" name="OPT_IN" value="1" required style="margin-top:.2rem; flex:0 0 auto">
           <span>Quiero recibir la hoja y los correos de <em>Una Vida Brillante</em> sobre calma y crianza. Puedo darme de baja cuando quiera.</span>
         </label>
         <button class="btn" type="submit">Enviármela gratis</button>
         <button class="no" type="button" data-exit-close>No, gracias</button>
-        <!-- Campos que exige el endpoint de Brevo. «email_address_check» es su
-             trampa antibots y tiene que viajar vacía: fuera de pantalla, nunca
-             con display:none. -->
+        <!-- «email_address_check» es la trampa antibots de Brevo: tiene que
+             viajar vacía y fuera de pantalla, nunca con display:none. -->
         <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px">
         <input type="hidden" name="locale" value="es">
       </form>
-      <p class="small center" style="margin-top:.75rem"><em>Sin spam. Te sales cuando quieras, con un clic.</em> <a href="https://unavidabrillante.com/politica-de-privacidad/" target="_blank" rel="noopener">Política de privacidad</a>.</p>
+      <p class="small center" style="margin-top:.75rem"><em>Sin spam. Te sales cuando quieras, con un clic.</em> <a href="../politica-de-privacidad/">Política de privacidad</a>.</p>
     </div>
     <div class="exit__ok" role="status" aria-live="polite">
-      <p class="tick" aria-hidden="true">✓</p>
+      <p class="tick" aria-hidden="true">&#10003;</p>
       <h2 tabindex="-1">Hecho. Revísalo en un minuto.</h2>
       <p>Te acabo de mandar la hoja a tu correo.</p>
       <p>Si en cinco minutos no la ves, mira en <strong>Promociones</strong> o en <strong>Spam</strong>. Y si la encuentras ahí, arrástrala a Principal: así lo siguiente que te mande te llega bien.</p>
       <p class="small" style="margin-top:1.25rem"><button class="no" type="button" data-exit-close>Seguir leyendo la página</button></p>
+    </div>
+  </div>
+</div>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <div class="cookies__in">
+    <p>Usamos cookies propias y de terceros para ver qué partes de esta página ayudan de verdad y poder mejorarla. Si prefieres que no, la página funciona exactamente igual. <a href="../politica-de-privacidad/">Más información</a>.</p>
+    <div class="cookies__row">
+      <button class="no" type="button" data-cookies="no">Rechazar</button>
+      <button class="yes" type="button" data-cookies="yes">Aceptar</button>
     </div>
   </div>
 </div>
@@ -1104,114 +718,43 @@ body.has-sticky{padding-bottom:calc(80px + var(--cookies-h,0px) + env(safe-area-
    CONFIGURACIÓN — lo único que hay que tocar para publicar
    ========================================================================= */
 const CONFIG = {
-  // 00. QUÉ PRODUCTO ES ESTA PÁGINA. Va dentro de todos los eventos de
-  //     medición, y es lo que te permitirá comparar esta landing con las de
-  //     los demás productos dentro de la MISMA cuenta de Analytics y del
-  //     MISMO píxel. Cada landing nueva cambia estas dos líneas y nada más.
-  producto: {
-    id: 'rincon-calma-estandar',
-    nombre: 'Mi Rincón de la Calma — Estándar'
-  },
-
-  // 0. EL PRECIO. Cámbialo aquí y solo aquí: se reescribe en los 6 botones,
-  //    en los dos precios grandes, en la barra fija, en la garantía, en la
-  //    descripción de Google y en los eventos de píxel y Analytics.
+  producto: { id: 'rincon-calma-estandar', nombre: 'Mi Rincón de la Calma — Estándar' },
   precio: 17,
   moneda: 'USD',
-
-  // 1. Pega aquí tu link de pago de Hotmart:
   checkoutUrl: 'https://pay.hotmart.com/P106868890T?checkoutMode=10&bid=1786722058583',
-  // 2. Pega aquí el ID de tu píxel de Meta (déjalo vacío y no se carga nada).
-  //    Conjunto de datos «Una Vida Brillante - Píxel de Facebook», propiedad
-  //    del portfolio comercial Una Vida Brillante (206448093637154).
   metaPixelId: '916361428769684',
-  // 3. ID de medición de Google Analytics 4.
-  //    Propiedad «Una Vida Brillante - GA4» (368734392) · flujo web 5030524421.
-  ga4Id: 'G-R80645DXN4',
-  // 4. URL de acción del formulario de MailerLite/Brevo.
-  //    Mientras esté vacía, el popup de salida NO aparece.
-  //    Puesta para Brevo el 2026-08-11: formulario «RINCON - Popup 5 frases»,
-  //    lista «RINCON - Lead regalo 5 frases».
+  analyticsId: 'G-R80645DXN4',
+  // URL de acción del formulario de Brevo. Mientras esté vacía, el popup de
+  // salida NO aparece. Puesta el 2026-08-11: formulario «RINCON - Popup 5
+  // frases», lista «RINCON - Lead regalo 5 frases».
   mailerliteAction: 'https://2638548b.sibforms.com/serve/MUIFAP7yElsE7uG-SAGDrYiQCKkjKowdFIYDRucvrQSP3I2PbOSVLLalGvVBzAW7Arj_0CxTdORnVud6fld4M4UzRJmgyOQ6D-Jt3pr5gqDP_qPWp9A8Ga2MaoUv7nsSYqunxJbaBsByh8LxtQzJl-8l2MRXSNEi98TUhqqLeNn1Y4j87CxRYLHJ5rCOpaZ4ChaooypcKuxGFW6P3A==',
-  // 5. Cómo se llama el campo del correo EN TU PLATAFORMA. Cada una usa el suyo
-  //    y si no coincide recibirás los envíos vacíos, sin ningún aviso de error:
-  //      · MailerLite → 'fields[email]'
-  //      · Brevo      → 'EMAIL'
-  //    Sácalo del código de inserción que te da la plataforma: es el atributo
-  //    name="..." del campo de correo. Copia ese, sea cual sea.
-  //    Puesto para Brevo el 2026-08-06. Confírmalo contra el código de
-  //    inserción de tu formulario antes de dar el embudo por bueno.
+  // Cómo se llama el campo del correo EN LA PLATAFORMA: MailerLite usa
+  // 'fields[email]' y Brevo 'EMAIL'. Si no coincide, los envíos llegan vacíos
+  // y sin ningún aviso de error.
   campoCorreo: 'EMAIL'
 };
 
-/* --- año del pie --- */
 document.getElementById('anio').textContent = new Date().getFullYear();
 
-/* --- precio: una sola variable para toda la página ------------------------
-   El valor escrito en el HTML es la red de seguridad para quien navegue sin
-   JavaScript; CONFIG.precio manda y lo reescribe todo al cargar. Si los dos
-   no coinciden, avisa en consola: la descripción de Google y el JSON-LD los
-   leen los buscadores ANTES de ejecutar este script, así que esos dos hay
-   que sincronizarlos a mano cuando cambies el precio de verdad.
--------------------------------------------------------------------------- */
+/* --- precio: una sola variable manda en toda la página ------------------- */
 (function(){
   const etiqueta = '$' + CONFIG.precio + ' ' + CONFIG.moneda;
-  let avisado = false;
-
-  function avisar(){
-    if (avisado) return;
-    avisado = true;
-    console.warn('[Rincón de la Calma] El precio escrito en el HTML no coincide con CONFIG.precio (' +
-      etiqueta + '). Se ha corregido en pantalla, pero actualiza también a mano el ' +
-      '<meta name="description"> y el JSON-LD del final: los buscadores los leen sin ejecutar JavaScript.');
-  }
-
-  const poner = (sel, valor) => document.querySelectorAll(sel).forEach(el => {
-    if (el.textContent.trim() !== String(valor)) avisar();
-    el.textContent = valor;
-  });
-  poner('[data-precio]', etiqueta);
-  poner('[data-precio-cifra]', CONFIG.precio);
-  poner('[data-moneda]', CONFIG.moneda);
-
-  const meta = document.querySelector('meta[name="description"]');
-  if (meta) meta.content = meta.content.replace(/\$\s*[\d.,]+\s*[A-Z]{3}/, etiqueta);
-
-  // El JSON-LD va al final del documento, después de este script: todavía no
-  // existe en el DOM cuando esto se ejecuta. Hay que esperar al parseo.
-  document.addEventListener('DOMContentLoaded', function(){
-    const ld = document.querySelector('script[type="application/ld+json"]');
-    if (!ld) return;
-    try {
-      const datos = JSON.parse(ld.textContent);
-      const oferta = datos['@graph'][0].offers;
-      if (oferta.price !== String(CONFIG.precio) || oferta.priceCurrency !== CONFIG.moneda) {
-        oferta.price = String(CONFIG.precio);
-        oferta.priceCurrency = CONFIG.moneda;
-        ld.textContent = JSON.stringify(datos);
-        avisar();
-      }
-    } catch (e) {}
-  });
+  document.querySelectorAll('[data-precio]').forEach(el => el.textContent = etiqueta);
+  document.querySelectorAll('[data-precio-cifra]').forEach(el => el.textContent = '$' + CONFIG.precio);
+  document.querySelectorAll('[data-moneda]').forEach(el => el.textContent = CONFIG.moneda);
 })();
 
-/* --- link de compra en todos los botones --- */
-const botones = document.querySelectorAll('[data-checkout]');
-botones.forEach(b => {
+/* --- link de compra en todos los botones, con el origen del clic --------- */
+document.querySelectorAll('[data-checkout]').forEach(b => {
   const sep = CONFIG.checkoutUrl.includes('?') ? '&' : '?';
   b.href = CONFIG.checkoutUrl + sep + 'src=' + (b.dataset.cta || 'boton');
   b.rel = 'noopener';
+  b.addEventListener('click', () => medir('begin_checkout', {
+    origen: b.dataset.cta, value: CONFIG.precio, currency: CONFIG.moneda
+  }));
 });
 
-/* Aviso en consola si la página se publica sin el link real de Hotmart:
-   los 7 botones llevarían a un 404 y no habría forma de notarlo desde fuera. */
-if (/REEMPLAZA-CON-TU-LINK/.test(CONFIG.checkoutUrl)) {
-  console.error('[Rincón de la Calma] checkoutUrl sigue siendo el marcador de posición: NINGÚN botón de compra funciona.');
-}
-
-/* --- medición: no se carga nada hasta que haya consentimiento -------------
-   RGPD. El píxel y GA4 se inyectan solo tras el "Aceptar" del aviso, y en la
-   misma visita en que se acepta (no hay que recargar). */
+/* --- medición: nada se carga hasta que haya consentimiento --------------- */
 function cargarMedicion(){
   if (window.__medicionLista) return;
   window.__medicionLista = true;
@@ -1230,213 +773,118 @@ function cargarMedicion(){
     });
   }
 
-  if (CONFIG.ga4Id) {
+  if (CONFIG.analyticsId) {
     const g = document.createElement('script');
-    g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.ga4Id;
+    g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.analyticsId;
     document.head.appendChild(g);
     window.dataLayer = window.dataLayer || [];
     window.gtag = function(){dataLayer.push(arguments)};
     gtag('js', new Date());
-    // producto_id viaja en TODOS los eventos: es lo que separa esta landing
-    // de las de los demás productos en los informes.
-    gtag('config', CONFIG.ga4Id, {
-      producto_id: CONFIG.producto.id,
-      producto_nombre: CONFIG.producto.nombre
+    gtag('config', CONFIG.analyticsId, {
+      producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre
     });
   }
-
-  // Los eventos que ocurrieron antes de aceptar cookies se guardaron en cola:
-  // se envían ahora, para no perder el recorrido de quien tardó en responder.
   cola.splice(0).forEach(e => medir(e.nombre, e.datos));
 }
 
-/* --- capa de eventos ------------------------------------------------------
-   Nada sale de aquí sin consentimiento: si gtag no existe todavía, el evento
-   se guarda en cola y se envía cuando la visitante acepte. Si dice que no,
-   la cola se descarta al cerrar la pestaña y no se envía nada nunca. */
+/* Si todavía no hay consentimiento, el evento espera en cola. Si dice que no,
+   la cola muere con la pestaña y no sale nada. */
 const cola = [];
 function medir(nombre, datos){
   const carga = Object.assign({
-    producto_id: CONFIG.producto.id,
-    producto_nombre: CONFIG.producto.nombre
+    producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre
   }, datos || {});
   if (window.gtag) gtag('event', nombre, carga);
   else if (cola.length < 40) cola.push({nombre: nombre, datos: datos});
 }
 
-/* --- aviso de cookies --- */
+
+
+/* --- aviso de cookies --------------------------------------------------- */
 (function(){
   const caja = document.getElementById('cookies');
   const previo = localStorage.getItem('uvb_cookies');
-
   if (previo === 'yes') { cargarMedicion(); return; }
   if (previo === 'no')  { return; }
 
   caja.hidden = false;
-  // reflow forzado en vez de requestAnimationFrame: rAF no se ejecuta en
-  // pestañas en segundo plano ni durante el prerender, y el aviso legal se
-  // quedaría fuera de pantalla sin que nadie lo notara.
-  void caja.offsetHeight;
+  void caja.offsetHeight;           /* reflow forzado: rAF no corre en prerender */
   caja.classList.add('is-on');
-
-  /* El aviso y la barra de compra viven los dos pegados abajo. Publicar la
-     altura del aviso deja que la barra se coloque encima en vez de quedar
-     tapada: en el móvil son los primeros segundos de la visita, justo cuando
-     más gente pulsa comprar. El alto se recalcula al girar el teléfono, que
-     es cuando el texto pasa de tres líneas a dos y cambia. */
-  const medirAviso = () =>
-    document.documentElement.style.setProperty('--cookies-h', caja.offsetHeight + 'px');
-  medirAviso();
-  document.body.classList.add('aviso-visible');
-  addEventListener('resize', medirAviso);
 
   caja.querySelectorAll('[data-cookies]').forEach(b => b.addEventListener('click', () => {
     const si = b.dataset.cookies === 'yes';
     localStorage.setItem('uvb_cookies', si ? 'yes' : 'no');
     caja.classList.remove('is-on');
-    // la barra baja a su sitio a la vez que el aviso se va, no después
-    removeEventListener('resize', medirAviso);
-    document.documentElement.style.setProperty('--cookies-h', '0px');
-    document.body.classList.remove('aviso-visible');
     setTimeout(() => { caja.hidden = true; }, 350);
     if (si) cargarMedicion();
   }));
 })();
 
 /* --- qué mide esta página -------------------------------------------------
-   ver_seccion        hasta qué sección llegó  → el embudo real de la página
-   begin_checkout     qué botón la mandó a Hotmart, y desde dónde
+   ver_seccion        hasta qué sección llegó  -> el embudo real
+   begin_checkout     qué botón la mandó a Hotmart
    abrir_faq          qué duda tenía antes de decidir
-   clic_indice        usó el enlace «Ver qué incluye»
-   respuesta_cookies  aceptó o rechazó (te dice cuánto dato te estás perdiendo)
+   respuesta_cookies  aceptó o rechazó (cuánto dato te estás perdiendo)
    generar_lead       dejó el correo en el popup de salida
    salida             hasta dónde bajó y cuánto tiempo estuvo
 -------------------------------------------------------------------------- */
-(function(){
-  const inicio = Date.now();
-  let profundidad = 0, ultimaSeccion = '01-hero';
+const inicio = Date.now();
+let profundidad = 0, ultimaSeccion = '01-hero';
 
-  /* Hasta dónde llegó. Una sola vez por sección y visita: lo que interesa es
-     el embudo (cuántas llegan a precio, cuántas se caen en la escena), no
-     cuántas veces pasó por delante haciendo scroll arriba y abajo. */
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver(entradas => {
-      entradas.forEach(e => {
-        if (!e.isIntersecting) return;
-        const nombre = e.target.dataset.seccion;
-        ultimaSeccion = nombre;
-        medir('ver_seccion', {seccion: nombre, orden: parseInt(nombre, 10)});
-        obs.unobserve(e.target);
-      });
-    }, {threshold: 0.35});
-    document.querySelectorAll('[data-seccion]').forEach(s => obs.observe(s));
-  }
-
-  /* Clic de compra: qué botón, desde qué punto de la página y tras cuánto rato */
-  botones.forEach(b => b.addEventListener('click', () => {
-    if (window.fbq) fbq('track', 'InitiateCheckout', {
-      content_name: CONFIG.producto.nombre, content_ids: [CONFIG.producto.id],
-      value: CONFIG.precio, currency: CONFIG.moneda
-    });
-    medir('begin_checkout', {
-      value: CONFIG.precio, currency: CONFIG.moneda,
-      origen: b.dataset.cta,            // hero · incluye · plan · precio · cierre · pd · sticky
-      seccion_alcanzada: ultimaSeccion,
-      segundos: Math.round((Date.now() - inicio) / 1000)
-    });
-  }));
-
-  document.querySelectorAll('.faq details').forEach(d => d.addEventListener('toggle', () => {
-    if (d.open) medir('abrir_faq', {pregunta: d.querySelector('summary').textContent.trim().slice(0, 90)});
-  }));
-
-  const indice = document.querySelector('.btn-ghost');
-  if (indice) indice.addEventListener('click', () => medir('clic_indice'));
-
-  document.querySelectorAll('[data-cookies]').forEach(b =>
-    b.addEventListener('click', () => medir('respuesta_cookies', {respuesta: b.dataset.cookies})));
-
-  const formulario = document.getElementById('exit-form');
-  if (formulario) formulario.addEventListener('submit', () => {
-    if (window.fbq) fbq('track', 'Lead', {content_name: CONFIG.producto.nombre});
-    medir('generar_lead', {ultima_seccion: ultimaSeccion});
-  });
-
-  addEventListener('scroll', () => {
-    const p = (scrollY + innerHeight) / document.documentElement.scrollHeight;
-    if (p > profundidad) profundidad = p;
-  }, {passive: true});
-
-  /* Al irse: cuánto leyó y cuánto tiempo estuvo. visibilitychange es el único
-     evento fiable en móvil — 'unload' no se dispara en iOS. */
-  let despedido = false;
-  addEventListener('visibilitychange', () => {
-    if (document.visibilityState !== 'hidden' || despedido) return;
-    despedido = true;
-    medir('salida', {
-      profundidad_max: Math.min(100, Math.round(profundidad * 100)),
-      ultima_seccion: ultimaSeccion,
-      segundos: Math.round((Date.now() - inicio) / 1000)
-    });
-  });
-})();
-
-/* --- barra fija de compra: aparece al pasar el hero --- */
-const hero = document.querySelector('.hero');
-const sticky = document.getElementById('sticky');
-const stickyBtn = sticky.querySelector('.btn');
 if ('IntersectionObserver' in window) {
-  new IntersectionObserver(([e]) => {
-    const on = !e.isIntersecting;
-    sticky.classList.toggle('is-on', on);
-    sticky.setAttribute('aria-hidden', on ? 'false' : 'true');
-    stickyBtn.tabIndex = on ? 0 : -1;
-    document.body.classList.toggle('has-sticky', on);
-  }, {rootMargin: '-60px 0px 0px 0px'}).observe(hero);
+  const obs = new IntersectionObserver(entradas => {
+    entradas.forEach(e => {
+      if (!e.isIntersecting) return;
+      ultimaSeccion = e.target.dataset.seccion;
+      medir('ver_seccion', {seccion: ultimaSeccion});
+      obs.unobserve(e.target);
+    });
+  }, {threshold: .35});
+  document.querySelectorAll('[data-seccion]').forEach(s => obs.observe(s));
 }
+document.querySelectorAll('.faq details').forEach(d => d.addEventListener('toggle', () => {
+  if (d.open) medir('abrir_faq', {pregunta: d.querySelector('summary').textContent.trim().slice(0, 90)});
+}));
+document.querySelectorAll('[data-cookies]').forEach(b =>
+  b.addEventListener('click', () => medir('respuesta_cookies', {respuesta: b.dataset.cookies})));
 
-/* --- entrada suave de las secciones ---------------------------------------
-   El contenido arranca invisible, así que hay una red de seguridad: si el
-   IntersectionObserver no existe o no llega a dispararse, se quita la clase
-   'js' y todo el texto aparece de golpe. Nunca puede quedarse una página en
-   blanco por culpa de una animación.
--------------------------------------------------------------------------- */
-const reveals = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
-  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.05});
-  reveals.forEach(el => io.observe(el));
+addEventListener('scroll', () => {
+  const p = (scrollY + innerHeight) / document.documentElement.scrollHeight;
+  if (p > profundidad) profundidad = p;
+}, {passive: true});
 
-  // Comprobación de que el observador realmente funciona en este navegador.
-  let vivo = false;
-  const latido = new IntersectionObserver(() => { vivo = true; latido.disconnect(); });
-  latido.observe(document.body);
-  setTimeout(() => { if (!vivo) document.documentElement.classList.remove('js'); }, 1500);
-} else {
-  document.documentElement.classList.remove('js');
-}
+/* Al irse. visibilitychange es el único evento fiable en móvil: 'unload' no se
+   dispara en iOS. */
+let despedido = false;
+addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'hidden' || despedido) return;
+  despedido = true;
+  medir('salida', {
+    profundidad_max: Math.min(100, Math.round(profundidad * 100)),
+    ultima_seccion: ultimaSeccion,
+    segundos: Math.round((Date.now() - inicio) / 1000)
+  });
+});
 
 /* --- popup de salida ------------------------------------------------------
    Escritorio: cuando el cursor sale por arriba (ya se está yendo).
-   Móvil: al ocultarse la pestaña (cambio de app o cierre), y solo si ya leyó
-   más de la mitad de la página. Antes se disparaba a los 45 s de inactividad
-   —o sea, mientras leía— y además secuestraba el botón «atrás» con pushState.
-   Las dos cosas contradicen el producto: esta página vende calma, no presión.
+   Móvil: al ocultarse la pestaña, o al subir de golpe hacia el inicio, y solo
+   si ya leyó más de la mitad. Nunca por inactividad: esta página vende calma,
+   no presión.
 -------------------------------------------------------------------------- */
 (function(){
   if (!CONFIG.mailerliteAction) return;              // sin lista configurada, no aparece
-  /* ?popup=1 fuerza la apertura y se salta la marca de «ya se mostró». Es la
-     única forma de verificar el popup sin ponerse a adivinar por qué no sale. */
+  /* ?popup=1 fuerza la apertura y se salta la marca de «ya se mostró»: es la
+     única forma de verificarlo sin adivinar por qué no sale. */
   const prueba = new URLSearchParams(location.search).get('popup') === '1';
   if (!prueba && localStorage.getItem('uvb_exit') === '1') return;
 
   const exit = document.getElementById('exit');
   const caja = exit.querySelector('.exit__box');
   const form = document.getElementById('exit-form');
-  const fondo = [document.querySelector('main'), document.querySelector('footer'), document.querySelector('header')];
+  // todo lo que hay detrás del diálogo se vuelve inerte mientras está abierto
+  const fondo = [...document.querySelectorAll('body > header, body > section, body > footer')];
   form.action = CONFIG.mailerliteAction;
-  // el campo se nombra según la plataforma (ver CONFIG.campoCorreo)
   document.getElementById('exit-email').name = CONFIG.campoCorreo || 'fields[email]';
   let abierto = false, origen = null;
 
@@ -1449,39 +897,35 @@ if ('IntersectionObserver' in window) {
     origen = document.activeElement;                 // para devolver el foco al cerrar
     exit.classList.add('is-on');
     localStorage.setItem('uvb_exit','1');
-    fondo.forEach(el => el && el.setAttribute('inert',''));
+    fondo.forEach(el => el.setAttribute('inert',''));
     exit.querySelector('#exit-email').focus({preventScroll:true});
   }
   function cerrar(){
     if (!abierto) return;
     abierto = false;
     exit.classList.remove('is-on');
-    fondo.forEach(el => el && el.removeAttribute('inert'));
+    fondo.forEach(el => el.removeAttribute('inert'));
     if (origen && origen.focus) origen.focus({preventScroll:true});
   }
 
   exit.querySelectorAll('[data-exit-close]').forEach(b => b.addEventListener('click', cerrar));
   exit.addEventListener('click', e => { if (e.target === exit) cerrar(); });
 
-  /* Envío sin recargar. Con un <form> normal el navegador se va de la página y
-     aterriza en la respuesta técnica de MailerLite ({"success":true}), que es
-     feo y además pierde a la persona justo cuando más interesada está.
-     mode:'no-cors' significa que no podemos leer la respuesta —MailerLite no
-     devuelve cabeceras CORS—, pero la petición sí llega y el alta se hace. Si
-     la red falla de verdad, cae al envío nativo de toda la vida. */
+  /* Envío sin recargar: con un <form> normal el navegador aterriza en la
+     respuesta técnica de Brevo y se pierde a la persona justo cuando más
+     interesada está. mode:'no-cors' impide leer la respuesta, pero la petición
+     llega y el alta se hace. Si la red falla, cae al envío nativo. */
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    if (window.fbq) fbq('track', 'Lead', {content_name: CONFIG.producto.nombre});
+    medir('generar_lead', {ultima_seccion: ultimaSeccion});
     if (form.website.value) { hecho(); return; }     // trampa para bots
     const boton = form.querySelector('button[type=submit]');
     const texto = boton.textContent;
     boton.disabled = true;
     boton.textContent = 'Enviando…';
     try {
-      await fetch(CONFIG.mailerliteAction, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: new FormData(form)
-      });
+      await fetch(CONFIG.mailerliteAction, {method:'POST', mode:'no-cors', body:new FormData(form)});
       hecho();
     } catch (err) {
       boton.disabled = false;
@@ -1492,7 +936,7 @@ if ('IntersectionObserver' in window) {
 
   function hecho(){
     exit.classList.add('is-ok');
-    exit.querySelector('.exit__ok h2').focus();       // lleva el foco al aviso
+    exit.querySelector('.exit__ok h2').focus();
   }
 
   document.addEventListener('keydown', e => {
@@ -1510,23 +954,19 @@ if ('IntersectionObserver' in window) {
   const leyoBastante = () =>
     (scrollY + innerHeight) / document.documentElement.scrollHeight > 0.55;
 
-  /* «Ya leyó bastante» se queda pegado una vez que pasa. Si se recalculara en
-     el momento de abrir, subir de vuelta al inicio lo volvería falso justo
-     cuando más falta hace. */
+  /* «Ya leyó bastante» se queda pegado: si se recalculara al abrir, subir de
+     vuelta al inicio lo volvería falso justo cuando más falta hace. */
   let leyo = leyoBastante();
   addEventListener('scroll', () => { if (leyoBastante()) leyo = true; }, {passive:true});
 
   if (prueba) {
     abrir();
   } else if (window.matchMedia('(max-width: 899px)').matches) {
-    /* Móvil. Dos señales de que se está yendo, porque la primera sola casi no
-       se ve: dispara con la pestaña ya oculta, así que solo lo nota quien
-       vuelve. */
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden' && leyo) abrir();
     });
-    /* Subir de golpe hacia el inicio después de haber leído es el equivalente
-       móvil de sacar el cursor por arriba: ya vio lo que quería ver. */
+    /* Subir de golpe hacia el inicio tras haber leído es el equivalente móvil
+       de sacar el cursor por arriba. */
     let ultimaY = scrollY, subida = 0;
     addEventListener('scroll', () => {
       const y = scrollY;
@@ -1549,21 +989,21 @@ if ('IntersectionObserver' in window) {
     {
       "@type":"Product",
       "name":"Mi Rincón de la Calma — kit imprimible de regulación emocional",
-      "description":"Kit imprimible de 21 páginas creado por una psicóloga clínica para que niños de 3 a 9 años aprendan a volver a la calma por sí mismos.",
+      "description":"Kit imprimible de 21 hojas creado por una psicóloga clínica para que niños de 3 a 9 años aprendan a volver a la calma por sí mismos.",
       "brand":{"@type":"Brand","name":"Una Vida Brillante"},
       "offers":{"@type":"Offer","price":"17","priceCurrency":"USD","availability":"https://schema.org/InStock"}
     },
     {
       "@type":"FAQPage",
       "mainEntity":[
-        {"@type":"Question","name":"¿Cómo lo recibo?","acceptedAnswer":{"@type":"Answer","text":"Es un archivo digital. Apenas se confirma tu pago, Hotmart te envía el PDF a tu correo. No se envía nada físico."}},
-        {"@type":"Question","name":"¿Necesito impresora a color?","acceptedAnswer":{"@type":"Answer","text":"Sí, funciona mucho mejor a color porque los niños usan el color para identificar el nivel del termómetro. Si no tienes impresora, llévalo a una papelería: imprimir las 21 páginas a color cuesta muy poco y quedan mejor."}},
-        {"@type":"Question","name":"¿Cuántas veces puedo imprimirlo?","acceptedAnswer":{"@type":"Answer","text":"Las que quieras, siempre, para los hijos que tengas. Solo es para uso familiar, no para revender ni repartir."}},
-        {"@type":"Question","name":"¿Sirve para un niño de 3 años?","acceptedAnswer":{"@type":"Answer","text":"Sí. Las estrategias y las tarjetas funcionan desde los 3 con tu acompañamiento, y hay una hoja de reflexión hecha específicamente para 3–5 años (solo dibujar y rodear)."}},
-        {"@type":"Question","name":"¿Y si mi hijo tiene 10?","acceptedAnswer":{"@type":"Answer","text":"Está diseñado hasta los 9. A partir de ahí muchos niños sienten las ilustraciones «de bebés». El termómetro y las estrategias les siguen sirviendo, pero no te lo prometo como hecho para su edad."}},
-        {"@type":"Question","name":"Mi hijo tiene TDAH / está en evaluación por autismo. ¿Le sirve?","acceptedAnswer":{"@type":"Answer","text":"Muchas de estas estrategias son las mismas que se usan en esos contextos, y varias familias las encuentran útiles. Pero este kit no es un tratamiento ni está adaptado a un diagnóstico específico: úsalo como apoyo y sigue lo que te indique el profesional que lo atiende."}},
-        {"@type":"Question","name":"¿Tengo que estar yo presente?","acceptedAnswer":{"@type":"Answer","text":"Las primeras semanas, sí. Esa es justamente la parte que funciona. Hacia la semana 4 empieza a ir solo."}},
-        {"@type":"Question","name":"¿Y si no funciona?","acceptedAnswer":{"@type":"Answer","text":"Tienes 30 días para pedir la devolución completa, sin explicaciones."}}
+        {"@type":"Question","name":"¿Cómo lo recibo?","acceptedAnswer":{"@type":"Answer","text":"Es un archivo digital. Apenas se confirma el pago, Hotmart te envía el PDF a tu correo."}},
+        {"@type":"Question","name":"¿Necesito impresora a color?","acceptedAnswer":{"@type":"Answer","text":"Funciona mucho mejor a color: el niño identifica el nivel por el color. En una papelería cuesta muy poco."}},
+        {"@type":"Question","name":"¿Cuántas veces puedo imprimirlo?","acceptedAnswer":{"@type":"Answer","text":"Las que quieras, siempre, para los hijos que tengas. Es de uso familiar: no para revender ni repartir."}},
+        {"@type":"Question","name":"¿Sirve para un niño de 3 años?","acceptedAnswer":{"@type":"Answer","text":"Sí, con tu acompañamiento. Hay una hoja de reflexión hecha para 3–5 años: solo dibujar y rodear."}},
+        {"@type":"Question","name":"¿Y si mi hijo tiene 10?","acceptedAnswer":{"@type":"Answer","text":"Está diseñado hasta los 9. Después, muchos sienten las ilustraciones «de bebés»: le puede seguir sirviendo, pero no te lo prometo."}},
+        {"@type":"Question","name":"Mi hijo tiene TDAH o está en evaluación por autismo. ¿Le sirve?","acceptedAnswer":{"@type":"Answer","text":"Varias familias lo encuentran útil, pero no está adaptado a ningún diagnóstico ni sustituye la atención de un profesional. Úsalo como apoyo y sigue sus indicaciones."}},
+        {"@type":"Question","name":"¿Tengo que estar yo presente?","acceptedAnswer":{"@type":"Answer","text":"Las primeras semanas, sí: esa es justamente la parte que funciona. Hacia la cuarta empieza a ir solo."}},
+        {"@type":"Question","name":"¿Y si no funciona?","acceptedAnswer":{"@type":"Answer","text":"Tienes 30 días para pedir la devolución completa, sin explicaciones. La gestiona Hotmart."}}
       ]
     }
   ]
