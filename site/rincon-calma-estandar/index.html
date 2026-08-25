@@ -754,7 +754,7 @@ document.querySelectorAll('[data-checkout]').forEach(b => {
   }));
 });
 
-/* --- medición: nada se carga hasta que haya consentimiento --------------- */
+/* --- medición: en Europa espera al consentimiento; fuera, carga directa --- */
 function cargarMedicion(){
   if (window.__medicionLista) return;
   window.__medicionLista = true;
@@ -800,12 +800,36 @@ function medir(nombre, datos){
 
 
 
-/* --- aviso de cookies --------------------------------------------------- */
+/* --- aviso de cookies ----------------------------------------------------
+   El consentimiento previo lo exige la normativa europea (RGPD + ePrivacy).
+   Fuera de Europa no aplica, y bloquear la medición ahí solo sirve para
+   quedarse sin datos: la campaña de Meta optimiza a ciegas.
+
+   Detectamos la zona por el huso horario del navegador. No sale ninguna
+   petición a un servicio externo, no se lee la IP y no se guarda nada:
+   es la comprobación más discreta que existe para esto.
+
+   · Huso "Europe/..."  -> se muestra el aviso y nada carga hasta el "Aceptar"
+   · Cualquier otro     -> la medición carga directamente, sin aviso
+   · Sin huso legible   -> se muestra el aviso (el lado prudente)
+-------------------------------------------------------------------------- */
+function zonaEuropea(){
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    return tz.indexOf('Europe/') === 0 || tz === 'Atlantic/Canary'
+        || tz === 'Atlantic/Madeira' || tz === 'Atlantic/Azores';
+  } catch (e) {
+    return true;                    /* si no se puede saber, se pregunta */
+  }
+}
+
 (function(){
   const caja = document.getElementById('cookies');
   const previo = localStorage.getItem('uvb_cookies');
   if (previo === 'yes') { cargarMedicion(); return; }
   if (previo === 'no')  { return; }
+
+  if (!zonaEuropea()) { cargarMedicion(); return; }
 
   caja.hidden = false;
   void caja.offsetHeight;           /* reflow forzado: rAF no corre en prerender */
