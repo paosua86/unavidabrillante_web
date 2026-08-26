@@ -750,14 +750,38 @@ document.querySelectorAll('[data-checkout]').forEach(b => {
   b.href = CONFIG.checkoutUrl + sep + 'src=' + (b.dataset.cta || 'boton');
   b.rel = 'noopener';
   b.addEventListener('click', () => medir('begin_checkout', {
-    origen: b.dataset.cta, value: CONFIG.precio, currency: CONFIG.moneda
+    origen: b.dataset.cta, seccion_alcanzada: ultimaSeccion,
+    value: CONFIG.precio, currency: CONFIG.moneda
   }));
 });
+
+/* --- no contarse a uno mismo ---------------------------------------------
+   Abre la página una vez con ?yo=1 en cada aparato tuyo (portátil, móvil, el
+   del trabajo) y a partir de ahí tus visitas dejan de contar: ni Analytics ni
+   píxel. Con ?yo=0 se deshace.
+
+   Va por aparato y no por IP a propósito: la IP de casa cambia sola cada pocos
+   días, no cubre el móvil con datos y no sirve cuando estás fuera. Un filtro de
+   IP daría la sensación de estar limpio sin estarlo. */
+const soyYo = (function(){
+  const p = new URLSearchParams(location.search).get('yo');
+  if (p === '1') localStorage.setItem('uvb_interno', '1');
+  if (p === '0') localStorage.removeItem('uvb_interno');
+  const interno = localStorage.getItem('uvb_interno') === '1';
+  if (p !== null) console.log(interno
+    ? 'Una Vida Brillante: este aparato ya NO cuenta en las estadísticas.'
+    : 'Una Vida Brillante: este aparato vuelve a contar en las estadísticas.');
+  return interno;
+})();
 
 /* --- medición: en Europa espera al consentimiento; fuera, carga directa --- */
 function cargarMedicion(){
   if (window.__medicionLista) return;
   window.__medicionLista = true;
+
+  /* Visita tuya: se marca como lista para que nada quede esperando en la cola,
+     pero no se carga ni Analytics ni el píxel, así que medir() no emite nada. */
+  if (soyYo) { cola.length = 0; return; }
 
   if (CONFIG.metaPixelId) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -790,12 +814,38 @@ function cargarMedicion(){
 /* Si todavía no hay consentimiento, el evento espera en cola. Si dice que no,
    la cola muere con la pestaña y no sale nada. */
 const cola = [];
+
+/* Los nombres de GA4 y los del píxel de Meta no coinciden, así que hay que
+   traducirlos. Sin esta tabla el píxel solo recibe ViewContent y Meta acaba
+   optimizando hacia quien abre la página, no hacia quien pulsa comprar. */
+const EVENTOS_META = {
+  begin_checkout: 'InitiateCheckout',
+  generar_lead:   'Lead'
+};
+
 function medir(nombre, datos){
   const carga = Object.assign({
     producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre
   }, datos || {});
+
+  /* La condición es que la medición esté cargada, no que exista gtag: si algún
+     día se quita Analytics y se deja solo el píxel, los eventos deben seguir
+     llegando a Meta en lugar de morir en la cola. */
+  if (!window.__medicionLista) {
+    if (cola.length < 40) cola.push({nombre: nombre, datos: datos});
+    return;
+  }
+
   if (window.gtag) gtag('event', nombre, carga);
-  else if (cola.length < 40) cola.push({nombre: nombre, datos: datos});
+
+  const evtMeta = EVENTOS_META[nombre];
+  if (evtMeta && window.fbq) fbq('track', evtMeta, {
+    content_name: CONFIG.producto.nombre,
+    content_ids: [CONFIG.producto.id],
+    content_type: 'product',
+    value: CONFIG.precio,
+    currency: CONFIG.moneda
+  });
 }
 
 
@@ -846,11 +896,15 @@ function zonaEuropea(){
 
 /* --- qué mide esta página -------------------------------------------------
    ver_seccion        hasta qué sección llegó  -> el embudo real
-   begin_checkout     qué botón la mandó a Hotmart
+   begin_checkout     qué botón la mandó a Hotmart (va también a Meta como
+                      InitiateCheckout: es el evento con el que la campaña
+                      aprende a buscar compradores y no solo curiosos)
    abrir_faq          qué duda tenía antes de decidir
    respuesta_cookies  aceptó o rechazó (cuánto dato te estás perdiendo)
    generar_lead       dejó el correo en el popup de salida
    salida             hasta dónde bajó y cuánto tiempo estuvo
+
+   Tus propias visitas no cuentan si abriste la página con ?yo=1 en ese aparato.
 -------------------------------------------------------------------------- */
 const inicio = Date.now();
 let profundidad = 0, ultimaSeccion = '01-hero';
