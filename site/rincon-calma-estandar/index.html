@@ -491,15 +491,15 @@ footer.pie nav{display:flex;flex-wrap:wrap;gap:1.25rem;margin-bottom:1rem}
       <li class="hoja"><span class="num">04</span><h3>La ruleta «¿Qué me ayuda hoy?»</h3><p>Recorta, pon un broche y elige. Elegir le devuelve el control que perdió.</p></li>
       <li class="hoja"><span class="num">05</span><h3>Póster del rincón</h3><p>El cartel de la pared, con las tres reglas escritas para él.</p></li>
       <li class="hoja"><span class="num">06</span><h3>«Mi cuerpo me avisa»</h3><p>Las cinco señales tempranas: calor en la cara, puños apretados, nudo en la panza.</p></li>
-      <li class="hoja"><span class="num">07</span><h3>Dos hojas «Después de la calma»</h3><p>Una para 3–5 años y otra para 6–9. La conversación, cuando ya sirve.</p></li>
+      <li class="hoja" data-seccion="05b-incluye-hoja07"><span class="num">07</span><h3>Dos hojas «Después de la calma»</h3><p>Una para 3–5 años y otra para 6–9. La conversación, cuando ya sirve.</p></li>
       <li class="hoja"><span class="num">08</span><h3>Ocho tarjetas de afirmaciones</h3><p>Para leer en voz alta: su propia voz también lo calma.</p></li>
       <li class="hoja"><span class="num">09</span><h3>«Mi semana en colores»</h3><p>Registro semanal con el color del termómetro. Verás el patrón que hoy no ves.</p></li>
       <li class="hoja"><span class="num">10</span><h3>La Guía para Padres</h3><p>Cómo montarlo, cómo presentarlo y los tres errores que lo arruinan el primer día.</p></li>
       <li class="hoja"><span class="num">11</span><h3>«Por qué funciona»</h3><p>La explicación clínica, en dos minutos y sin jerga. Para no aplicarlo a ciegas.</p></li>
       <li class="hoja"><span class="num">12</span><h3>Tu Plan de 4 Semanas</h3><p>Qué hacer cada semana, en orden, para no abandonarlo a los tres días.</p></li>
-      <li class="hoja"><span class="num">13</span><h3>«Cuándo no funciona»</h3><p>Si se niega, si respirar lo enoja, y cuándo toca buscar ayuda profesional.</p></li>
+      <li class="hoja" data-seccion="05c-incluye-hoja13"><span class="num">13</span><h3>«Cuándo no funciona»</h3><p>Si se niega, si respirar lo enoja, y cuándo toca buscar ayuda profesional.</p></li>
     </ul>
-    <div class="cta-block">
+    <div class="cta-block" data-seccion="05d-incluye-cta">
       <a class="btn" href="https://pay.hotmart.com/P106868890T?checkoutMode=10" data-checkout data-cta="incluye">Quiero el kit — <span data-precio>$17 USD</span></a>
       <p class="cta-note">Descarga inmediata · Garantía de 30 días · Tamaño Carta</p>
     </div>
@@ -909,6 +909,15 @@ function zonaEuropea(){
 const inicio = Date.now();
 let profundidad = 0, ultimaSeccion = '01-hero';
 
+/* El umbral de antes (35% del alto de la sección visible a la vez) no lo
+   alcanzaba nunca una sección más alta que unas tres pantallas: 05-incluye mide
+   3,4 pantallas en móvil, así que llegaba como mucho al 30% y jamás se contaba.
+   Aparecía con 1 usuario mientras la sección siguiente tenía 29, que es
+   imposible al bajar.
+
+   Ahora el margen negativo deja una franja fina en el centro de la pantalla y
+   se cuenta cuando el bloque la cruza. Da igual que mida media pantalla o
+   cuatro: el criterio es el mismo para todas. */
 if ('IntersectionObserver' in window) {
   const obs = new IntersectionObserver(entradas => {
     entradas.forEach(e => {
@@ -917,7 +926,7 @@ if ('IntersectionObserver' in window) {
       medir('ver_seccion', {seccion: ultimaSeccion});
       obs.unobserve(e.target);
     });
-  }, {threshold: .35});
+  }, {rootMargin: '-45% 0px -45% 0px', threshold: 0});
   document.querySelectorAll('[data-seccion]').forEach(s => obs.observe(s));
 }
 document.querySelectorAll('.faq details').forEach(d => d.addEventListener('toggle', () => {
