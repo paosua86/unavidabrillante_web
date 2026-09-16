@@ -731,7 +731,10 @@ const CONFIG = {
   // Cómo se llama el campo del correo EN LA PLATAFORMA: MailerLite usa
   // 'fields[email]' y Brevo 'EMAIL'. Si no coincide, los envíos llegan vacíos
   // y sin ningún aviso de error.
-  campoCorreo: 'EMAIL'
+  campoCorreo: 'EMAIL',
+  // Microsoft Clarity: grabaciones de sesion y mapas de calor. Vacio = no carga.
+  // El ID sale de clarity.microsoft.com -> Settings -> Overview.
+  clarityId: ''
 };
 
 document.getElementById('anio').textContent = new Date().getFullYear();
@@ -749,10 +752,18 @@ document.querySelectorAll('[data-checkout]').forEach(b => {
   const sep = CONFIG.checkoutUrl.includes('?') ? '&' : '?';
   b.href = CONFIG.checkoutUrl + sep + 'src=' + (b.dataset.cta || 'boton');
   b.rel = 'noopener';
-  b.addEventListener('click', () => medir('begin_checkout', {
-    origen: b.dataset.cta, seccion_alcanzada: ultimaSeccion,
-    value: CONFIG.precio, currency: CONFIG.moneda
-  }));
+  b.addEventListener('click', ev => {
+    /* Un rastreador recorre la pagina llamando a .click() sobre cada enlace.
+       Ese clic sintetico llega con isTrusted=false; el de un dedo o un raton,
+       con true. Es la unica senal que separa a los dos sin falsos positivos.
+       Sin esto, cinco bots produjeron 17 begin_checkout el 27-ago/2-sep y el
+       CVR quedaba inservible. */
+    if (!ev.isTrusted) return;
+    medir('begin_checkout', {
+      origen: b.dataset.cta, seccion_alcanzada: ultimaSeccion,
+      value: CONFIG.precio, currency: CONFIG.moneda
+    });
+  });
 });
 
 /* --- no contarse a uno mismo ---------------------------------------------
@@ -783,6 +794,11 @@ function cargarMedicion(){
      pero no se carga ni Analytics ni el píxel, así que medir() no emite nada. */
   if (soyYo) { cola.length = 0; return; }
 
+  /* Navegador pilotado por software (Selenium, Playwright, Puppeteer y la
+     mayoría de rastreadores comerciales). Se marcan solos con esta bandera y
+     no hay motivo para pagarles sitio en los informes. */
+  if (navigator.webdriver) { cola.length = 0; return; }
+
   if (CONFIG.metaPixelId) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -808,6 +824,15 @@ function cargarMedicion(){
       producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre
     });
   }
+  /* Clarity va detras del mismo consentimiento que GA4 y el pixel: graba la
+     pantalla, asi que en Europa no puede cargar antes del "Aceptar". */
+  if (CONFIG.clarityId) {
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})
+    (window,document,'clarity','script',CONFIG.clarityId);
+  }
+
   cola.splice(0).forEach(e => medir(e.nombre, e.datos));
 }
 
@@ -935,9 +960,26 @@ document.querySelectorAll('.faq details').forEach(d => d.addEventListener('toggl
 document.querySelectorAll('[data-cookies]').forEach(b =>
   b.addEventListener('click', () => medir('respuesta_cookies', {respuesta: b.dataset.cookies})));
 
+/* Hitos de profundidad. A GA4 NO se le mandan: ya tiene ver_seccion, que dice
+   mas (que seccion, no que porcentaje) y duplicarlo solo ensucia los informes.
+   Al pixel si, porque es lo unico que le permite construir publicos de
+   retargeting por profundidad de lectura: "llego al 75% y no pulso comprar" es
+   el publico mas caliente que hay y hoy se esta tirando a la basura.
+   Ojo: un publico de Meta no entrega bien por debajo de ~1.000 personas, asi
+   que esto no sirve manana; sirve dentro de unas semanas de acumular. */
+const HITOS = [25, 50, 75, 90];
+const hitosVistos = new Set();
 addEventListener('scroll', () => {
   const p = (scrollY + innerHeight) / document.documentElement.scrollHeight;
   if (p > profundidad) profundidad = p;
+  const pct = p * 100;
+  HITOS.forEach(h => {
+    if (pct < h || hitosVistos.has(h)) return;
+    hitosVistos.add(h);
+    if (window.fbq) fbq('trackCustom', 'Scroll' + h, {
+      content_ids: [CONFIG.producto.id], seccion: ultimaSeccion
+    });
+  });
 }, {passive: true});
 
 /* Al irse. visibilitychange es el único evento fiable en móvil: 'unload' no se
