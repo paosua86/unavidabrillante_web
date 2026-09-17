@@ -48,7 +48,27 @@ b{font-weight:600}
 .btn:hover{background:var(--fg);color:var(--bg)}
 .btn.solid{background:var(--fg);color:var(--bg)}
 .btn.solid:hover{opacity:.82}
+.lnk{display:inline-block;margin-top:1.4em;font-size:15px;color:var(--fg);text-decoration:none;border-bottom:1px solid var(--fg);padding-bottom:2px;opacity:.75}
+.lnk:hover{opacity:1}
 .legal{margin-top:2.2em;font-size:12px;color:var(--dim)}
+.n i{font-style:normal;opacity:.55}
+
+/* palabras que tiemblan: un temblor corto cada pocos segundos, no continuo, para no marear */
+.t{display:inline-block;animation:tiembla 2.6s ease-in-out infinite}
+@keyframes tiembla{0%,72%,100%{transform:none}74%{transform:translate(-1px,0) rotate(-1deg)}76%{transform:translate(1px,-1px) rotate(1deg)}
+  78%{transform:translate(-1px,1px) rotate(0)}80%{transform:translate(1px,0) rotate(1deg)}82%{transform:translate(-1px,-1px) rotate(-1deg)}84%{transform:none}}
+
+/* titulares: entran palabra por palabra */
+.lead .w{display:inline-block;opacity:0;transform:translateY(.35em);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.75,.2,1)}
+.in .lead .w{opacity:1;transform:none}
+
+/* flecha grande para continuar: se puede tocar */
+.flecha{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;width:56px;height:56px;border:0;background:transparent;
+  color:var(--fg);cursor:pointer;display:grid;place-items:center;transition:opacity .4s;animation:rebota 1.6s cubic-bezier(.45,0,.55,1) infinite}
+.flecha svg{width:34px;height:34px}
+.flecha.hide{opacity:0;pointer-events:none}
+@keyframes rebota{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+.flecha:active{animation-play-state:paused}
 .legal a{color:inherit}
 
 .r{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.75,.2,1)}
@@ -76,10 +96,8 @@ b{font-weight:600}
 .skip.show{opacity:.62;pointer-events:auto}
 .skip:hover{opacity:1;border-color:var(--fg)}
 
-.cue{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:30;font-size:10px;letter-spacing:.2em;color:var(--dim);
-  animation:b 2.2s infinite;transition:opacity .4s}
+.cue{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);z-index:30;font-size:10px;letter-spacing:.2em;color:var(--dim);transition:opacity .4s}
 .cue.hide{opacity:0}
-@keyframes b{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
 
 /* aviso de cookies (solo Europa) */
 .cookies{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--bg);border-top:1px solid var(--line);
@@ -93,23 +111,24 @@ b{font-weight:600}
 .cookies button.yes{background:var(--fg);color:var(--bg)}
 
 @media (max-width:600px){.navwrap{right:9px}}
-@media (prefers-reduced-motion:reduce){.r{transition:none;opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.r,.lead .w{transition:none;opacity:1;transform:none}.t,.flecha{animation:none}}
 </style>
 </head>
 <body>
 <div class="navwrap"><nav class="nav" id="nav" aria-label="Pantallas"></nav></div>
 <a class="skip" id="skip" href="#precio" data-salto="ir-al-kit">Ir al kit →</a>
-<div class="cue" id="cue">DESLIZA</div>
+<div class="cue" id="cue">1 MIN DE LECTURA</div>
+<button class="flecha" id="flecha" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l8 8 8-8"/></svg></button>
 
 <div class="deck" id="deck">
 
 <section data-seccion="01-hero"><span class="n">01</span><div class="wrap">
-  <p class="lead r">Un berrinche puede durar 40 o 5 minutos.</p>
+  <p class="lead r">Un <span class="t">berrinche</span> puede durar <span data-cuenta="40">40</span> o 5 minutos.</p>
   <p class="r">La diferencia depende de si ese niño sabe manejar sus emociones o no.</p>
 </div></section>
 
 <section data-seccion="02-no-se-ensena"><span class="n">02</span><div class="wrap">
-  <p class="lead r">A manejar las emociones no se enseña con gritos, ni en la mitad de la crisis.</p>
+  <p class="lead r">A manejar las emociones no se enseña con <span class="t">gritos</span>, ni en la mitad de la crisis.</p>
   <p class="r">Se aprende de alguien que ya sabe hacerlo.</p>
   <p class="r">Si a ti no te enseñaron cómo, es posible que tú tampoco sepas cómo enseñarlo.</p>
 </div></section>
@@ -130,11 +149,12 @@ b{font-weight:600}
 <section data-seccion="05-cuerpo"><span class="n">05</span><div class="wrap">
   <p class="lead r">Tu cuerpo no sabe qué hacer.</p>
   <p class="r">Y solo piensas en lo duro que es criar a un niño. No era como te lo imaginabas.</p>
-  <p class="r">Y ahí llega la culpa. El cansancio.</p>
+  <p class="r">Y ahí llega la <span class="t">culpa</span>. El cansancio.</p>
+  <a class="lnk r" href="#precio" data-salto="05-cuerpo">Ir directo a la solución →</a>
 </div></section>
 
 <section data-seccion="06-terapia"><span class="n">06</span><div class="wrap">
-  <p class="lead r">Lo que yo he usado en mis terapias con madres y padres que están al borde del colapso es enseñarles a ellos cómo regularse primero,</p>
+  <p class="lead r">Lo que yo he usado en mis terapias con madres y padres que están al borde del <span class="t">colapso</span> es enseñarles a ellos cómo regularse primero,</p>
   <p class="r">y darles herramientas para que hagan lo mismo con sus hijos.</p>
 </div></section>
 
@@ -152,29 +172,35 @@ b{font-weight:600}
 </div></section>
 
 <section data-seccion="09-atajo"><span class="n">09</span><div class="wrap">
-  <p class="r">Puedes reunir estas estrategias en casa, leyendo, aprendiendo y buscando material. Pero en tiempo, esfuerzo y prueba-error, un kit con todo lo necesario parece un buen atajo.</p>
+  <p class="lead r">Puedes reunir estas estrategias en casa, leyendo, aprendiendo y buscando material.</p>
+  <p class="r">Pero en tiempo, esfuerzo y prueba-error, un kit con todo lo necesario parece un buen atajo.</p>
   <p class="r">Se necesita de tu compromiso 4 semanas para entrenar, pero tranquila: el kit te dice cómo hacer todo, dónde ponerlo y qué decir.</p>
-  <p class="r">Y si algo no funciona, siempre me puedes escribir a mí. No soy un bot, soy una persona real que quiere ayudarte a que estés en paz con tu familia.</p>
-  <p class="r">Esa es una de mis misiones de vida y me siento muy honrada de que me permitas ayudarte.</p>
   <a class="btn r" href="#precio" data-salto="09-atajo">Quiero el kit</a>
 </div></section>
 
-<section data-seccion="10-prueba"><span class="n">10</span><div class="wrap">
+<section data-seccion="10-persona-real"><span class="n">10</span><div class="wrap">
+  <p class="lead r">Y si algo no funciona, siempre me puedes escribir a mí.</p>
+  <p class="r">No soy un bot, soy una persona real que quiere ayudarte a que estés en paz con tu familia.</p>
+  <p class="r">Esa es una de mis misiones de vida y me siento muy honrada de que me permitas ayudarte.</p>
+</div></section>
+
+<section data-seccion="11-prueba"><span class="n">11</span><div class="wrap">
   <p class="lead r">Pudiera decirte a cuántas madres he ayudado, pero en esta era de la IA todo se puede fabricar.</p>
   <p class="r">Así que mejor pruébalo por ti misma y me cuentas cómo te cambió.</p>
   <p class="r"><b>Lo usé primero con mi hijo, sé que funciona.</b></p>
+  <a class="lnk r" href="#precio" data-salto="11-prueba">Probarlo →</a>
 </div></section>
 
-<section data-seccion="11-no-eres-mala"><span class="n">11</span><div class="wrap">
+<section data-seccion="12-no-eres-mala"><span class="n">12</span><div class="wrap">
   <p class="lead r">No eres mala madre porque no sabes regular tus emociones, solo no te enseñaron, no es tu culpa.</p>
   <p class="r">Pero ahora que sabes que hay una solución, quedarte en el problema ya no sería justo para ti ni para los tuyos.</p>
-  <a class="btn r" href="#precio" data-salto="11-no-eres-mala">Quiero el kit</a>
+  <a class="btn r" href="#precio" data-salto="12-no-eres-mala">Quiero el kit</a>
 </div></section>
 
-<section id="precio" data-seccion="12-precio"><span class="n">12</span><div class="wrap">
+<section id="precio" data-seccion="13-precio"><span class="n">13</span><div class="wrap">
   <p class="lead r">Un solo pago de <span data-precio>$17 USD</span>, sin mensualidades, pero te sirve para siempre.</p>
   <p class="r">Y si no te gusta te devolvemos todo tu dinero, con una garantía de 30 días sin preguntas.</p>
-  <a class="btn solid r" href="#" data-checkout data-cta="12-precio">Quiero el kit</a>
+  <a class="btn solid r" href="#" data-checkout data-cta="13-precio">Quiero el kit</a>
   <p class="legal r">Mi Rincón de la Calma · Una Vida Brillante · <a href="../../terminos.html">Términos</a> · <a href="../../politica-de-privacidad/">Privacidad</a></p>
 </div></section>
 
@@ -215,7 +241,30 @@ const secs = [...deck.querySelectorAll('section')];
 const nav  = document.getElementById('nav');
 const cue  = document.getElementById('cue');
 const skip = document.getElementById('skip');
+const flecha = document.getElementById('flecha');
 let cur = 0, lock = false;
+
+/* "05 / 13" en cada pantalla, y titulares partidos en palabras para que
+   entren una a una (los spans de temblor y contador se respetan enteros). */
+secs.forEach(s => { s.querySelector('.n').insertAdjacentHTML('beforeend', '<i> / ' + String(secs.length).padStart(2, '0') + '</i>'); });
+document.querySelectorAll('.lead').forEach(l => {
+  let k = 0;
+  const marca = el => { el.classList.add('w'); el.style.transitionDelay = (k++ * 55) + 'ms'; };
+  const camina = nodo => {
+    [...nodo.childNodes].forEach(n => {
+      if (n.nodeType !== 3) { if (n.matches('[data-cuenta],.t')) marca(n); else camina(n); return; }
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(tr => {
+        if (!tr) return;
+        if (/^\s+$/.test(tr)) { frag.appendChild(document.createTextNode(tr)); return; }
+        const w = document.createElement('span'); w.textContent = tr; marca(w); frag.appendChild(w);
+      });
+      n.replaceWith(frag);
+    });
+  };
+  camina(l);
+});
+flecha.addEventListener('click', () => go(cur + 1));
 
 secs.forEach((s, i) => {
   const b = document.createElement('button');
@@ -391,11 +440,11 @@ function zonaEuropea(){
 })();
 
 /* --- qué mide esta página -------------------------------------------------
-   ver_seccion     hasta qué pantalla llegó (01-hero … 12-precio)
+   ver_seccion     hasta qué pantalla llegó (01-hero … 13-precio)
    salto_precio    pulsó un botón interno o el "Ir al kit" (desde dónde)
    begin_checkout  pulsó comprar (va a Meta como InitiateCheckout)
    salida          última pantalla, profundidad y segundos
-   KPI: usuarios en 12-precio / usuarios en 01-hero, contra la principal.
+   KPI: usuarios en 13-precio / usuarios en 01-hero, contra la principal.
 -------------------------------------------------------------------------- */
 const inicio = Date.now();
 let profundidad = 0, ultimaSeccion = '01-hero';
@@ -409,7 +458,15 @@ function llegar(i){
   if (!lock) cur = i;
   paintNav(i);
   cue.classList.toggle('hide', i > 0);
+  flecha.classList.toggle('hide', i === secs.length - 1);
   skip.classList.toggle('show', i > 0 && i < secs.length - 1);
+  if (i !== 0 && navigator.vibrate) { try { navigator.vibrate(6); } catch (e) {} }
+  s.querySelectorAll('[data-cuenta]:not(.ya)').forEach(c => {
+    c.classList.add('ya');
+    const fin = +c.dataset.cuenta, t0 = performance.now(), dur = 1100;
+    const paso = t => { const p = Math.min(1, (t - t0) / dur); c.textContent = Math.round(fin * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(paso); };
+    requestAnimationFrame(paso);
+  });
   ultimaSeccion = s.dataset.seccion;
   if (!vistas.has(ultimaSeccion)) {
     vistas.add(ultimaSeccion);
