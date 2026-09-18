@@ -25,7 +25,19 @@
 @font-face{font-family:Fraunces;font-style:normal;font-weight:100 900;font-display:swap;src:url(../fonts/fraunces-500-latin.woff2) format('woff2')}
 @font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(../fonts/inter-400-latin.woff2) format('woff2')}
 
-:root{--bg:#FBF8F3;--fg:#141414;--dim:#6b6560;--line:#d9d3cb}
+:root{
+  /* paleta de la marca (la misma de la landing anterior) */
+  --bg:#FBF8F3;        /* crema */
+  --bg-alt:#F1EBE1;    /* crema cálido: pantallas de tensión */
+  --sage-soft:#E7EFEB; /* salvia claro: pantallas de calma */
+  --fg:#2E2A25;        /* tinta */
+  --dim:#6B635A;       /* tinta secundaria (4.9:1 sobre el crema cálido) */
+  --sage:#5B8A80;
+  --sage-deep:#3F6C63; /* acentos y navegación */
+  --cta:#BE5138;       /* terracota: solo botones (texto blanco 4.7:1) */
+  --cta-hi:#A84632;
+  --line:rgba(46,42,37,.16)
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overscroll-behavior:none}
 body{background:var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
@@ -35,6 +47,10 @@ body{background:var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system
 .deck::-webkit-scrollbar{width:0}
 section{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;
   display:grid;align-content:center;justify-content:center;padding:clamp(64px,10vh,110px) clamp(28px,6vw,80px);padding-right:clamp(58px,8vw,100px)}
+/* el color cuenta la historia: tensión (cálido) → calma (salvia) → decisión */
+section:nth-of-type(n+2):nth-of-type(-n+5){background:var(--bg-alt)}
+section:nth-of-type(n+6):nth-of-type(-n+8){background:var(--sage-soft)}
+section:nth-of-type(13){background:var(--sage-soft)}
 
 .n{position:absolute;top:clamp(24px,5vw,56px);left:clamp(28px,6vw,80px);font-size:11px;letter-spacing:.18em;color:var(--dim)}
 /* El tamaño se escala por ancho Y por alto: en un portátil bajo el texto se
@@ -44,13 +60,18 @@ p{font-size:clamp(15px,min(3.6vw,2.5vh),22px);line-height:1.5;margin-top:.9em}
 p:first-child{margin-top:0}
 .lead{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(21px,min(5vw,3.8vh),34px);line-height:1.25;letter-spacing:-.012em}
 b{font-weight:600}
-.btn{display:inline-block;margin-top:1.4em;padding:13px 24px;border:1px solid var(--fg);color:var(--fg);
-  text-decoration:none;font-size:15px;transition:.2s;cursor:pointer;background:transparent}
-.btn:hover{background:var(--fg);color:var(--bg)}
-.btn.solid{background:var(--fg);color:var(--bg)}
-.btn.solid:hover{opacity:.82}
-.lnk{display:inline-block;margin-top:1.4em;font-size:15px;color:var(--fg);text-decoration:none;border-bottom:1px solid var(--fg);padding-bottom:2px;opacity:.75}
-.lnk:hover{opacity:1}
+.btn{display:inline-block;margin-top:1.4em;padding:15px 28px;border:0;border-radius:10px;background:var(--cta);color:#fff;
+  text-decoration:none;font-size:16px;font-weight:600;letter-spacing:.005em;transition:background .2s,box-shadow .2s;cursor:pointer;
+  box-shadow:0 6px 18px -6px rgba(190,81,56,.55)}
+.btn:hover{background:var(--cta-hi)}
+.btn:focus-visible,.lnk:focus-visible,.skip:focus-visible,.flecha:focus-visible{outline:3px solid var(--sage-deep);outline-offset:3px}
+/* temblor pequeño y continuo, para que el botón llame la atención; se detiene al apuntarlo */
+.btn.tiembla{animation:vibra .5s linear infinite}
+.btn.tiembla:hover{animation-play-state:paused}
+@keyframes vibra{0%,100%{transform:translate(0,0) rotate(0)}20%{transform:translate(-1px,.5px) rotate(-.4deg)}40%{transform:translate(1px,-.5px) rotate(.4deg)}
+  60%{transform:translate(-.5px,-1px) rotate(-.3deg)}80%{transform:translate(1px,.5px) rotate(.3deg)}}
+.lnk{display:inline-block;margin-top:1.4em;font-size:15px;color:var(--sage-deep);text-decoration:none;border-bottom:1px solid var(--sage-deep);padding-bottom:2px;font-weight:500}
+.lnk:hover{color:var(--fg);border-color:var(--fg)}
 .legal{margin-top:1.8em;font-size:12px;color:var(--dim)}
 .n i{font-style:normal;opacity:.55}
 
@@ -65,7 +86,7 @@ b{font-weight:600}
 
 /* flecha grande para continuar: se puede tocar */
 .flecha{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;width:56px;height:56px;border:0;background:transparent;
-  color:var(--fg);cursor:pointer;display:grid;place-items:center;transition:opacity .4s;animation:rebota 1.6s cubic-bezier(.45,0,.55,1) infinite}
+  color:var(--sage-deep);cursor:pointer;display:grid;place-items:center;transition:opacity .4s;animation:rebota 1.6s cubic-bezier(.45,0,.55,1) infinite}
 .flecha svg{width:34px;height:34px}
 .flecha.hide{opacity:0;pointer-events:none}
 @keyframes rebota{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
@@ -86,15 +107,15 @@ b{font-weight:600}
 .nav{display:flex;flex-direction:column;gap:13px;transition:transform .55s cubic-bezier(.3,.8,.25,1)}
 .nav button{all:unset;cursor:pointer;flex:0 0 22px;width:22px;height:22px;display:grid;place-items:center;position:relative;pointer-events:auto;
   transition:opacity .45s ease,transform .45s cubic-bezier(.3,.8,.25,1)}
-.nav button::after{content:"";width:7px;height:7px;border-radius:50%;background:#bdb7ae;transition:.35s cubic-bezier(.2,.75,.2,1)}
-.nav button.on::after{background:var(--fg);width:10px;height:10px;box-shadow:0 0 0 5px rgba(20,20,20,.09)}
+.nav button::after{content:"";width:7px;height:7px;border-radius:50%;background:rgba(63,108,99,.32);transition:.35s cubic-bezier(.2,.75,.2,1)}
+.nav button.on::after{background:var(--sage-deep);width:10px;height:10px;box-shadow:0 0 0 5px rgba(63,108,99,.16)}
 .nav button.edge1{opacity:.5;transform:scale(.66)}
 .nav button.gone{opacity:0;transform:scale(.25);pointer-events:none}
 
 /* salida permanente para quien ya no quiere leer */
-.skip{position:fixed;top:clamp(18px,4vw,34px);right:clamp(46px,7vw,74px);z-index:45;font-size:13px;color:var(--fg);
-  text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;opacity:0;pointer-events:none;transition:opacity .5s ease}
-.skip.show{opacity:.62;pointer-events:auto}
+.skip{position:fixed;top:clamp(18px,4vw,34px);right:clamp(46px,7vw,74px);z-index:45;font-size:13px;color:var(--sage-deep);font-weight:500;
+  text-decoration:none;border-bottom:1px solid var(--sage);padding-bottom:2px;opacity:0;pointer-events:none;transition:opacity .5s ease}
+.skip.show{opacity:.9;pointer-events:auto}
 .skip:hover{opacity:1;border-color:var(--fg)}
 
 .cue{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);z-index:30;font-size:10px;letter-spacing:.2em;color:var(--dim);transition:opacity .4s}
@@ -108,13 +129,13 @@ b{font-weight:600}
 .cookies p{margin:0;font-size:13px;color:var(--dim);max-width:60ch;line-height:1.45}
 .cookies a{color:inherit}
 .cookies__row{display:flex;gap:8px;margin-left:auto}
-.cookies button{font:inherit;font-size:13px;padding:8px 14px;border:1px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer}
-.cookies button.yes{background:var(--fg);color:var(--bg)}
+.cookies button{font:inherit;font-size:13px;padding:8px 14px;border:1px solid var(--sage-deep);border-radius:8px;background:transparent;color:var(--sage-deep);cursor:pointer}
+.cookies button.yes{background:var(--sage-deep);color:#fff}
 
 @media (max-width:600px){.navwrap{right:9px}}
 /* escritorio: bloque centrado y texto centrado */
 @media (min-width:700px){section{padding-right:clamp(28px,6vw,80px)}.wrap{text-align:center;max-width:40ch}.n{left:50%;transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.r,.lead .w{transition:none;opacity:1;transform:none}.t,.flecha{animation:none}}
+@media (prefers-reduced-motion:reduce){.r,.lead .w{transition:none;opacity:1;transform:none}.t,.flecha,.btn.tiembla{animation:none}}
 </style>
 </head>
 <body>
@@ -128,7 +149,7 @@ b{font-weight:600}
 <section data-seccion="01-hero"><span class="n">01</span><div class="wrap">
   <p class="lead r">Un <span class="t">berrinche</span> puede durar <span data-cuenta="40">40</span> o 5 minutos.</p>
   <p class="r">La diferencia depende de si ese niño sabe manejar sus emociones o no.</p>
-  <a class="btn solid r" href="#" data-siguiente>Descubrir la solución</a>
+  <a class="btn tiembla r" href="#" data-siguiente>¿Y qué hace la diferencia?</a>
 </div></section>
 
 <section data-seccion="02-no-se-ensena"><span class="n">02</span><div class="wrap">
