@@ -31,9 +31,9 @@
   --bg-alt:#F1EBE1;    /* crema cálido: pantallas de tensión */
   --sage-soft:#E7EFEB; /* salvia claro: pantallas de calma */
   --fg:#2E2A25;        /* tinta */
-  --dim:#5F574E;       /* tinta secundaria (≥4.7:1 incluso sobre lo más oscuro del degradado) */
+  --dim:#4A423A;       /* tinta secundaria (≥5.5:1 incluso sobre lo más intenso del degradado) */
   --sage:#5B8A80;
-  --sage-deep:#38645B; /* acentos y navegación */
+  --sage-deep:#2B564D; /* acentos y navegación (≥4.5:1 sobre el degradado) */
   --cta:#BE5138;       /* terracota: solo botones (texto blanco 4.7:1) */
   --cta-hi:#A84632;
   --line:rgba(46,42,37,.16)
@@ -51,25 +51,26 @@ section{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:r
    Lo pinta el degradado fijo de abajo; las pantallas son transparentes. */
 .deck{position:relative;z-index:1}
 
-@property --a-base{syntax:'<color>';inherits:true;initial-value:#FBF8F3}
-@property --a-1{syntax:'<color>';inherits:true;initial-value:#F9DCC4}
-@property --a-2{syntax:'<color>';inherits:true;initial-value:#D5E8DF}
-body{--a-base:#FBF8F3;--a-1:#F9DCC4;--a-2:#D5E8DF;
-  transition:--a-base 1s ease,--a-1 1s ease,--a-2 1s ease}
-body[data-tono="tension"]{--a-base:#F1EBE1;--a-1:#EBD9C4;--a-2:#F3DDD0}
-body[data-tono="calma"]{--a-base:#E7EFEB;--a-1:#C4E0D3;--a-2:#E2EBCB}
+@property --a-base{syntax:'<color>';inherits:true;initial-value:#FBF3E8}
+@property --a-1{syntax:'<color>';inherits:true;initial-value:#FFC9A0}
+@property --a-2{syntax:'<color>';inherits:true;initial-value:#B5E0CD}
+body{--a-base:#FBF3E8;--a-1:#FFC9A0;--a-2:#B5E0CD;
+  transition:--a-base .9s ease,--a-1 .9s ease,--a-2 .9s ease}
+body[data-tono="tension"]{--a-base:#F3E2D0;--a-1:#F3B999;--a-2:#F2BDB4}
+body[data-tono="calma"]{--a-base:#DCEEE6;--a-1:#9FD4BC;--a-2:#C4E0A8}
+body[data-tono="decision"]{--a-base:#F3EFD6;--a-1:#F6CF85;--a-2:#9FD4BC}
 
 /* degradado vivo: dos luces grandes que se desplazan muy despacio.
    Solo transform (barato en móvil), sin desenfoques. */
 .aura{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--a-base);pointer-events:none}
-.aura::before,.aura::after{content:"";position:absolute;width:95vmax;height:95vmax;border-radius:50%;opacity:.7;will-change:transform}
-.aura::before{left:-38vmax;top:-38vmax;background:radial-gradient(circle,var(--a-1) 0,transparent 62%);animation:respira1 17s ease-in-out infinite alternate}
-.aura::after{right:-42vmax;bottom:-42vmax;background:radial-gradient(circle,var(--a-2) 0,transparent 62%);animation:respira2 23s ease-in-out infinite alternate}
+.aura::before,.aura::after{content:"";position:absolute;width:95vmax;height:95vmax;border-radius:50%;opacity:.88;will-change:transform;transition:translate 1.2s cubic-bezier(.3,.8,.25,1)}
+.aura::before{left:-38vmax;top:-38vmax;background:radial-gradient(circle,var(--a-1) 0,transparent 62%);translate:var(--x1,0vmax) var(--y1,0vmax);animation:respira1 17s ease-in-out infinite alternate}
+.aura::after{right:-42vmax;bottom:-42vmax;background:radial-gradient(circle,var(--a-2) 0,transparent 62%);translate:var(--x2,0vmax) var(--y2,0vmax);animation:respira2 23s ease-in-out infinite alternate}
 @keyframes respira1{to{transform:translate(20vmax,14vmax) scale(1.18)}}
 @keyframes respira2{to{transform:translate(-18vmax,-16vmax) scale(1.22)}}
 
 /* barra de progreso: cuánto falta */
-.prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;background:rgba(56,100,91,.14);pointer-events:none}
+.prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;background:rgba(43,86,77,.14);pointer-events:none}
 .prog i{display:block;height:100%;background:var(--sage-deep);transform-origin:left;transform:scaleX(.077);transition:transform .6s cubic-bezier(.3,.8,.25,1)}
 
 .n{position:absolute;top:clamp(24px,5vw,56px);left:clamp(28px,6vw,80px);font-size:11px;letter-spacing:.18em;color:var(--dim)}
@@ -127,8 +128,8 @@ b{font-weight:600}
 .nav{display:flex;flex-direction:column;gap:13px;transition:transform .55s cubic-bezier(.3,.8,.25,1)}
 .nav button{all:unset;cursor:pointer;flex:0 0 22px;width:22px;height:22px;display:grid;place-items:center;position:relative;pointer-events:auto;
   transition:opacity .45s ease,transform .45s cubic-bezier(.3,.8,.25,1)}
-.nav button::after{content:"";width:7px;height:7px;border-radius:50%;background:rgba(56,100,91,.32);transition:.35s cubic-bezier(.2,.75,.2,1)}
-.nav button.on::after{background:var(--sage-deep);width:10px;height:10px;box-shadow:0 0 0 5px rgba(56,100,91,.16)}
+.nav button::after{content:"";width:7px;height:7px;border-radius:50%;background:rgba(43,86,77,.32);transition:.35s cubic-bezier(.2,.75,.2,1)}
+.nav button.on::after{background:var(--sage-deep);width:10px;height:10px;box-shadow:0 0 0 5px rgba(43,86,77,.16)}
 .nav button.edge1{opacity:.5;transform:scale(.66)}
 .nav button.gone{opacity:0;transform:scale(.25);pointer-events:none}
 
@@ -293,6 +294,7 @@ const cue  = document.getElementById('cue');
 const skip = document.getElementById('skip');
 const flecha = document.getElementById('flecha');
 const prog = document.getElementById('prog');
+const POS = [[0,0,0,0],[30,10,-20,-18],[14,38,-34,-4],[40,30,-12,-30],[8,-6,-38,-20],[34,-4,-18,-34],[22,34,-30,-10],[-8,20,-40,-26],[36,6,-14,-16],[12,40,-36,-32],[38,26,-22,-6],[4,12,-30,-36],[30,36,-8,-24]];
 let cur = 0, lock = false;
 
 /* "05 / 13" en cada pantalla, y titulares partidos en palabras para que
@@ -517,7 +519,11 @@ function llegar(i){
   cue.classList.toggle('hide', i > 0);
   flecha.classList.toggle('hide', i === secs.length - 1);
   prog.style.transform = 'scaleX(' + ((i + 1) / secs.length).toFixed(3) + ')';
-  document.body.dataset.tono = (i >= 1 && i <= 4) ? 'tension' : ((i >= 5 && i <= 7) || i === secs.length - 1) ? 'calma' : 'crema';
+  document.body.dataset.tono = (i >= 1 && i <= 4) ? 'tension' : (i >= 5 && i <= 7) ? 'calma' : i === secs.length - 1 ? 'decision' : 'crema';
+  /* en cada pantalla las dos luces saltan a otro rincón: el fondo se siente vivo al avanzar */
+  const P = POS[i % POS.length], au = document.querySelector('.aura');
+  au.style.setProperty('--x1', P[0] + 'vmax'); au.style.setProperty('--y1', P[1] + 'vmax');
+  au.style.setProperty('--x2', P[2] + 'vmax'); au.style.setProperty('--y2', P[3] + 'vmax');
   skip.classList.toggle('show', i > 0 && i < secs.length - 1);
   if (i !== 0 && navigator.vibrate) { try { navigator.vibrate(6); } catch (e) {} }
   s.querySelectorAll('[data-cuenta]:not(.ya)').forEach(c => {
