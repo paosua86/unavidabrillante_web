@@ -135,7 +135,9 @@ b{font-weight:600}
 @media (max-width:600px){.navwrap{right:9px}}
 /* escritorio: bloque centrado y texto centrado */
 @media (min-width:700px){section{padding-right:clamp(28px,6vw,80px)}.wrap{text-align:center;max-width:40ch}.n{left:50%;transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.r,.lead .w{transition:none;opacity:1;transform:none}.t,.flecha,.btn.tiembla{animation:none}}
+@media (prefers-reduced-motion:reduce){.r,.lead .w{transition:none;opacity:1;transform:none}.t,.flecha{animation:none}}
+/* Excepción deliberada: el temblor del botón (±1px) sigue activo aunque el aparato pida menos movimiento;
+   Windows y Android suelen traer las animaciones apagadas y así nadie vería el botón vivo. */
 </style>
 </head>
 <body>
