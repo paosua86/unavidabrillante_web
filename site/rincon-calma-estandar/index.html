@@ -43,9 +43,9 @@ html,body{height:100%;overscroll-behavior:none}
 body{background:var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
 
 /* ── una pantalla por sección: cada gesto cae en la siguiente ── */
-.deck{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;overscroll-behavior-y:none}
+.deck{height:100vh;height:100dvh;-webkit-overflow-scrolling:touch;overflow-y:scroll;scroll-snap-type:y mandatory;overscroll-behavior-y:none}
 .deck::-webkit-scrollbar{width:0}
-section{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;
+section{height:100vh;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;
   display:grid;align-content:center;justify-content:center;padding:clamp(64px,10vh,110px) clamp(28px,6vw,80px);padding-right:clamp(58px,8vw,100px)}
 /* el color cuenta la historia: tensión (cálido) → calma (salvia) → decisión.
    Lo pinta el degradado fijo de abajo; las pantallas son transparentes. */
@@ -378,6 +378,30 @@ document.querySelectorAll('[data-salto]').forEach(a => {
   });
 });
 
+/* Detector de deslizamientos que no funcionan: si alguien arrastra el dedo y la
+   pantalla no se mueve, se registra 'gesto_sin_efecto' (con la pantalla). Si se
+   mueve, 'gesto_ok' una sola vez. Así se distingue "no quiere seguir" de "no puede". */
+(function(){
+  let y0 = null, top0 = 0, okEnviado = false, sinEfecto = 0;
+  deck.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) { y0 = e.touches[0].clientY; top0 = deck.scrollTop; }
+  }, { passive: true });
+  deck.addEventListener('touchend', e => {
+    if (y0 === null) return;
+    const dy = e.changedTouches[0].clientY - y0; y0 = null;
+    if (Math.abs(dy) < 40) return;
+    /* si ya está en el límite (arriba o abajo del todo) no cuenta como fallo */
+    if ((dy < 0 && cur >= secs.length - 1) || (dy > 0 && cur <= 0)) return;
+    setTimeout(() => {
+      if (Math.abs(deck.scrollTop - top0) > 10) {
+        if (!okEnviado) { okEnviado = true; medir('gesto_ok'); }
+      } else if (sinEfecto < 3) {
+        sinEfecto++; medir('gesto_sin_efecto', { seccion: ultimaSeccion });
+      }
+    }, 700);
+  }, { passive: true });
+})();
+
 /* --- no contarse a uno mismo: ?yo=1 en cada aparato tuyo, ?yo=0 deshace --- */
 const soyYo = (function(){
   const p = new URLSearchParams(location.search).get('yo');
@@ -500,6 +524,7 @@ function zonaEuropea(){
 /* --- qué mide esta página -------------------------------------------------
    ver_seccion     hasta qué pantalla llegó (01-hero … 13-precio)
    continuar       pulsó el botón de la primera pantalla para seguir leyendo
+   gesto_ok / gesto_sin_efecto   arrastró el dedo y la pantalla se movió / no se movió
    salto_precio    pulsó un botón interno o el "Ir al kit" (desde dónde)
    begin_checkout  pulsó comprar (va a Meta como InitiateCheckout)
    salida          última pantalla, profundidad y segundos
