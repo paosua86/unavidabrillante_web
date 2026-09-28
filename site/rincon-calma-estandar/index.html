@@ -310,7 +310,10 @@ const soyYo = (function(){
    anteriores. Todo evento lleva variante=v3-validacion y producto_id.
    ========================================================================= */
 const cola = [];
-const EVENTOS_META = { begin_checkout: 'InitiateCheckout' };
+/* InitiateCheckout NO sale de aquí: lo manda el píxel del checkout de Hotmart al
+   abrirse (configurado el 28-sep-2026). Si también saliera del botón, Meta lo
+   contaría dos veces por persona y optimizaría sobre números inflados. */
+const EVENTOS_META = {};
 function cargarMedicion(){
   if (window.__medicionLista) return;
   window.__medicionLista = true;
@@ -348,7 +351,10 @@ const listo = !/PEGAR_AQUI/.test(CONFIG.checkoutUrl);
 document.querySelectorAll('[data-checkout]').forEach(b => {
   const sep = CONFIG.checkoutUrl.includes('?') ? '&' : '?';
   /* src = qué botón, sck = qué anuncio (a1, a2, a3): los dos salen en el reporte de ventas de Hotmart */
-  b.href = listo ? CONFIG.checkoutUrl + sep + 'src=v3-' + b.dataset.cta + '&sck=' + window.HEROE : '#';
+  /* fbclid viaja al checkout: el píxel de Hotmart lo lee y Meta atribuye Iniciar pago y Compra al anuncio */
+  const fbclid = new URLSearchParams(location.search).get('fbclid');
+  b.href = listo ? CONFIG.checkoutUrl + sep + 'src=v3-' + b.dataset.cta + '&sck=' + window.HEROE +
+    (fbclid ? '&fbclid=' + encodeURIComponent(fbclid) : '') : '#';
   b.rel = 'noopener';
   b.addEventListener('click', ev => {
     if (!listo) { ev.preventDefault(); alert('Falta pegar el enlace de Hotmart de $27 en CONFIG.checkoutUrl.'); return; }
@@ -381,7 +387,7 @@ function zonaEuropea(){
 
 /* --- qué mide esta página ----------------------------------------------
    ver_seccion     hasta qué bloque llegó (01-oferta … 05-precio)
-   begin_checkout  pulsó comprar (va a Meta como InitiateCheckout); origen = qué botón
+   begin_checkout  pulsó comprar (solo GA4; a Meta lo manda Hotmart); origen = qué botón
    salida          último bloque, profundidad y segundos
    La métrica que decide la prueba NO está aquí: son las VENTAS en Hotmart.
    Regla: ≥150 visitantes únicos → ≥3 % compra = validado; 0 ventas = se cierra.
