@@ -106,7 +106,20 @@ footer a{color:inherit}
   <div class="w">
     <p class="marca">Una Vida Brillante · Creado por psicóloga clínica</p>
     <p class="ceja">Un berrinche puede durar 40 o 5 minutos.</p>
-    <h1>Manejo de emociones para niños y sus mamás.</h1>
+    <h1 id="titulo">Manejo de emociones para niños y sus mamás.</h1>
+    <script>
+    /* Titular según el anuncio (?t=). Sin parámetro: anuncios 1 y 2.
+       Va aquí, pegado al h1, para que se cambie antes de pintarse (sin parpadeo). */
+    window.TITULOS = {
+      emociones: 'Manejo de emociones para niños y sus mamás.',
+      herramientas: 'No queremos más berrinches, queremos herramientas.'
+    };
+    window.TITULO = (function(){
+      try { const t = new URLSearchParams(location.search).get('t'); if (t && TITULOS[t]) return t; } catch(e){}
+      return 'emociones';
+    })();
+    document.getElementById('titulo').textContent = TITULOS[TITULO];
+    </script>
     <p class="sub">Ahora ya sabes qué hacer: un kit imprimible para tu hijo de 3 a 9 años y un cuaderno para ti.</p>
     <div class="precio"><b data-precio>$27</b><span>USD · un solo pago, sin mensualidades</span></div>
     <a class="btn" href="#" data-checkout data-cta="01-oferta" id="btn-arriba">Quiero el kit completo</a>
@@ -213,14 +226,14 @@ footer a{color:inherit}
 <script>
 /* =========================================================================
    CONFIGURACIÓN. checkoutUrl: enlace de Hotmart de la oferta de $27 (kit niño
-   + cuaderno mamá). Mientras diga PEGAR_AQUI, los botones no llevan a ningún
-   lado y la página NO debe publicarse.
+   + cuaderno mamá). Enlace directo, sin el widget de Hotmart: el checkout
+   abre en su propia página (más fiable en el navegador de Instagram/Facebook).
    ========================================================================= */
 const CONFIG = {
   producto: { id: 'rincon-calma-completo', nombre: 'Mi Rincón de la Calma — Kit completo (niño + mamá)' },
   precio: 27,
   moneda: 'USD',
-  checkoutUrl: 'PEGAR_AQUI_LINK_HOTMART_27',
+  checkoutUrl: 'https://pay.hotmart.com/P106868890T?off=k7oldm9f',
   metaPixelId: '916361428769684',
   analyticsId: 'G-R80645DXN4',
   variante: 'v3-validacion'
@@ -262,11 +275,11 @@ function cargarMedicion(){
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
   gtag('js', new Date());
-  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante });
+  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.TITULO });
   cola.splice(0).forEach(e => medir(e.nombre, e.datos));
 }
 function medir(nombre, datos){
-  const carga = Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante }, datos || {});
+  const carga = Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.TITULO }, datos || {});
   if (!window.__medicionLista) { if (cola.length < 40) cola.push({ nombre, datos }); return; }
   if (window.gtag) gtag('event', nombre, carga);
   const m = EVENTOS_META[nombre];
@@ -279,7 +292,8 @@ let ultimaSeccion = '01-oferta';
 const listo = !/PEGAR_AQUI/.test(CONFIG.checkoutUrl);
 document.querySelectorAll('[data-checkout]').forEach(b => {
   const sep = CONFIG.checkoutUrl.includes('?') ? '&' : '?';
-  b.href = listo ? CONFIG.checkoutUrl + sep + 'src=v3-' + b.dataset.cta : '#';
+  /* src = qué botón, sck = qué titular: los dos salen en el reporte de ventas de Hotmart */
+  b.href = listo ? CONFIG.checkoutUrl + sep + 'src=v3-' + b.dataset.cta + '&sck=' + window.TITULO : '#';
   b.rel = 'noopener';
   b.addEventListener('click', ev => {
     if (!listo) { ev.preventDefault(); alert('Falta pegar el enlace de Hotmart de $27 en CONFIG.checkoutUrl.'); return; }
