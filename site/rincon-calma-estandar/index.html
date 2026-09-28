@@ -50,6 +50,8 @@ section.soft{background:var(--sage-soft)}
 .btn:focus-visible{outline:3px solid var(--sage-deep);outline-offset:3px}
 .seguro{margin-top:12px;font-size:14px;color:var(--dim);display:flex;flex-wrap:wrap;gap:4px 14px}
 .seguro span::before{content:"✓ ";color:var(--sage-deep);font-weight:700}
+.porque{margin-top:22px;padding:4px 0 4px 16px;border-left:3px solid var(--sage);font-size:16px;color:var(--dim)}
+.porque p+p{margin-top:8px}
 .foto{margin-top:22px;border-radius:14px;overflow:hidden;background:var(--sage-soft)}
 .foto img{display:block;width:100%;height:auto}
 
@@ -105,25 +107,40 @@ footer a{color:inherit}
 <header class="hero" data-seccion="01-oferta">
   <div class="w">
     <p class="marca">Una Vida Brillante · Creado por psicóloga clínica</p>
-    <p class="ceja">Un berrinche puede durar 40 o 5 minutos.</p>
-    <h1 id="titulo">Manejo de emociones para niños y sus mamás.</h1>
-    <script>
-    /* Titular según el anuncio (?t=). Sin parámetro: anuncios 1 y 2.
-       Va aquí, pegado al h1, para que se cambie antes de pintarse (sin parpadeo). */
-    window.TITULOS = {
-      emociones: 'Manejo de emociones para niños y sus mamás.',
-      herramientas: 'No queremos más berrinches, queremos herramientas.'
-    };
-    window.TITULO = (function(){
-      try { const t = new URLSearchParams(location.search).get('t'); if (t && TITULOS[t]) return t; } catch(e){}
-      return 'emociones';
-    })();
-    document.getElementById('titulo').textContent = TITULOS[TITULO];
-    </script>
-    <p class="sub">Ahora ya sabes qué hacer: un kit imprimible para tu hijo de 3 a 9 años y un cuaderno para ti.</p>
+    <p class="ceja" id="h-ceja" hidden></p>
+    <h1 id="h-titulo">Manejo de emociones para niños y sus mamás.</h1>
+    <p class="sub" id="h-sub">Ahora ya sabes qué hacer y no tienes que preparar nada: un kit imprimible para tu hijo de 3 a 9 años y un cuaderno para ti.</p>
     <div class="precio"><b data-precio>$27</b><span>USD · un solo pago, sin mensualidades</span></div>
     <a class="btn" href="#" data-checkout data-cta="01-oferta" id="btn-arriba">Quiero el kit completo</a>
     <p class="seguro"><span>Descarga inmediata</span><span>Garantía de 30 días</span><span>Pago seguro con Hotmart</span></p>
+    <div class="porque" id="h-extra" hidden></div>
+    <script>
+    /* Arriba de la página según el anuncio (?h=1|2|3), con las palabras del anuncio.
+       Sin parámetro: anuncio 1. Va aquí, antes de la foto, para cambiarse antes de
+       pintarse (sin parpadeo). HEROE viaja a GA4 como "titulo" y a Hotmart como sck. */
+    window.HEROES = {
+      a1: { titulo: 'Manejo de emociones para niños y sus mamás.',
+            sub: 'Ahora ya sabes qué hacer y no tienes que preparar nada: un kit imprimible para tu hijo de 3 a 9 años y un cuaderno para ti.' },
+      a2: { ceja: '¿Quieres enseñarle a manejar sus emociones y no sabes por dónde empezar?',
+            titulo: 'Manejo de emociones para niños y sus mamás.',
+            sub: 'Ahora ya sabes qué hacer: un kit imprimible para tu hijo de 3 a 9 años y un cuaderno para ti.' },
+      a3: { titulo: 'Ante un berrinche, no más paciencia: queremos herramientas.',
+            sub: 'No es falta de paciencia, es falta de herramientas. 21 hojas que imprimes hoy y tu hijo usa esta tarde.',
+            extra: '<p>«Cuenta hasta 10» no funciona porque un cerebro en alarma no procesa instrucciones.</p>' +
+                   '<p>«Anda a la esquina» enseña a esconder el enojo, no a atravesarlo.</p>' }
+    };
+    window.HEROE = (function(){
+      try { const h = 'a' + new URLSearchParams(location.search).get('h'); if (HEROES[h]) return h; } catch(e){}
+      return 'a1';
+    })();
+    (function(v){
+      const $ = id => document.getElementById(id);
+      if (v.ceja) { $('h-ceja').textContent = v.ceja; $('h-ceja').hidden = false; }
+      $('h-titulo').textContent = v.titulo;
+      $('h-sub').textContent = v.sub;
+      if (v.extra) { $('h-extra').innerHTML = v.extra; $('h-extra').hidden = false; }
+    })(HEROES[HEROE]);
+    </script>
     <div class="foto"><img src="img/kit-21-hojas.webp" width="1500" height="844" alt="Las hojas del kit Mi Rincón de la Calma impresas sobre una mesa" fetchpriority="high"></div>
   </div>
 </header>
@@ -275,11 +292,11 @@ function cargarMedicion(){
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
   gtag('js', new Date());
-  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.TITULO });
+  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.HEROE });
   cola.splice(0).forEach(e => medir(e.nombre, e.datos));
 }
 function medir(nombre, datos){
-  const carga = Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.TITULO }, datos || {});
+  const carga = Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.HEROE }, datos || {});
   if (!window.__medicionLista) { if (cola.length < 40) cola.push({ nombre, datos }); return; }
   if (window.gtag) gtag('event', nombre, carga);
   const m = EVENTOS_META[nombre];
@@ -292,8 +309,8 @@ let ultimaSeccion = '01-oferta';
 const listo = !/PEGAR_AQUI/.test(CONFIG.checkoutUrl);
 document.querySelectorAll('[data-checkout]').forEach(b => {
   const sep = CONFIG.checkoutUrl.includes('?') ? '&' : '?';
-  /* src = qué botón, sck = qué titular: los dos salen en el reporte de ventas de Hotmart */
-  b.href = listo ? CONFIG.checkoutUrl + sep + 'src=v3-' + b.dataset.cta + '&sck=' + window.TITULO : '#';
+  /* src = qué botón, sck = qué anuncio (a1, a2, a3): los dos salen en el reporte de ventas de Hotmart */
+  b.href = listo ? CONFIG.checkoutUrl + sep + 'src=v3-' + b.dataset.cta + '&sck=' + window.HEROE : '#';
   b.rel = 'noopener';
   b.addEventListener('click', ev => {
     if (!listo) { ev.preventDefault(); alert('Falta pegar el enlace de Hotmart de $27 en CONFIG.checkoutUrl.'); return; }
