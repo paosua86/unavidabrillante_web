@@ -69,6 +69,19 @@ ul.lista li::before{content:"";position:absolute;left:4px;top:15px;width:9px;hei
 /* --- 3. Qué va a hacer por ti --- */
 .cambia p+p{margin-top:12px}
 .cambia strong{font-weight:600}
+.uso{margin-top:30px}
+.uso h3{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:22px;margin-bottom:12px}
+.uso p+p,.uso ol+p{margin-top:12px}
+ol.ciclo{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 4px;counter-reset:c}
+ol.ciclo li{counter-increment:c;font-size:14px;font-weight:600;color:var(--sage-deep);background:var(--sage-soft);
+  border-radius:999px;padding:5px 12px}
+ol.ciclo li::before{content:counter(c) " · "}
+ol.semanas{list-style:none;margin-top:16px}
+ol.semanas li{background:#FFFDFA;border:1px solid var(--line);border-left:4px solid var(--sage);border-radius:12px;
+  padding:14px 16px;margin-top:10px;font-size:16px}
+ol.semanas b{display:block;font-weight:600;margin-bottom:4px}
+ol.semanas span{display:block;margin-top:4px;color:var(--dim)}
+ol.semanas em{font-style:normal;font-weight:600;color:var(--fg)}
 
 /* --- 4. Quién lo creó --- */
 .autora p+p{margin-top:12px}
@@ -192,6 +205,31 @@ footer a{color:inherit}
     <p>Que tú sepas qué hacer mientras tanto, <strong>sin gritar ya sin control</strong> esperando que algo haga efecto.</p>
     <p>Cuando los niños aprenden a manejar sus emociones también te ayudan a ti, porque <strong>ya no está todo sobre tus hombros</strong>.</p>
     <p>Se necesita de tu compromiso 4 semanas para entrenar, pero tranquila: el kit te dice cómo hacer todo, dónde ponerlo y qué decir.</p>
+
+    <div class="uso">
+      <h3>Cómo se usa</h3>
+      <p>Estos libros contienen información paso a paso de cómo entrenar a tu hijo y a ti misma a manejar emociones. Lees las instrucciones y vas haciendo los ejercicios, entrenando, así como se entrena un músculo, y luego vas viendo cómo se aplica cuando pasa en realidad, para luego evaluarlo y notar qué más debes hacer para ajustar. Por eso son 4 semanas: se necesita entrenamiento.</p>
+      <ol class="ciclo"><li>Entrenas en calma</li><li>Lo aplicas cuando pasa</li><li>Lo evalúas</li><li>Ajustas</li></ol>
+
+      <ol class="semanas">
+        <li><b>Semana 1 · Notar</b>
+          <span><em>Tu hijo:</em> montan juntos su rincón y aprende a nombrar lo que siente con las tarjetas.</span>
+          <span><em>Tú:</em> tres veces al día te preguntas «¿en qué número estoy?». Todavía no cambias nada.</span></li>
+        <li><b>Semana 2 · Practicar en calma</b>
+          <span><em>Tu hijo:</em> ensaya dos estrategias cuando está tranquilo, como un juego.</span>
+          <span><em>Tú:</em> 30 segundos al día con tus tres anclas, fuera de la crisis.</span></li>
+        <li><b>Semana 3 · Usarlo cuando pasa</b>
+          <span><em>Tu hijo:</em> en el próximo desborde lo acompañas a su rincón y se calman juntos.</span>
+          <span><em>Tú:</em> primero tu cuerpo, con el protocolo de 90 segundos pegado donde suele pasar.</span></li>
+        <li><b>Semana 4 · Hacia la autonomía</b>
+          <span><em>Tu hijo:</em> empieza a ir solo a su rincón o a pedirlo.</span>
+          <span><em>Tú:</em> reparas el mismo día cada vez que te pases, con los guiones para su edad.</span></li>
+      </ol>
+
+      <p>Cada semana te dice qué hojas leer, qué ejercicio hacer y cómo saber si funcionó. Cada domingo respondes tres preguntas: qué notaste antes, qué estrategia te sirvió y si reparaste. Con eso sabes qué ajustar la semana siguiente.</p>
+      <p>No pide tiempo aparte: se hace mientras vives tu día normal. Y si una semana sale mal, no se abandona ni se empieza de cero: se repite esa semana.</p>
+    </div>
+
     <a class="btn" href="#" data-checkout data-cta="03-logras">Quiero el kit completo · $27</a>
   </div>
 </section>
