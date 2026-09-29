@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mi Rincón de la Calma — Kit completo para tu hijo y para ti</title>
-<meta name="description" content="Manejo de emociones para niños y sus mamás. Kit imprimible creado por una psicóloga clínica: 21 hojas para tu hijo y 34 para ti. Un solo pago de $27 USD, garantía de 30 días.">
+<meta name="description" content="Manejo de emociones para niños y sus mamás. Kit imprimible creado por una psicóloga clínica: 21 hojas para tu hijo y 34 para ti. Un solo pago de $9,90 USD, garantía de 30 días.">
 <!-- Página de VALIDACIÓN (libro Low Ticket Profits, días 1-2): 3 preguntas,
      precio y botón sin deslizar. No se indexa mientras dure la prueba. -->
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://unavidabrillante.com/rincon-calma-estandar/">
 <meta property="og:type" content="product">
 <meta property="og:title" content="Mi Rincón de la Calma — kit completo para tu hijo y para ti">
-<meta property="og:description" content="Manejo de emociones para niños y sus mamás. Un solo pago de $27 USD.">
+<meta property="og:description" content="Manejo de emociones para niños y sus mamás. Un solo pago de $9,90 USD.">
 <meta property="og:locale" content="es_ES">
 <meta property="og:url" content="https://unavidabrillante.com/rincon-calma-estandar/">
 <meta property="og:image" content="https://unavidabrillante.com/rincon-calma-estandar/img/kit-21-hojas.webp">
@@ -123,7 +123,7 @@ footer a{color:inherit}
     <p class="ceja" id="h-ceja" hidden></p>
     <h1 id="h-titulo">Manejo de emociones para niños y sus mamás.</h1>
     <p class="sub" id="h-sub">Ahora ya sabes qué hacer y no tienes que preparar nada: un kit imprimible para tu hijo de 3 a 9 años y un cuaderno para ti.</p>
-    <div class="precio"><b data-precio>$27</b><span>USD · un solo pago, sin mensualidades</span></div>
+    <div class="precio"><b data-precio>$9,90</b><span>USD · un solo pago, sin mensualidades</span></div>
     <a class="btn" href="#" data-checkout data-cta="01-oferta" id="btn-arriba">Quiero el kit completo</a>
     <p class="seguro"><span>Descarga inmediata</span><span>Garantía de 30 días</span><span>Pago seguro con Hotmart</span></p>
     <div class="porque" id="h-extra" hidden></div>
@@ -230,7 +230,7 @@ footer a{color:inherit}
       <p>No pide tiempo aparte: se hace mientras vives tu día normal. Y si una semana sale mal, no se abandona ni se empieza de cero: se repite esa semana.</p>
     </div>
 
-    <a class="btn" href="#" data-checkout data-cta="03-logras">Quiero el kit completo · $27</a>
+    <a class="btn" href="#" data-checkout data-cta="03-logras">Quiero el kit completo · $9,90</a>
   </div>
 </section>
 
@@ -247,14 +247,14 @@ footer a{color:inherit}
 <section class="final" id="precio" data-seccion="05-precio">
   <div class="w">
     <h2>Cómo conseguirlo</h2>
-    <div class="precio"><b data-precio>$27</b><span>USD · un solo pago</span></div>
+    <div class="precio"><b data-precio>$9,90</b><span>USD · un solo pago</span></div>
     <ul class="lista">
       <li>Pagas en Hotmart con tarjeta o con el medio de tu país</li>
       <li>Te llegan los dos PDF a tu correo en minutos</li>
       <li>Los imprimes en casa: no hay envío ni esperas</li>
       <li>Si no te gusta, te devolvemos todo tu dinero, con una garantía de 30 días sin preguntas</li>
     </ul>
-    <a class="btn" href="#" data-checkout data-cta="05-precio">Quiero el kit completo · $27</a>
+    <a class="btn" href="#" data-checkout data-cta="05-precio">Quiero el kit completo · $9,90</a>
     <p class="legal">Este material es educativo. No reemplaza la terapia. Si en casa hay violencia, o tú o tu hijo están en riesgo, busca hoy ayuda profesional.</p>
   </div>
 </section>
@@ -264,7 +264,7 @@ footer a{color:inherit}
 </footer>
 
 <div class="barra" id="barra" aria-hidden="true">
-  <span class="p" data-precio>$27</span>
+  <span class="p" data-precio>$9,90</span>
   <a class="btn" href="#" data-checkout data-cta="barra">Quiero el kit completo</a>
 </div>
 
@@ -280,20 +280,20 @@ footer a{color:inherit}
 
 <script>
 /* =========================================================================
-   CONFIGURACIÓN. checkoutUrl: enlace de Hotmart de la oferta de $27 (kit niño
+   CONFIGURACIÓN. checkoutUrl: enlace de Hotmart de la oferta de $9,90 (kit niño
    + cuaderno mamá). Enlace directo, sin el widget de Hotmart: el checkout
    abre en su propia página (más fiable en el navegador de Instagram/Facebook).
    ========================================================================= */
 const CONFIG = {
   producto: { id: 'rincon-calma-completo', nombre: 'Mi Rincón de la Calma — Kit completo (niño + mamá)' },
-  precio: 27,
+  precio: 9.90,
   moneda: 'USD',
-  checkoutUrl: 'https://pay.hotmart.com/P106868890T?off=k7oldm9f',
+  checkoutUrl: 'https://pay.hotmart.com/P106868890T?off=wq6apry0',
   metaPixelId: '916361428769684',
   analyticsId: 'G-R80645DXN4',
-  variante: 'v3-validacion'
+  variante: 'v3-validacion-990'
 };
-document.querySelectorAll('[data-precio]').forEach(el => el.textContent = '$' + CONFIG.precio);
+document.querySelectorAll('[data-precio]').forEach(el => el.textContent = '$' + CONFIG.precio.toFixed(2).replace('.', ','));
 
 /* --- no contarse a uno mismo: ?yo=1 en cada aparato tuyo, ?yo=0 deshace --- */
 function leerLS(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
@@ -357,7 +357,7 @@ document.querySelectorAll('[data-checkout]').forEach(b => {
     (fbclid ? '&fbclid=' + encodeURIComponent(fbclid) : '') : '#';
   b.rel = 'noopener';
   b.addEventListener('click', ev => {
-    if (!listo) { ev.preventDefault(); alert('Falta pegar el enlace de Hotmart de $27 en CONFIG.checkoutUrl.'); return; }
+    if (!listo) { ev.preventDefault(); alert('Falta pegar el enlace de Hotmart en CONFIG.checkoutUrl.'); return; }
     if (!ev.isTrusted) return;
     medir('begin_checkout', { origen: b.dataset.cta, seccion_alcanzada: ultimaSeccion, value: CONFIG.precio, currency: CONFIG.moneda });
   });
