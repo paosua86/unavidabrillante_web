@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reserva tu guía — Otra vez hice lo que dije que no iba a hacer</title>
+<!-- Página siguiente a /otra-vez/: aquí se dice que es preventa, con fecha de
+     entrega honesta, antes de pagar. Se pide el correo y se va a Hotmart. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF8F3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235B8A80'/%3E%3Cpath d='M9 20c3-8 11-8 14 0' stroke='%23FBF8F3' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="../../fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/fraunces-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Fraunces;font-weight:100 900;font-display:swap;src:url(../../fonts/fraunces-500-latin.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:100 900;font-display:swap;src:url(../../fonts/inter-400-latin.woff2) format('woff2')}
+:root{--bg:#FBF8F3;--sage-soft:#E7EFEB;--fg:#2E2A25;--dim:#5F574E;--sage:#5B8A80;--sage-deep:#3F6C63;
+  --cta:#BE5138;--cta-hi:#A84632;--line:rgba(46,42,37,.14);--card:#FFFDFA}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.w{max-width:520px;margin:0 auto;padding:22px 20px 40px}
+.volver{font-size:14px;color:var(--dim)}
+.marca{margin-top:18px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-deep);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-weight:500;letter-spacing:-.012em;line-height:1.2;font-size:clamp(26px,7.4vw,32px);margin-top:8px}
+.intro{margin-top:10px}
+.precios{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.precios div{display:flex;justify-content:space-between;align-items:baseline;padding:11px 16px;border-top:1px solid var(--line);font-size:16px}
+.precios div:first-child{border-top:0}
+.precios .hoy{background:var(--sage-soft)}
+.precios .hoy b{font-family:Fraunces,Georgia,serif;font-size:30px;font-weight:500;line-height:1}
+.precios s{color:var(--dim)}
+ul.checks{list-style:none;margin-top:16px}
+ul.checks li{padding:5px 0 5px 28px;position:relative;font-size:16px}
+ul.checks li::before{content:"✓";position:absolute;left:4px;top:5px;color:var(--sage-deep);font-weight:700}
+form{margin-top:20px}
+label{display:block;font-weight:600;font-size:16px}
+input[type=email]{display:block;width:100%;margin-top:8px;padding:15px 14px;font:inherit;font-size:17px;border:1.5px solid var(--line);
+  border-radius:10px;background:#fff;color:var(--fg)}
+input[type=email]:focus{outline:none;border-color:var(--sage-deep)}
+.btn{display:block;width:100%;margin-top:14px;padding:17px 20px;border:0;border-radius:12px;background:var(--cta);color:#fff;
+  font:inherit;text-align:center;font-weight:600;font-size:18px;cursor:pointer;box-shadow:0 8px 20px -8px rgba(190,81,56,.6)}
+.btn:hover{background:var(--cta-hi)}
+.btn:focus-visible{outline:3px solid var(--sage-deep);outline-offset:3px}
+.btn[disabled]{opacity:.7}
+.ayuda{margin-top:10px;font-size:13px;color:var(--dim)}
+.ayuda a,.volver a{color:inherit}
+.error{color:#A13B25;font-weight:600}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
+<body>
+<main class="w">
+  <p class="volver"><a href="../" id="volver">← Volver a la guía</a></p>
+  <p class="marca">Una Vida Brillante · Guía de trabajo</p>
+  <h1>Estás en la preventa</h1>
+  <p class="intro">La guía está en sus últimos días de preparación. Por eso hoy la reservas al precio más bajo que va a tener.</p>
+
+  <div class="precios">
+    <div class="hoy"><span>Hoy, en preventa</span><b data-precio>$9,90</b></div>
+    <div><span>Cuando esté lista</span><span data-precio-final>$49,90</span></div>
+    <div><span>Valor real (3 sesiones)</span><s data-valor>$120</s></div>
+  </div>
+
+  <ul class="checks">
+    <li>Te llega a tu correo el <strong data-entrega>9 de octubre</strong></li>
+    <li>Garantía de 7 días: si no es para ti, te devuelven tu dinero</li>
+    <li>Pago seguro con Hotmart: tarjeta, PayPal o el medio de tu país</li>
+  </ul>
+
+  <form id="form" novalidate>
+    <label for="email">¿A qué correo te enviamos la guía?</label>
+    <input id="email" type="email" name="EMAIL" placeholder="tucorreo@ejemplo.com" autocomplete="email" inputmode="email" required>
+    <input class="hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="locale" value="es">
+    <p class="ayuda error" id="error" role="alert" hidden>Revisa tu correo: parece que falta algo.</p>
+    <button class="btn" type="submit">Reservar mi guía · <span data-precio>$9,90</span></button>
+    <p class="ayuda">En el siguiente paso pagas en Hotmart: usa este mismo correo. Solo lo usamos para enviarte la guía y avisos de esta preventa. <a href="../../politica-de-privacidad/">Privacidad</a>.</p>
+  </form>
+</main>
+
+<script>
+/* =========================================================================
+   CONFIGURACIÓN — lo único que hay que tocar para publicar
+   checkoutUrl: enlace de Hotmart del producto nuevo (oferta de $9,90).
+   brevoAction: URL de acción de un formulario de Brevo con la lista de
+     preventa. Vacía = el correo no se guarda aquí, pero la compra sigue
+     (nunca se bloquea una venta por el formulario).
+   entrega: fecha real de entrega (AAAA-MM-DD).
+   ========================================================================= */
+const CONFIG = {
+  producto: { id: 'otra-vez-guia', nombre: 'Otra vez hice lo que dije que no iba a hacer — Guía de trabajo' },
+  precio: 9.90,
+  precioFinal: 49.90,
+  valor: 120,
+  moneda: 'USD',
+  entrega: '2026-10-09',
+  checkoutUrl: 'PEGAR_AQUI_LINK_HOTMART',
+  brevoAction: '',
+  metaPixelId: '916361428769684',
+  analyticsId: 'G-R80645DXN4',
+  variante: 'v1-preventa'
+};
+const dinero = n => '$' + (Number.isInteger(n) ? String(n) : n.toFixed(2).replace('.', ','));
+document.querySelectorAll('[data-precio]').forEach(el => el.textContent = dinero(CONFIG.precio));
+document.querySelectorAll('[data-precio-final]').forEach(el => el.textContent = dinero(CONFIG.precioFinal));
+document.querySelectorAll('[data-valor]').forEach(el => el.textContent = dinero(CONFIG.valor));
+(function(){
+  const d = new Date(CONFIG.entrega + 'T12:00:00');
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  document.querySelectorAll('[data-entrega]').forEach(el => el.textContent = d.getDate() + ' de ' + meses[d.getMonth()]);
+})();
+
+const params = new URLSearchParams(location.search);
+const origen = (params.get('src') || 'directo').replace(/[^\w-]/g, '').slice(0, 40);
+const fbclid = params.get('fbclid');
+/* «Volver» conserva el fbclid para no perder la atribución del anuncio */
+if (fbclid) document.getElementById('volver').href = '../?fbclid=' + encodeURIComponent(fbclid);
+
+function leerLS(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+const soyYo = leerLS('uvb_interno') === '1';
+
+/* =========================================================================
+   MEDICIÓN: mismo píxel y GA4. Sin aviso de cookies propio: se respeta lo
+   que la persona eligió en la página anterior (y en Europa, sin respuesta,
+   no se carga nada).
+   ========================================================================= */
+function zonaEuropea(){
+  try { const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    return tz.indexOf('Europe/') === 0 || ['Atlantic/Canary','Atlantic/Madeira','Atlantic/Azores'].includes(tz);
+  } catch (e) { return true; }
+}
+const puedeMedir = !soyYo && !navigator.webdriver &&
+  (leerLS('uvb_cookies') === 'yes' || (leerLS('uvb_cookies') !== 'no' && !zonaEuropea()));
+if (puedeMedir) {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', CONFIG.metaPixelId);
+  fbq('track', 'PageView');
+  const g = document.createElement('script');
+  g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.analyticsId;
+  document.head.appendChild(g);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante });
+}
+function medir(nombre, datos){
+  if (!window.gtag) return;
+  gtag('event', nombre, Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre,
+    variante: CONFIG.variante, origen }, datos || {}));
+}
+
+/* =========================================================================
+   Correo → Brevo → Hotmart. El correo NO viaja en la URL de Hotmart: el
+   píxel del checkout lo mandaría a Meta como dato personal.
+   ========================================================================= */
+const listo = !/PEGAR_AQUI/.test(CONFIG.checkoutUrl);
+const form = document.getElementById('form'), email = document.getElementById('email'), error = document.getElementById('error');
+function urlCheckout(){
+  const sep = CONFIG.checkoutUrl.includes('?') ? '&' : '?';
+  return CONFIG.checkoutUrl + sep + 'src=otra-vez-' + origen + (fbclid ? '&fbclid=' + encodeURIComponent(fbclid) : '');
+}
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) { error.hidden = false; email.focus(); return; }
+  error.hidden = true;
+  if (!listo) { alert('Falta pegar el enlace de Hotmart en CONFIG.checkoutUrl.'); return; }
+  const boton = form.querySelector('button[type=submit]');
+  boton.disabled = true; boton.textContent = 'Un momento…';
+  const esBot = form.email_address_check.value !== '' || !e.isTrusted;
+  if (!esBot) {
+    medir('generate_lead');
+    medir('begin_checkout', { value: CONFIG.precio, currency: CONFIG.moneda });
+    if (window.fbq) fbq('track', 'Lead', { content_name: CONFIG.producto.nombre, value: CONFIG.precio, currency: CONFIG.moneda });
+    /* Brevo: no-cors impide leer la respuesta, pero el alta llega. Máximo 2,5 s
+       de espera: si Brevo tarda, se sigue al pago igual. */
+    if (CONFIG.brevoAction) {
+      try {
+        await Promise.race([
+          fetch(CONFIG.brevoAction, { method: 'POST', mode: 'no-cors', keepalive: true, body: new FormData(form) }),
+          new Promise(r => setTimeout(r, 2500))
+        ]);
+      } catch (x) {}
+    }
+    await new Promise(r => setTimeout(r, 300));   // deja salir los eventos
+  }
+  location.href = urlCheckout();
+});
+/* Si vuelve desde Hotmart con «atrás», el botón no se queda en «Un momento…» */
+addEventListener('pageshow', () => {
+  const b = form.querySelector('button[type=submit]');
+  b.disabled = false; b.innerHTML = 'Reservar mi guía · ' + dinero(CONFIG.precio);
+});
+
+/* --- qué mide esta página ----------------------------------------------
+   page_view        llegó a la reserva (compárese con ir_a_reserva de /otra-vez/)
+   generate_lead    dejó su correo (y Lead en Meta)
+   begin_checkout   salió hacia Hotmart; origen = qué botón de la landing
+   La caída entre page_view y begin_checkout es lo que cuesta decir «preventa».
+------------------------------------------------------------------------ */
+</script>
+</body>
+</html>
