@@ -54,7 +54,7 @@ input[type=email]:focus{outline:none;border-color:var(--sage-deep)}
 </head>
 <body>
 <main class="w">
-  <p class="volver"><a href="../" id="volver">← Volver a la guía</a></p>
+  <p class="volver"><a href="../index.html" id="volver">← Volver a la guía</a></p>
   <p class="marca">Una Vida Brillante · Guía de trabajo</p>
 
   <div id="paso-correo">
@@ -124,7 +124,7 @@ const params = new URLSearchParams(location.search);
 const origen = (params.get('src') || 'directo').replace(/[^\w-]/g, '').slice(0, 40);
 const fbclid = params.get('fbclid');
 /* «Volver» conserva el fbclid para no perder la atribución del anuncio */
-if (fbclid) document.getElementById('volver').href = '../?fbclid=' + encodeURIComponent(fbclid);
+if (fbclid) document.getElementById('volver').href = '../index.html?fbclid=' + encodeURIComponent(fbclid);
 
 function leerLS(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
 const soyYo = leerLS('uvb_interno') === '1';

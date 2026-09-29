@@ -154,7 +154,7 @@ footer a,.legal a{color:inherit}
       <li>Dices que no sin sentirte mala ni egoísta</li>
       <li>Ves tu avance escrito, de tu puño y letra</li>
     </ul>
-    <a class="btn" href="reserva/" data-comprar="01-atencion" id="btn-arriba">Sí, quiero mi guía</a>
+    <a class="btn" href="reserva/index.html" data-comprar="01-atencion" id="btn-arriba">Sí, quiero mi guía</a>
     <div class="sellos">
       <div><b>🛡</b>Garantía de 7 días</div>
       <div><b>📩</b>Llega a tu correo al instante</div>
@@ -177,7 +177,7 @@ footer a,.legal a{color:inherit}
       <li><b>Entiendes</b><span>Sueltas la regla de «si no doy, no me quieren».</span></li>
       <li><b>Practicas</b><span>Dices tus primeros «no» en la vida real y compruebas qué pasa.</span></li>
     </ol>
-    <a class="btn" href="reserva/" data-comprar="02-transformacion">Quiero salir del ciclo · <span data-precio>$9,90</span></a>
+    <a class="btn" href="reserva/index.html" data-comprar="02-transformacion">Quiero salir del ciclo · <span data-precio>$9,90</span></a>
   </div>
 </section>
 
@@ -258,7 +258,7 @@ footer a,.legal a{color:inherit}
       </ul>
     </div>
     <p style="margin-top:16px">Cada ejercicio tiene preguntas pensadas para llevarte hondo, un ejemplo resuelto y espacio para escribir. Al final comparas tu autoevaluación con la del principio y <strong>ves tu cambio escrito por ti</strong>.</p>
-    <a class="btn" href="reserva/" data-comprar="04-deseo">Quiero mi guía · <span data-precio>$9,90</span></a>
+    <a class="btn" href="reserva/index.html" data-comprar="04-deseo">Quiero mi guía · <span data-precio>$9,90</span></a>
   </div>
 </section>
 
@@ -304,7 +304,7 @@ footer a,.legal a{color:inherit}
       <p>Unos 20 minutos por ejercicio. Tú eliges el ritmo: lo ideal es un módulo por semana.</p></details>
     <details><summary>¿Y si necesito más que una guía?</summary>
       <p>Esta guía no reemplaza la terapia. Si el patrón viene de algo más profundo, al final te digo en qué señales fijarte para buscar ayuda profesional.</p></details>
-    <a class="btn" href="reserva/" data-comprar="07-objeciones">Sí, quiero mi guía · <span data-precio>$9,90</span></a>
+    <a class="btn" href="reserva/index.html" data-comprar="07-objeciones">Sí, quiero mi guía · <span data-precio>$9,90</span></a>
     <p class="legal">Material educativo. No reemplaza la terapia. Si vives violencia o estás en riesgo, busca hoy ayuda profesional.</p>
   </div>
 </section>
@@ -315,7 +315,7 @@ footer a,.legal a{color:inherit}
 
 <div class="barra" id="barra" aria-hidden="true">
   <span class="p" data-precio>$9,90</span>
-  <a class="btn" href="reserva/" data-comprar="barra" tabindex="-1">Quiero mi guía</a>
+  <a class="btn" href="reserva/index.html" data-comprar="barra" tabindex="-1">Quiero mi guía</a>
 </div>
 
 <div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
@@ -397,7 +397,7 @@ let ultimaSeccion = '01-atencion';
 (function(){
   const fbclid = new URLSearchParams(location.search).get('fbclid');
   document.querySelectorAll('[data-comprar]').forEach(b => {
-    b.href = 'reserva/?src=' + encodeURIComponent(b.dataset.comprar) + (fbclid ? '&fbclid=' + encodeURIComponent(fbclid) : '');
+    b.href = 'reserva/index.html?src=' + encodeURIComponent(b.dataset.comprar) + (fbclid ? '&fbclid=' + encodeURIComponent(fbclid) : '');
     b.addEventListener('click', ev => {
       if (!ev.isTrusted) return;
       medir('ir_a_reserva', { origen: b.dataset.comprar, seccion_alcanzada: ultimaSeccion });
