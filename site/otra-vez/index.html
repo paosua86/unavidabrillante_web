@@ -366,6 +366,7 @@ const CONFIG = {
   moneda: 'USD',
   metaPixelId: '916361428769684',
   analyticsId: 'G-R80645DXN4',
+  clarityId: 'yq466ejf9y',
   variante: 'v1-preventa'
 };
 const dinero = n => '$' + (Number.isInteger(n) ? String(n) : n.toFixed(2).replace('.', ','));
@@ -408,6 +409,12 @@ function cargarMedicion(){
   gtag('js', new Date());
   gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.HEROE });
   cola.splice(0).forEach(e => medir(e.nombre, e.datos));
+  /* Microsoft Clarity: grabaciones de sesión y mapas de calor. Etiquetas para filtrar por anuncio. */
+  (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", CONFIG.clarityId);
+  clarity('set', 'pagina', 'landing');
+  clarity('set', 'titulo', window.HEROE);
 }
 function medir(nombre, datos){
   const carga = Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.HEROE }, datos || {});
