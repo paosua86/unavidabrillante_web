@@ -123,8 +123,9 @@ document.querySelectorAll('[data-valor]').forEach(el => el.textContent = dinero(
 const params = new URLSearchParams(location.search);
 const origen = (params.get('src') || 'directo').replace(/[^\w-]/g, '').slice(0, 40);
 const fbclid = params.get('fbclid');
+const heroe = /^[123]$/.test(params.get('h') || '') ? 'a' + params.get('h') : 'a1';
 /* «Volver» conserva el fbclid para no perder la atribución del anuncio */
-if (fbclid) document.getElementById('volver').href = '../index.html?fbclid=' + encodeURIComponent(fbclid);
+document.getElementById('volver').href = '../index.html?h=' + heroe.slice(1) + (fbclid ? '&fbclid=' + encodeURIComponent(fbclid) : '');
 
 function leerLS(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
 const soyYo = leerLS('uvb_interno') === '1';
@@ -155,12 +156,12 @@ if (puedeMedir) {
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
   gtag('js', new Date());
-  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante });
+  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: heroe });
 }
 function medir(nombre, datos){
   if (!window.gtag) return;
   gtag('event', nombre, Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre,
-    variante: CONFIG.variante, origen }, datos || {}));
+    variante: CONFIG.variante, origen, titulo: heroe }, datos || {}));
 }
 
 /* =========================================================================

@@ -39,6 +39,7 @@ strong{font-weight:600}
 .hero{padding:26px 0 32px}
 .marca{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-deep);font-weight:600}
 .hero h1{font-size:clamp(30px,8.6vw,42px);margin-top:12px}
+.ceja{margin-top:14px;font-size:17px;color:var(--dim)}
 .sub{margin-top:12px;font-size:18px}
 .precio{margin-top:20px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .precio b{font-family:Fraunces,Georgia,serif;font-size:42px;font-weight:500;line-height:1}
@@ -144,8 +145,33 @@ footer a,.legal a{color:inherit}
 <header class="hero" data-seccion="01-atencion">
   <div class="w">
     <p class="marca">Una Vida Brillante · Psicóloga clínica · 17 años de consulta</p>
-    <h1>«Otra vez hice lo que dije que no iba a hacer.»</h1>
-    <p class="sub">Una guía de trabajo para dejar de decir que sí cuando quieres decir que no. Es el trabajo que haría contigo en 3 sesiones de terapia, a tu ritmo.</p>
+    <p class="ceja" id="h-ceja" hidden></p>
+    <h1 id="h-titulo">«Otra vez hice lo que dije que no iba a hacer.»</h1>
+    <p class="sub" id="h-sub">¿Cuántas veces te lo has prometido? Una guía de trabajo para salir del ciclo del «ya no más». Es el trabajo que haría contigo en 3 sesiones de terapia, a tu ritmo.</p>
+    <script>
+    /* Arriba de la página según el anuncio (?h=1|2|3), con el mismo dolor con el
+       que abre el anuncio. Sin parámetro: anuncio 1. Va aquí para cambiarse
+       antes de pintarse (sin parpadeo). HEROE viaja a GA4 como «titulo». */
+    window.HEROES = {
+      a1: { titulo: '«Otra vez hice lo que dije que no iba a hacer.»',
+            sub: '¿Cuántas veces te lo has prometido? Una guía de trabajo para salir del ciclo del «ya no más». Es el trabajo que haría contigo en 3 sesiones de terapia, a tu ritmo.' },
+      a2: { ceja: '«Es una cosita nomás.» «Sí, claro 😊».',
+            titulo: 'Lo escribiste antes de pensarlo. Otra vez.',
+            sub: 'Una guía de trabajo para reconocer ese segundo y decidir tú, sin culpa. Es el trabajo que haría contigo en 3 sesiones de terapia, a tu ritmo.' },
+      a3: { titulo: '¿Eres <em>people pleaser</em>?',
+            sub: 'Dices que sí antes de terminar de leer el mensaje, te sientes culpable cuando descansas y te prometes «ya no más»… Una guía de trabajo para salir de ahí. Es el trabajo que haría contigo en 3 sesiones de terapia, a tu ritmo.' }
+    };
+    window.HEROE = (function(){
+      try { const h = 'a' + new URLSearchParams(location.search).get('h'); if (HEROES[h]) return h; } catch(e){}
+      return 'a1';
+    })();
+    (function(v){
+      const $ = id => document.getElementById(id);
+      if (v.ceja) { $('h-ceja').textContent = v.ceja; $('h-ceja').hidden = false; }
+      $('h-titulo').innerHTML = v.titulo;
+      $('h-sub').textContent = v.sub;
+    })(HEROES[HEROE]);
+    </script>
     <div class="precio"><b data-precio>$9,90</b><s data-valor>$120</s><span>USD · un solo pago</span></div>
     <p class="valor">Valor real: <span data-valor>$120</span>, lo que cuestan 3 sesiones de terapia conmigo.</p>
     <ul class="checks">
@@ -380,11 +406,11 @@ function cargarMedicion(){
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
   gtag('js', new Date());
-  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante });
+  gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.HEROE });
   cola.splice(0).forEach(e => medir(e.nombre, e.datos));
 }
 function medir(nombre, datos){
-  const carga = Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante }, datos || {});
+  const carga = Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.HEROE }, datos || {});
   if (!window.__medicionLista) { if (cola.length < 40) cola.push({ nombre, datos }); return; }
   if (window.gtag) gtag('event', nombre, carga);
 }
@@ -397,7 +423,7 @@ let ultimaSeccion = '01-atencion';
 (function(){
   const fbclid = new URLSearchParams(location.search).get('fbclid');
   document.querySelectorAll('[data-comprar]').forEach(b => {
-    b.href = 'reserva/index.html?src=' + encodeURIComponent(b.dataset.comprar) + (fbclid ? '&fbclid=' + encodeURIComponent(fbclid) : '');
+    b.href = 'reserva/index.html?src=' + encodeURIComponent(b.dataset.comprar) + '&h=' + window.HEROE.slice(1) + (fbclid ? '&fbclid=' + encodeURIComponent(fbclid) : '');
     b.addEventListener('click', ev => {
       if (!ev.isTrusted) return;
       medir('ir_a_reserva', { origen: b.dataset.comprar, seccion_alcanzada: ultimaSeccion });
