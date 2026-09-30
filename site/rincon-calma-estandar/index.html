@@ -291,6 +291,7 @@ const CONFIG = {
   checkoutUrl: 'https://pay.hotmart.com/P106868890T?off=wq6apry0',
   metaPixelId: '916361428769684',
   analyticsId: 'G-R80645DXN4',
+  clarityId: 'yq466ejf9y',
   variante: 'v3-validacion-990'
 };
 document.querySelectorAll('[data-precio]').forEach(el => el.textContent = '$' + CONFIG.precio.toFixed(2).replace('.', ','));
@@ -334,12 +335,22 @@ function cargarMedicion(){
   window.gtag = function(){ dataLayer.push(arguments); };
   gtag('js', new Date());
   gtag('config', CONFIG.analyticsId, { producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.HEROE });
+  /* Microsoft Clarity (mismo proyecto que /otra-vez/): grabaciones y mapas de calor.
+     Va antes de vaciar la cola para que begin_checkout también llegue como evento. */
+  (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", CONFIG.clarityId);
+  clarity('set', 'pagina', 'rincon-calma');
+  clarity('set', 'titulo', window.HEROE);
+  clarity('set', 'variante', CONFIG.variante);
   cola.splice(0).forEach(e => medir(e.nombre, e.datos));
 }
 function medir(nombre, datos){
   const carga = Object.assign({ producto_id: CONFIG.producto.id, producto_nombre: CONFIG.producto.nombre, variante: CONFIG.variante, titulo: window.HEROE }, datos || {});
   if (!window.__medicionLista) { if (cola.length < 40) cola.push({ nombre, datos }); return; }
   if (window.gtag) gtag('event', nombre, carga);
+  /* en Clarity, filtrar grabaciones por "pulsó comprar" */
+  if (nombre === 'begin_checkout' && window.clarity) clarity('event', nombre);
   const m = EVENTOS_META[nombre];
   if (m && window.fbq) fbq('track', m, { content_name: CONFIG.producto.nombre, content_ids: [CONFIG.producto.id],
     content_type: 'product', value: CONFIG.precio, currency: CONFIG.moneda });
